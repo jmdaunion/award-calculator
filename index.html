@@ -74,8 +74,6 @@ table.dues td:last-child { font-weight: 700; color: var(--jmda-navy); }
 .join-links { display: flex; gap: 10px; flex-wrap: wrap; }
 .join-links a { display: inline-block; text-decoration: none; font-weight: 600; padding: 9px 14px; border-radius: 4px; border: 1px solid var(--jmda-blue); color: var(--jmda-blue); background: var(--panel); }
 .join-links a.primary { background: var(--jmda-blue); color: var(--jmda-blue-ink); }
-.join-urls { font-size: 12.5px; color: var(--muted); line-height: 1.6; overflow-wrap: anywhere; }
-.join-urls b { color: var(--fg); }
 .ecg { display: block; width: 100%; height: 26px; color: var(--jmda-blue); margin: 0 0 10px; }
 .closing-art img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); }
 .stamp { font-size: 13px; color: var(--muted); }
@@ -229,6 +227,13 @@ details .tablewrap { border-radius: 3px; }
 .compare .sub { font-size: 12.5px; color: var(--muted); }
 .noscript-note { border: 2px solid var(--warn); background: var(--warn-soft); color: var(--fg); padding: 12px 14px; border-radius: 4px; font-size: 14.5px; margin-bottom: 12px; }
 .noscript-note b { display: block; margin-bottom: 4px; }
+.letter-print { display: none; }
+@media print {
+  @page { size: letter; margin: 0.75in 0.9in; }
+  body.print-letter > *:not(.letter-print) { display: none !important; }
+  body.print-letter { background: #FFFFFF; }
+  body.print-letter .letter-print { display: block; font: 10.5pt/1.36 "Times New Roman", Georgia, "Source Serif 4", serif; color: #000000; white-space: pre-wrap; max-width: 6.7in; }
+}
 .footer { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 12px; font-size: 13px; color: var(--muted); text-align: center; }
 .footer b { color: var(--fg); }
 @media (max-width: 560px) {
@@ -573,7 +578,7 @@ details .tablewrap { border-radius: 3px; }
   <!-- QUESTIONS -->
   <section class="step" id="questions">
     <div class="step-head">
-      <span class="num">Questions members asked</span>
+      <span class="num">Frequently Asked Questions</span>
       <h2>Straight answers from the Award</h2>
     </div>
     <div class="qa" id="qaList"></div>
@@ -584,7 +589,7 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Claim letter</span>
       <h2>Letter to your pay station</h2>
-      <p class="help">A draft you can send to the Human Resource Manager of the institution that pays you, copied to the Chief Executive Officer and the Senior Medical Officer. Fill in the fields; the letter updates as you type. Check it against the Association's official template before sending.</p>
+      <p class="help">A one-page draft to send to the Human Resource Manager of the institution that pays you, copied to the Chief Executive Officer and the Senior Medical Officer. Fill in the fields; the letter updates as you type. "Print letter" lays it out on a single letter-size page (choose "Save as PDF" in the print dialog to keep a copy). Check it against the Association's official template before sending.</p>
     </div>
     <div class="row">
       <div class="field"><label for="lName">Your name</label><input type="text" id="lName" placeholder="Dr. First Last"></div>
@@ -601,7 +606,7 @@ details .tablewrap { border-radius: 3px; }
       <div class="field"><label for="lDate">Date of letter</label><input type="text" id="lDate"></div>
     </div>
     <textarea class="copybox letterbox" id="letterBox" readonly aria-label="Draft claim letter"></textarea>
-    <div class="actions"><button class="primary" type="button" id="copyLetter">Copy letter</button></div>
+    <div class="actions"><button class="primary" type="button" id="copyLetter">Copy letter</button><button type="button" id="printLetter">Print letter (one letter-size page)</button></div>
   </section>
 
   <!-- METHOD -->
@@ -651,7 +656,6 @@ details .tablewrap { border-radius: 3px; }
         <a href="https://www.fygaro.com/en/pb/003a8112-59a8-48ee-bc48-1397686153b4/" target="_blank" rel="noopener">💳 Pay here</a>
         <a href="https://forms.gle/jCrnT2BGJSNZQYKJA" target="_blank" rel="noopener">📤 Upload receipt here</a>
       </div>
-      <p class="join-urls"><b>Subscribe:</b> https://form.jotform.com/212635405385859<br><b>Pay:</b> https://www.fygaro.com/en/pb/003a8112-59a8-48ee-bc48-1397686153b4/<br><b>Upload receipt:</b> https://forms.gle/jCrnT2BGJSNZQYKJA</p>
     </section>
     <div class="footer"><b>Jamaica Medical Doctors' Association</b> &nbsp;|&nbsp; jmdakingston7@gmail.com &nbsp;|&nbsp; 876-977-2512 / 876-470-7919</div>
   </section>
@@ -668,6 +672,7 @@ details .tablewrap { border-radius: 3px; }
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="letter-print" id="letterPrint" aria-hidden="true"></div>
 
 <script id="core">
 // Calculation core for the Award calculator. No DOM access, so it can be tested on its own with node.
@@ -1116,6 +1121,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('barCopy').addEventListener('click', function () { copyText($('summaryBox'), 'Summary copied'); });
     $('copyMonths').addEventListener('click', function () { copyRaw(monthsTSV(), 'Table copied'); });
     $('copyLetter').addEventListener('click', function () { copyText($('letterBox'), 'Letter copied'); });
+    $('printLetter').addEventListener('click', function () { $('letterPrint').textContent = $('letterBox').value; document.body.classList.add('print-letter'); setTimeout(function () { try { window.print(); } catch (e) { toast('Printing is not available in this viewer; use Copy letter instead'); } }, 60); });
+    window.addEventListener('afterprint', function () { document.body.classList.remove('print-letter'); });
     ['lName:name', 'lReg:reg', 'lDept:dept', 'lInst:inst', 'lRegion:region', 'lStart:start', 'lContact:contact', 'lDate:date'].forEach(function (p) { var a = p.split(':'); bindText(a[0], function () { return state.letter[a[1]]; }, function (v) { state.letter[a[1]] = v; }); });
     if (!state.letter.date) { var t = new Date(); state.letter.date = t.getDate() + ' ' + MONTHS_LONG[t.getMonth()] + ' ' + t.getFullYear(); }
     renderQA();
@@ -1425,29 +1432,23 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     t.push('The Human Resource Manager');
     t.push(inst);
     t.push(region);
-    t.push('');
     t.push('Copies: Chief Executive Officer; Senior Medical Officer; Director of Finance and Accounts');
     t.push('');
     t.push('Dear Sir or Madam,');
     t.push('');
-    t.push('CLAIM FOR RETROACTIVE EMERGENCY DUTY ALLOWANCE' + (ia ? ' AND REINSTATED INCENTIVE ALLOWANCE' : '') + ' UNDER INDUSTRIAL DISPUTES TRIBUNAL AWARD IDT 1/2025 (MINISTRY OF HEALTH AND WELLNESS v. JAMAICA MEDICAL DOCTORS\' ASSOCIATION), DATED 5 OCTOBER 2026');
+    t.push('CLAIM FOR RETROACTIVE EMERGENCY DUTY ALLOWANCE' + (ia ? ' AND INCENTIVE ALLOWANCE' : '') + ' UNDER INDUSTRIAL DISPUTES TRIBUNAL AWARD 1/2025 OF 5 OCTOBER 2026');
     t.push('');
-    t.push('I, ' + name + (L.reg ? ' (Medical Council of Jamaica registration number ' + L.reg + ')' : '') + ', ' + gi.label + ' in the ' + dept + ' at ' + inst + ', write to claim the payments due to me under the above Award. The Tribunal held that the Award is binding on the Ministry of Finance and the Public Service, the Ministry of Health and Wellness, the Regional Health Authorities, the University Hospital of the West Indies, Bellevue Hospital, the Ministry of National Security and every direct employing authority of medical officers in the Association\'s bargaining unit (Award, section 1(a)).');
+    t.push('I, ' + name + (L.reg ? ' (Medical Council of Jamaica registration number ' + L.reg + ')' : '') + ', ' + gi.label + ', ' + dept + ', ' + inst + ', claim the payments due to me under the above Award, which binds every employing authority of doctors in the Association\'s bargaining unit, including the Ministry of Health and Wellness, the Regional Health Authorities and the University Hospital of the West Indies (section 1(a)).');
     t.push('');
-    t.push('1. Emergency Duty Allowance. Section 2 of the Award fixes the Emergency Duty hourly rate at ' + (gi.mo ? 'the midpoint of my grade\'s restructured salary scale (points 4 and 5 averaged) divided by 2,080 hours' : 'my annual basic salary divided by 2,080 hours') + ' and awards the following multipliers: 1.5 on a normal weekday, 1.75 on the first day off and 2.0 on the second day off for rostered duty; 1.75, 2.0 and 2.25 for covering multiple locations; ward sessions at 25% above the rostered rate; and Casualty, Type C, Health Centre and cross-coverage duties at 50% above the rostered rate. Section 2(e) makes these rates payable retroactively from 1 April 2023.');
-    t.push('');
-    t.push('I therefore request that all rostered emergency duty, sessional, multiple-location and coverage hours I have worked from ' + start + ' to date be recalculated at the awarded rates and that the difference between the amounts already paid to me and the amounts due under the Award be paid to me.');
+    t.push('1. Emergency Duty Allowance. Section 2 prices emergency duty at ' + (gi.mo ? 'the midpoint of my grade\'s restructured salary scale divided by 2,080 hours' : 'my annual basic salary divided by 2,080 hours') + ', times 1.5 on a weekday, 1.75 on the first day off and 2.0 on the second day off (1.75, 2.0 and 2.25 for covering multiple locations), with ward sessions at 25% above the rostered rate and Casualty, Type C, Health Centre and cross-coverage duties at 50% above it, retroactive to 1 April 2023 (section 2(e)). I ask that every hour of rostered duty, sessional, multiple-location and coverage work I have performed since ' + start + ' be recalculated at these rates and that the difference between what I was paid and what the Award provides be paid to me.');
     t.push('');
     if (ia) {
-      t.push('2. Incentive Allowance. Section 3 of the Award orders the full retroactive reinstatement of the Incentive Allowance from 1 April 2023 at ' + state.ia.pct + '% of the midpoint of the respective salary scale for eligible medical officers. I am an eligible non-rostered medical officer within the categories identified in the 2017-2021 Heads of Agreement and the Award and I request payment of the allowance from ' + start + ' for every month in which I performed no rostered emergency duty shift (Award, paragraph 85), together with its continued payment going forward.');
+      t.push('2. Incentive Allowance. Section 3 reinstates the allowance from 1 April 2023 at ' + state.ia.pct + '% of the scale midpoint for eligible non-rostered medical officers. I am eligible under the categories in the 2017-2021 Heads of Agreement and claim it from ' + start + ' for every month in which I performed no rostered emergency duty shift (paragraph 85), and going forward.');
       t.push('');
-      t.push('3. Statement of account. ');
-    } else {
-      t.push('2. Statement of account. ');
     }
-    t[t.length - 1] += 'Please provide me with a written statement showing, for each month of the claim period, the hours and sessions recognised by category and day type, the rate applied, the amount previously paid, the amount now payable under the Award and the date on which payment will be made. Copies of my duty rosters and sessional claim forms for the period are available on request and I ask that the institution\'s own roster records be used where mine are incomplete.';
+    t.push((ia ? '3' : '2') + '. Statement of account. Please provide a monthly statement showing the hours and sessions recognised by category and day type, the rate applied, the amount previously paid, the amount now due and the payment date. My rosters and claim forms are available on request.');
     t.push('');
-    t.push('I ask that you acknowledge receipt of this claim in writing within fourteen days and advise the timeline for payment. I am copying this letter to my Jamaica Medical Doctors\' Association representative.');
+    t.push('Kindly acknowledge this claim in writing within fourteen days and advise the timeline for payment. A copy goes to my Jamaica Medical Doctors\' Association representative.');
     t.push('');
     t.push('Yours faithfully,');
     t.push('');
