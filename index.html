@@ -344,10 +344,11 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Step 3 · Your month</span>
       <h2>Duty in a typical month</h2>
-      <p class="help">Enter what you do in a month under each category, split by day type. Each row can be counted in <b>shifts or sessions</b> (a shift is the hours set in Step 2, a session is 4 hours unless you changed it) or entered straight in <b>hours</b>, whichever matches your claim forms; the hours the row adds up to are shown under it. Every row has its own first-day-off and second-day-off cells, including Casualty sessions. The example loaded is roughly a one-in-four on-call roster.</p>
+      <p class="help">Enter what you do in a month under each category, split by day type. Each row can be counted in <b>shifts or sessions</b> (a shift is the hours set in Step 2, a session is 4 hours unless you changed it) or entered straight in <b>hours</b>, whichever matches your claim forms; the hours the row adds up to are shown under it. Every row has its own first-day-off and second-day-off cells, including Casualty sessions. The example loaded is roughly a one-in-four on-call roster; the "seven-day week month" example is the month the Association itself costed in November 2024 (five 16-hour weekday calls, two calls on each day off, every day-off call made up of a 16-hour rostered stretch plus an 8-hour Casualty session), which at the old rates comes to J$406,239.24 for a Medical Officer 1, the figure in the Association's own workbook.</p>
     </div>
     <div class="presets"><span>Start from an example:</span>
       <button class="small" type="button" data-preset="oncall">On-call team, one in four</button>
+      <button class="small" type="button" data-preset="sevenday">Seven-day week month, as the Association costed it</button>
       <button class="small" type="button" data-preset="casualty">Casualty sessions only</button>
       <button class="small" type="button" data-preset="typec">Type C, paid at the Casualty session rate only</button>
       <button class="small" type="button" data-preset="clear">Clear all</button>
@@ -435,7 +436,7 @@ details .tablewrap { border-radius: 3px; }
     <details id="oldDetails">
       <summary>The old 2017-2021 rates used for "already paid" (editable)</summary>
       <div class="inner">
-        <p class="help" style="max-width:none">These are the Heads of Agreement rates the pay stations kept using after the contract expired, as the Ministry of Finance listed them under "current rates" in its comparison table of 29 August 2024: per hour for rostered and multiple-location duty, per four-hour session for ward and Casualty sessions, each by day type. They are the April 2021 figures (4% above 2020, which is why the Association's December 2021 arrears notice quoted a difference of J$590.73 per weekday Casualty session). They are shown for the grade chosen in Step 1 and for the grade set for each year below. If your pay station paid different figures, type yours over them; the back-pay changes at once.</p>
+        <p class="help" style="max-width:none">These are the Heads of Agreement rates the pay stations kept using after the contract expired, as scheduled in the Memorandum of Understanding of 16 March 2023 (Compensation Unit schedule of 1 December 2021, which the Memorandum says "continue to apply") and listed again by the Ministry of Finance under "current rates" in its comparison table of 29 August 2024: per hour for rostered and multiple-location duty, per four-hour session for ward and Casualty sessions, each by day type. They are the April 2021 figures (4% above 2020, which is why the Association's December 2021 arrears notice quoted a difference of J$590.73 per weekday Casualty session). They are shown for the grade chosen in Step 1 and for the grade set for each year below. If your pay station paid different figures, type yours over them; the back-pay changes at once.</p>
         <details>
           <summary>Where the old rates came from, and three cases to watch</summary>
           <div class="inner">
@@ -503,6 +504,7 @@ details .tablewrap { border-radius: 3px; }
           <div class="field"><label for="tPen">Pension contribution <span class="sub">% of basic salary</span></label><input type="text" inputmode="decimal" id="tPen"></div>
           <div class="field"><label for="tOther">Other monthly deductions <span class="sub">J$ · union dues, loans, insurance</span></label><input type="text" inputmode="numeric" id="tOther"></div>
         </div>
+        <label class="chk intern-only"><input type="checkbox" id="tHousing"> Housing accommodation contribution: 2.5% of basic salary, which Interns and Locum Interns pay under the Memorandum of Understanding of March 2023 (Appendix 1, item 10)</label>
         <p class="help">Defaults as published for 2026: threshold J$1,902,360 from April 1, 2026 (J$1,799,376 the year before; J$1,700,088 from April 2024; J$1,500,096 earlier; the announced April 2027 step is entered as about J$2.0 million until gazetted), 25% and 30% income tax bands, National Insurance 3% to J$5,000,000, Education Tax 2.25%, National Housing Trust 2%, pension 5% of basic salary under the Pensions (Public Service) Act. The approved-pension and National Insurance amounts are deducted before income tax and Education Tax are worked out.</p>
       </div>
     </details>
@@ -624,7 +626,7 @@ details .tablewrap { border-radius: 3px; }
         <li>The old-rate estimate assumes you were paid correctly at the 2017-2021 rates. Many were not; the February 2026 settlement of Heads of Agreement breaches (holiday rate at the second-day-off rate from November 2023, Type C rates back to 2009, covering multiple hospitals back to 2006, compulsory weekend ward work from 2015, the MO1 point 2 placement from April 2023) is a separate stream of back-pay and is not counted here. If any of those corrections has not reached you, claim it on its own; do not reduce the old-rate figure here to make up for it, or the Award's back-pay will be overstated by the same amount.</li>
         <li>The Award's own words tie the hourly base to "the 2022-2025 contract period" (section 2(b)). Pricing April 2026 onward on the new 2026-2028 scales assumes the same framework carries into the new contract, which is the Association's position; nothing in the Award says otherwise, but the figures for those months are projections until the Ministry of Finance confirms them.</li>
         <li>"Ward Sessional Rate 25% above the Rostered Duty Rate" and "Premium Rates 50% above" are read here as 25% and 50% above the rostered rate for the day type the session falls on, the way the old sessional rates also carried Saturday and Sunday loadings and the way the Association's proposal was framed ("times the respective rostered duty rate"). A pay station reading them as 25% and 50% above the weekday rate alone would pay less for day-off sessions; the working panel shows each line so the difference can be isolated if that happens.</li>
-        <li>Allowances the calculator does not model (meal, taxi, uniform, the one-off J$80,000 grant) sit outside these figures; add them to the "other" lines if you want them in your month.</li>
+        <li>Allowances the calculator does not model (the meal allowance, J$80,000 a year under the Memorandum of Understanding; taxi; uniform; the one-off J$80,000 grant of 2025/26) sit outside these figures; add them to the "other" lines if you want them in your month.</li>
       </ul>
       <p class="muted" style="font-size:12.5px">Sources: Industrial Disputes Tribunal, Ministry of Health and Wellness v. Jamaica Medical Doctors' Association, Dispute 1/2025, Award and Minority Award dated 5 October 2026; Ministry of Finance and the Public Service salary schedules (2023-2025; April 1, 2026 to March 31, 2028, letter C18/XII of September 14, 2026); Ministry of Finance draft comparison of overtime rates, 29 August 2024; Ministry of Health and Wellness, Suggested Guidelines for applying the 40-hour work week across 7 days, version 4; Tax Administration Jamaica threshold notices (April 2025, April 2026); Pensions (Public Service) Act.</p>
     </div>
@@ -853,8 +855,9 @@ var CORE = (function () {
     var nht = gross * num(p.nhtRate);
     var paye = annualTax(statutory * 12, num(p.threshold), num(p.band30)) / 12;
     var other = num(p.other);
-    var ded = pension + nis + ed + nht + paye + other;
-    return { basic: basic, eda: eda, ia: ia, gross: gross, pension: pension, nis: nis, statutory: statutory, ed: ed, nht: nht, paye: paye, other: other, deductions: ded, net: gross - ded };
+    var housing = basic * num(p.housingRate);   // Interns and Locum Interns: 2.5% of basic salary towards housing accommodation (MOU 2023, Appendix 1 item 10)
+    var ded = pension + nis + ed + nht + paye + other + housing;
+    return { basic: basic, eda: eda, ia: ia, gross: gross, pension: pension, nis: nis, statutory: statutory, ed: ed, nht: nht, paye: paye, other: other, housing: housing, deductions: ded, net: gross - ded };
   }
   // Deductions a lump-sum back-payment attracts when paid on top of a year's regular pay (no pension on allowances; National Insurance only up to the ceiling; income tax at the marginal rate).
   function lumpSumDeductions(lump, annualRegularGross, annualPension, p) {
@@ -921,12 +924,14 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   function copyRoster(r) { var c = blankRoster(); ROWS.forEach(function (k) { for (var i = 0; i < 3; i++) c[k][i] = CORE.num(r && r[k] ? r[k][i] : 0); c.unit[k] = (r && r.unit && r.unit[k]) || UNIT_DEFAULT[k]; }); return c; }
   var PRESETS = {
     oncall:   { rostered: [5, 1, 1], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } },
+    // The Association's own "Duty Estimation" workbook (November 2024): five weekday calls of 16 hours, two calls on each day off, each day-off call = 16 hours rostered (4 p.m. to 8 a.m.) + an 8-hour Casualty session (8 a.m. to 4 p.m.)
+    sevenday: { rostered: [5, 2, 2], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 4, 4], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' }, hours: [16, 16, 16], sessHours: 4 },
     casualty: { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [10, 2, 2], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } },
     typec:    { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [80, 16, 16], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'hours' } },
     clear:    { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } }
   };
 
-  function defaultTax() { var d = CORE.TAX_DEFAULTS; return { thresholdAuto: true, threshold: CORE.thresholdFor(2026), band30: d.band30, nisCeiling: d.nisCeiling, nisRate: d.nisRate * 100, edRate: d.edRate * 100, nhtRate: d.nhtRate * 100, pensionRate: d.pensionRate * 100, other: null }; }
+  function defaultTax() { var d = CORE.TAX_DEFAULTS; return { thresholdAuto: true, threshold: CORE.thresholdFor(2026), band30: d.band30, nisCeiling: d.nisCeiling, nisRate: d.nisRate * 100, edRate: d.edRate * 100, nhtRate: d.nhtRate * 100, pensionRate: d.pensionRate * 100, other: null, internHousing: true }; }
   function defaultState() {
     return {
       grade: '', fy: 2026, ownPoint: 1,
@@ -989,7 +994,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     state.overrides[fy][grade] = base;
   }
   function ownAnnual(grade, points) { if (!points || !G[grade]) return null; var idx = G[grade].mo ? Math.min(Math.max(Math.round(CORE.num(state.ownPoint) || 1), 1), 8) - 1 : 0; return CORE.num(points[idx]) || null; }
-  function taxParams() { var t = state.tax; return { threshold: t.thresholdAuto ? CORE.thresholdFor(state.fy) : CORE.num(t.threshold), band30: CORE.num(t.band30), nisCeiling: CORE.num(t.nisCeiling), nisRate: CORE.num(t.nisRate) / 100, edRate: CORE.num(t.edRate) / 100, nhtRate: CORE.num(t.nhtRate) / 100, pensionRate: CORE.num(t.pensionRate) / 100, other: CORE.num(t.other) }; }
+  function isIntern() { return state.grade === 'LI' || state.grade === 'MI'; }
+  function taxParams() { var t = state.tax; return { threshold: t.thresholdAuto ? CORE.thresholdFor(state.fy) : CORE.num(t.threshold), band30: CORE.num(t.band30), nisCeiling: CORE.num(t.nisCeiling), nisRate: CORE.num(t.nisRate) / 100, edRate: CORE.num(t.edRate) / 100, nhtRate: CORE.num(t.nhtRate) / 100, pensionRate: CORE.num(t.pensionRate) / 100, other: CORE.num(t.other), housingRate: (isIntern() && t.internHousing !== false) ? 0.025 : 0 }; }
 
   // ---------- wiring ----------
   function fmtIn(v, opts) { var s = fmtPlain(v, opts.dec || 0); return (opts.trim && s.indexOf('.') >= 0) ? s.replace(/\.?0+$/, '') : s; }
@@ -1018,6 +1024,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     var t = state.tax;
     $('tThreshold').value = fmtPlain(t.thresholdAuto ? CORE.thresholdFor(state.fy) : t.threshold); $('tBand').value = fmtPlain(t.band30); $('tNisCeil').value = fmtPlain(t.nisCeiling);
     $('tNis').value = pct(t.nisRate); $('tEd').value = pct(t.edRate); $('tNht').value = pct(t.nhtRate); $('tPen').value = pct(t.pensionRate); $('tOther').value = t.other ? fmtPlain(t.other) : '';
+    $('tHousing').checked = t.internHousing !== false;
     ['lName:name', 'lReg:reg', 'lDept:dept', 'lInst:inst', 'lRegion:region', 'lStart:start', 'lContact:contact', 'lDate:date'].forEach(function (p) { var a = p.split(':'); $(a[0]).value = state.letter[a[1]] || ''; });
     refreshOverrideInputs();
   }
@@ -1049,7 +1056,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       $('u_' + k).addEventListener('change', function () { state.roster.unit[k] = $('u_' + k).value; update(); });
     });
     var pre = document.querySelectorAll('[data-preset]');
-    for (var pi = 0; pi < pre.length; pi++) pre[pi].addEventListener('click', function (e) { var key = e.target.getAttribute('data-preset'); state.roster = copyRoster(PRESETS[key]); refreshInputs(); update(); toast(key === 'clear' ? 'Step 3 cleared' : 'Example loaded into Step 3'); });
+    for (var pi = 0; pi < pre.length; pi++) pre[pi].addEventListener('click', function (e) { var key = e.target.getAttribute('data-preset'), P = PRESETS[key]; state.roster = copyRoster(P); if (P.hours) state.hours = P.hours.slice(); if (P.sessHours) state.sessHours = P.sessHours; refreshInputs(); update(); toast(key === 'clear' ? 'Step 3 cleared' : (P.hours ? 'Example loaded; shift lengths in Step 2 set to 16 hours' : 'Example loaded into Step 3')); });
     $('addChange').addEventListener('click', function () {
       var cs = sortedChanges(), until = cs.length ? nextMonth(cs[cs.length - 1].until) : { y: 2023, m: 10 };
       if (until.y > state.end.y || (until.y === state.end.y && until.m >= state.end.m)) until = { y: 2023, m: 10 };
@@ -1083,6 +1090,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     bindNum('tNht', function () { return state.tax.nhtRate; }, function (v) { state.tax.nhtRate = v || 0; }, { dec: 2 });
     bindNum('tPen', function () { return state.tax.pensionRate; }, function (v) { state.tax.pensionRate = v || 0; }, { dec: 2 });
     bindNum('tOther', function () { return state.tax.other; }, function (v) { state.tax.other = v; });
+    $('tHousing').addEventListener('change', function () { state.tax.internHousing = $('tHousing').checked; update(); });
     $('resetBtn').addEventListener('click', function () { state = defaultState(); refreshInputs(); update(); toast('Reset to the example'); });
     $('copySummary').addEventListener('click', function () { copyText($('summaryBox'), 'Summary copied'); });
     $('barCopy').addEventListener('click', function () { copyText($('summaryBox'), 'Summary copied'); });
@@ -1103,7 +1111,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   function update() {
     var grade = state.grade, gi = G[grade] || null, fy = state.fy;
     if (!gi) { renderNoGrade(); return; }
-    setVis('.mo-only', gi.mo); setVis('.nonmo-only', !gi.mo); setVis('.multi-only', gi.multi);
+    setVis('.mo-only', gi.mo); setVis('.nonmo-only', !gi.mo); setVis('.multi-only', gi.multi); setVis('.intern-only', isIntern());
     $('overrideRow').hidden = !state.useOverride;
     $('iaPctRow').hidden = !state.ia.eligible; $('iaStrictRow').hidden = !state.ia.eligible;
 
@@ -1292,7 +1300,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   }
 
   function renderNoGrade() {
-    setVis('.mo-only', false); setVis('.nonmo-only', false); setVis('.multi-only', true);
+    setVis('.mo-only', false); setVis('.nonmo-only', false); setVis('.multi-only', true); setVis('.intern-only', false);
     $('overrideRow').hidden = true; $('iaPctRow').hidden = !state.ia.eligible; $('iaStrictRow').hidden = !state.ia.eligible; $('iaWarn').hidden = true;
     $('baseBig').textContent = EMPTY; $('baseCalc').textContent = 'Choose your grade above. The table below shows the hourly base every grade gets on the ' + CORE.fyLabel(state.fy) + ' scale.'; $('baseSrc').textContent = '';
     var sNote = S[state.fy], st = [];
@@ -1330,6 +1338,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     rows.push('<tr><td>Education Tax · ' + pct(state.tax.edRate) + '% of statutory income</td><td>' + fmtPlain(net.ed, 2) + '</td></tr>');
     rows.push('<tr><td>National Housing Trust · ' + pct(state.tax.nhtRate) + '% of gross</td><td>' + fmtPlain(net.nht, 2) + '</td></tr>');
     rows.push('<tr><td>Income tax · 25% above ' + fmt(P.threshold / 12) + ' a month, 30% on statutory income above ' + fmt(P.band30 / 12) + ' a month</td><td>' + fmtPlain(net.paye, 2) + '</td></tr>');
+    if (net.housing) rows.push('<tr><td>Housing accommodation contribution · 2.5% of basic salary (Interns and Locum Interns)</td><td>' + fmtPlain(net.housing, 2) + '</td></tr>');
     if (net.other) rows.push('<tr><td>Other deductions</td><td>' + fmtPlain(net.other, 2) + '</td></tr>');
     rows.push('<tr class="total"><td>Total deductions</td><td>' + fmtPlain(net.deductions, 2) + '</td></tr>');
     rows.push('<tr class="net"><td>Net pay for the month</td><td>' + fmtPlain(net.net, 2) + '</td></tr>');
