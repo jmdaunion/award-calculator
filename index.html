@@ -311,7 +311,7 @@ details .tablewrap { border-radius: 3px; }
     <details id="scaleDetails" open>
       <summary>See the published scale for this grade and year</summary>
       <div class="inner">
-        <div class="tablewrap"><table class="scale" id="scaleTable"><tbody><tr><th>Grade · Scale with effect from April 1, 2026</th><th>Midpoint or salary</th><th>Hourly base</th><th>Weekday 1.5×</th><th>First day off 1.75×</th><th>Second day off 2.0×</th><th>16-hour weekday call</th><th>24-hour first day off</th><th>24-hour second day off</th></tr><tr><td>Locum Intern</td><td>5,782,833.0</td><td>J$2,780.21</td><td>J$4,170.31</td><td>J$4,865.36</td><td>J$5,560.42</td><td>J$66,725</td><td>J$116,769</td><td>J$133,450</td></tr><tr><td>Medical Intern</td><td>6,425,370.0</td><td>J$3,089.12</td><td>J$4,633.68</td><td>J$5,405.96</td><td>J$6,178.24</td><td>J$74,139</td><td>J$129,743</td><td>J$148,278</td></tr><tr><td>Senior House Officer</td><td>7,139,300.0</td><td>J$3,432.36</td><td>J$5,148.53</td><td>J$6,006.62</td><td>J$6,864.71</td><td>J$82,377</td><td>J$144,159</td><td>J$164,753</td></tr><tr><td>Medical Officer 1</td><td>7,784,348.5</td><td>J$3,742.48</td><td>J$5,613.71</td><td>J$6,549.33</td><td>J$7,484.95</td><td>J$89,819</td><td>J$157,184</td><td>J$179,639</td></tr><tr><td>Medical Officer 2</td><td>9,027,458.0</td><td>J$4,340.12</td><td>J$6,510.19</td><td>J$7,595.22</td><td>J$8,680.25</td><td>J$104,163</td><td>J$182,285</td><td>J$208,326</td></tr><tr><td>Medical Officer 3</td><td>10,213,739.5</td><td>J$4,910.45</td><td>J$7,365.68</td><td>J$8,593.29</td><td>J$9,820.90</td><td>J$117,851</td><td>J$206,239</td><td>J$235,702</td></tr></tbody></table></div>
+        <div class="tablewrap"><table class="scale" id="scaleTable"><tbody><tr><th>Grade · Scale with effect from April 1, 2026</th><th>Midpoint or salary</th><th>Hourly base</th><th>Weekday 1.5×</th><th>First day off 1.75×</th><th>Second day off 2.0×</th></tr><tr><td>Locum Intern</td><td>5,782,833.0</td><td>J$2,780.21</td><td>J$4,170.31</td><td>J$4,865.36</td><td>J$5,560.42</td></tr><tr><td>Medical Intern</td><td>6,425,370.0</td><td>J$3,089.12</td><td>J$4,633.68</td><td>J$5,405.96</td><td>J$6,178.24</td></tr><tr><td>Senior House Officer</td><td>7,139,300.0</td><td>J$3,432.36</td><td>J$5,148.53</td><td>J$6,006.62</td><td>J$6,864.71</td></tr><tr><td>Medical Officer 1</td><td>7,784,348.5</td><td>J$3,742.48</td><td>J$5,613.71</td><td>J$6,549.33</td><td>J$7,484.95</td></tr><tr><td>Medical Officer 2</td><td>9,027,458.0</td><td>J$4,340.12</td><td>J$6,510.19</td><td>J$7,595.22</td><td>J$8,680.25</td></tr><tr><td>Medical Officer 3</td><td>10,213,739.5</td><td>J$4,910.45</td><td>J$7,365.68</td><td>J$8,593.29</td><td>J$9,820.90</td></tr></tbody></table></div>
         <label class="chk"><input type="checkbox" id="useOverride"> Use my own scale points instead (for a scale not yet published, or to check a pay letter)</label>
         <div class="row" id="overrideRow" hidden>
           <div class="field mo-only"><label for="op4">Point 4 <span class="sub">annual J$</span></label><input type="text" inputmode="numeric" id="op4"></div>
@@ -327,15 +327,25 @@ details .tablewrap { border-radius: 3px; }
   <section class="step" id="step2">
     <div class="step-head">
       <span class="num">Step 2 · Rate card</span>
-      <h2>Your rates per hour and per shift</h2>
+      <h2>Your rates per hour and per call</h2>
       <p class="help">Multipliers from Award section 2(d). Every category, including Casualty and the other 50% categories, has its own rate for each of the three day types: a normal weekday, your <b>first day off</b> and your <b>second day off</b> (the two rest days of the seven-day week, which can fall on any day; public holidays are priced at the second-day-off rate, as the Ministry of Finance's comparison tables and the February 2026 holiday-rate settlement treat them). For April to October 2023, before the seven-day week, read "first day off" as Saturday and "second day off" as Sunday or a public holiday.</p>
     </div>
-    <p class="help">The four boxes below only describe the length of <b>one</b> shift or session, used for the per-shift figures in the table. Your month's duty is entered in Step 3.</p>
+    <p class="help">The boxes below describe <b>one</b> call and <b>one</b> session; they feed the per-call figures in the table and turn the shifts you count in Step 3 into hours. Since the seven-day week, a 24-hour call on a day off (8 a.m. to 8 a.m.) is made up of <b>16 hours of rostered duty</b>, or of covering multiple locations, from 4 p.m. to 8 a.m. <b>plus an 8-hour Casualty session</b> from 8 a.m. to 4 p.m., and the Casualty session is paid at the Casualty session rate for that day type, 50% above the Rostered Duty Rate (section 2(d)(iv)), whether or not you are covering several hospitals, because covering multiple locations is a separate rate under section 2(d)(ii). If your institution pays all 24 hours as rostered duty, put 24 in the first box and 0 in the second.</p>
     <div class="row">
-      <div class="field" style="flex:1 1 120px"><label for="hWd">Hours in one weekday shift <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hWd"></div>
-      <div class="field" style="flex:1 1 120px"><label for="hD1">Hours in one first-day-off shift <span class="sub">8 a.m. to 8 a.m. = 24</span></label><input type="text" inputmode="numeric" id="hD1"></div>
-      <div class="field" style="flex:1 1 120px"><label for="hD2">Hours in one second-day-off or holiday shift <span class="sub">8 a.m. to 8 a.m. = 24</span></label><input type="text" inputmode="numeric" id="hD2"></div>
-      <div class="field" style="flex:1 1 120px"><label for="hSess">Hours in one session <span class="sub">claim forms use 4</span></label><input type="text" inputmode="numeric" id="hSess"></div>
+      <div class="field" style="flex:1 1 300px"><label for="hWd">Weekday call: hours at the rostered rate <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hWd"></div>
+      <div class="field" style="flex:1 1 300px"><label for="hSess">Hours in one session <span class="sub">ward and Casualty sessions in Step 3; claim forms use 4</span></label><input type="text" inputmode="numeric" id="hSess"></div>
+    </div>
+    <div class="row">
+      <div class="field" style="flex:1 1 300px"><label for="hD1">First-day-off call: hours at the rostered rate <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hD1"></div>
+      <div class="field" style="flex:1 1 300px"><label for="cD1">plus its Casualty session, in hours <span class="sub">8 a.m. to 4 p.m. = 8</span></label><input type="text" inputmode="numeric" id="cD1"></div>
+    </div>
+    <div class="row">
+      <div class="field" style="flex:1 1 300px"><label for="hD2">Second-day-off or holiday call: hours at the rostered rate <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hD2"></div>
+      <div class="field" style="flex:1 1 300px"><label for="cD2">plus its Casualty session, in hours <span class="sub">8 a.m. to 4 p.m. = 8</span></label><input type="text" inputmode="numeric" id="cD2"></div>
+    </div>
+    <div class="row">
+      <div class="field" style="flex:0 1 300px"><label for="splitFrom">Day-off calls include the Casualty session from</label><select id="splitFrom"></select></div>
+      <div class="field" style="flex:1 1 320px; align-self:end"><span class="sub">The seven-day week began on 1 November 2023 at the Ministry's hospitals and on 1 December 2024 at the University Hospital of the West Indies. Before the month chosen here the whole call is priced at the rostered or multiple-location rate for that day, so for April to October 2023 the two numbers are simply added together.</span></div>
     </div>
     <div class="tablewrap">
       <table id="rateTable" class="stack">
@@ -351,7 +361,7 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Step 3 · Your month</span>
       <h2>Duty in a typical month</h2>
-      <p class="help">Enter what you do in a month under each category, split by day type. Each row can be counted in <b>shifts or sessions</b> (a shift is the hours set in Step 2, a session is 4 hours unless you changed it) or entered straight in <b>hours</b>, whichever matches your claim forms; the hours the row adds up to are shown under it. Every row has its own first-day-off and second-day-off cells, including Casualty sessions. The example loaded is roughly a one-in-four on-call roster; the "seven-day week month" example is the month the Association itself costed in November 2024 (five 16-hour weekday calls, two calls on each day off, every day-off call made up of a 16-hour rostered stretch plus an 8-hour Casualty session), which at the old rates comes to J$406,239.24 for a Medical Officer 1, the figure in the Association's own workbook.</p>
+      <p class="help">Enter what you do in a month under each category, split by day type. Each row can be counted in <b>shifts or sessions</b> (a call is the hours set in Step 2, with its Casualty session added automatically for day-off calls from the month set there; a session is 4 hours unless you changed it) or entered straight in <b>hours</b>, whichever matches your claim forms; the hours the row adds up to are shown under it. Every row has its own first-day-off and second-day-off cells, including Casualty sessions. The example loaded is roughly a one-in-four on-call roster; the "seven-day week month" example is the month the Association itself costed in November 2024 (five 16-hour weekday calls, two calls on each day off, every day-off call made up of a 16-hour rostered stretch plus an 8-hour Casualty session), which at the old rates comes to J$406,239.24 for a Medical Officer 1, the figure in the Association's own workbook.</p>
     </div>
     <div class="presets"><span>Start from an example:</span>
       <button class="small" type="button" data-preset="oncall">On-call team, one in four</button>
@@ -621,7 +631,7 @@ details .tablewrap { border-radius: 3px; }
         <li><b>Rostered duty.</b> Base × 1.5 (weekday), × 1.75 (first day off), × 2.0 (second day off; public holidays priced the same). Section 2(d)(i).</li>
         <li><b>Covering multiple locations.</b> Base × 1.75 / 2.0 / 2.25. Senior House Officers and Medical Officers 1 to 3. Section 2(d)(ii).</li>
         <li><b>Ward sessions</b> at 25% above the rostered rate for that day type; <b>Casualty, Type C, Health Centre and cross-coverage</b> at 50% above it, on weekdays and on both days off alike. Section 2(d)(iii) and (iv).</li>
-        <li><b>Units.</b> Every row in Step 3 is turned into hours before it is priced: shifts × the hours in one shift (Step 2), sessions × the hours in one session, or the hours you typed. Hours × the rate for that category and day type gives each line of the working shown under the monthly result.</li>
+        <li><b>Units.</b> Every row in Step 3 is turned into hours before it is priced: calls × the hours in one call (Step 2), with each day-off call from the seven-day week onward split into its rostered or multiple-location hours and its Casualty session hours (priced at the Casualty session rate for that day type), sessions × the hours in one session, or the hours you typed. Hours × the rate for that category and day type gives each line of the working shown under the monthly result.</li>
         <li><b>Incentive Allowance.</b> 40% or 55% of the scale midpoint per year, shown as the annual amount ÷ 12, removed for any month with rostered emergency duty hours (paragraph 85). For single-point grades the midpoint is the salary itself.</li>
         <li><b>Back-pay.</b> Every month from April 2023 to the month you choose is priced on that fiscal year's published scale with the pattern in force for that month (your Step 3 pattern, or an earlier pattern you added in Step 5 for the months before it changed), then summed. "Already paid" at the old rates uses the 2017-2021 per-hour and per-four-hour-session rates the Ministry of Finance listed as "current" in its comparison table of 29 August 2024, as shown in the editable table in Step 5 (for Interns and Locum Interns the Senior House Officer session rates stand in where none was listed). The Incentive Allowance has not been paid since April 2023, so nothing is deducted for it.</li>
         <li><b>Net pay.</b> Basic salary at your own point ÷ 12, plus the month's duty pay and allowance. Pension at the set percentage of basic salary; National Insurance on gross up to one twelfth of the annual ceiling; Education Tax on gross less National Insurance and pension; National Housing Trust on gross; income tax on the same statutory income above one twelfth of the annual threshold, with the part above one twelfth of J$6,000,000 at 30%. The back-pay rate the model suggests treats the lump sum as extra income in the year it is paid: no pension on it, National Insurance only where the ceiling has not already been reached and income tax at the marginal rate.</li>
@@ -757,7 +767,7 @@ var CORE = (function () {
 
   function rateCard(grade, points, hours) {
     var h = hourlyBase(grade, points); if (h == null) return null;
-    hours = hours || [16, 24, 24];
+    hours = hours || [16, 16, 16];
     var rostered = MULT.rostered.map(function (m) { return h * m; });
     var multi = GRADES[grade].multi ? MULT.multi.map(function (m) { return h * m; }) : null;
     return {
@@ -771,27 +781,37 @@ var CORE = (function () {
 
   // A roster as the page stores it: counts per day type (weekday, first day off, second day off) for four categories,
   // each row counted in shifts or sessions (the default) or entered straight in hours (roster.unit[row] === 'hours').
-  // hours = [weekday, first day off, second day off] hours in one shift; sessHours = hours in one session.
-  function rosterHours(roster, hours, sessHours) {
-    var u = (roster && roster.unit) || {}, sh = num(sessHours) || 4, H = {};
-    ['rostered', 'multi'].forEach(function (k) { H[k] = [0, 1, 2].map(function (i) { var v = num(roster && roster[k] ? roster[k][i] : 0); return u[k] === 'hours' ? v : v * num(hours[i]); }); });
+  // hours = [weekday, first day off, second day off] hours in one call at the rostered (or multiple-location) rate; sessHours = hours in one session.
+  // callSess = Casualty session hours inside one call, by day type (from the seven-day week a 24-hour day-off call is 16 hours of rostered or
+  // multiple-location duty from 4 p.m. to 8 a.m. plus an 8-hour Casualty session from 8 a.m. to 4 p.m., paid at the Casualty session rate for
+  // that day type, section 2(d)(iv)). split = true prices those hours as Casualty sessions (H.callSess); false folds them into the call at the
+  // rostered rate, as every hour of a day-off call was before the seven-day week. Rows entered straight in hours are taken as entered.
+  function rosterHours(roster, hours, sessHours, callSess, split) {
+    var u = (roster && roster.unit) || {}, sh = num(sessHours) || 4, cs = callSess || [0, 0, 0], H = { callSessBy: {} };
+    if (split == null) split = true;
+    ['rostered', 'multi'].forEach(function (k) {
+      H[k] = [0, 1, 2].map(function (i) { var v = num(roster && roster[k] ? roster[k][i] : 0); return u[k] === 'hours' ? v : v * (num(hours[i]) + (split ? 0 : num(cs[i]))); });
+      H.callSessBy[k] = [0, 1, 2].map(function (i) { var v = num(roster && roster[k] ? roster[k][i] : 0); return (u[k] === 'hours' || !split) ? 0 : v * num(cs[i]); });
+    });
     ['ward', 'premium'].forEach(function (k) { H[k] = [0, 1, 2].map(function (i) { var v = num(roster && roster[k] ? roster[k][i] : 0); return u[k] === 'hours' ? v : v * sh; }); });
+    H.callSess = [0, 1, 2].map(function (i) { return H.callSessBy.rostered[i] + H.callSessBy.multi[i]; });
     return H;
   }
 
-  // One month priced from hours. H: { rostered:[wd,d1,d2], multi:[...], ward:[...], premium:[...] } all in hours.
+  // One month priced from hours. H: { rostered:[wd,d1,d2], multi:[...], ward:[...], premium:[...], callSess:[...] (optional) } all in hours.
   // ia: { eligible, pct, strict }  strict = session hours also remove the allowance
   function monthlyHours(grade, points, H, ia, hours) {
     var rc = rateCard(grade, points, hours); if (!rc) return null;
     var dutyHours = 0, rosteredHours = 0, sessionHours = 0, i;
-    var parts = { rostered: 0, multi: 0, ward: 0, premium: 0 }, lines = [];
+    var parts = { rostered: 0, multi: 0, ward: 0, premium: 0, callSess: 0 }, lines = [];
     for (i = 0; i < 3; i++) {
       var r = num(H.rostered[i]); parts.rostered += r * rc.rostered[i]; dutyHours += r; rosteredHours += r; if (r) lines.push({ k: 'rostered', i: i, hours: r, rate: rc.rostered[i], amount: r * rc.rostered[i] });
       if (rc.multi) { var mm = num(H.multi[i]); parts.multi += mm * rc.multi[i]; dutyHours += mm; rosteredHours += mm; if (mm) lines.push({ k: 'multi', i: i, hours: mm, rate: rc.multi[i], amount: mm * rc.multi[i] }); }
+      var c = num(H.callSess ? H.callSess[i] : 0); parts.callSess += c * rc.premium[i]; dutyHours += c; sessionHours += c; if (c) lines.push({ k: 'callSess', i: i, hours: c, rate: rc.premium[i], amount: c * rc.premium[i] });
       var w = num(H.ward[i]); parts.ward += w * rc.ward[i]; dutyHours += w; sessionHours += w; if (w) lines.push({ k: 'ward', i: i, hours: w, rate: rc.ward[i], amount: w * rc.ward[i] });
       var p = num(H.premium[i]); parts.premium += p * rc.premium[i]; dutyHours += p; sessionHours += p; if (p) lines.push({ k: 'premium', i: i, hours: p, rate: rc.premium[i], amount: p * rc.premium[i] });
     }
-    var eda = parts.rostered + parts.multi + parts.ward + parts.premium;
+    var eda = parts.rostered + parts.multi + parts.callSess + parts.ward + parts.premium;
     var iaAmt = 0, iaBlocked = false;
     if (ia && ia.eligible) {
       var blocked = rosteredHours > 0 || (ia.strict && sessionHours > 0);
@@ -816,18 +836,20 @@ var CORE = (function () {
       t += num(H.rostered[i]) * num(rates.rostered[i]);
       if (rates.multi) t += num(H.multi[i]) * num(rates.multi[i]);
       t += num(H.ward[i]) / OLD_SESSION_HOURS * num(rates.ward[i]);
-      t += num(H.premium[i]) / OLD_SESSION_HOURS * num(rates.casualty[i]);
+      t += (num(H.premium[i]) + num(H.callSess ? H.callSess[i] : 0)) / OLD_SESSION_HOURS * num(rates.casualty[i]);
     }
     return t;
   }
 
-  // cfg: { start:{y,m}, end:{y,m}, grade, hours, roster, ia, overrides, years: { fy: { grade, monthsActive (0-12), paidPerMonth } },
-  //        hoursFor(d) optional: the hours roster in force in month d (defaults to cfg.roster converted with cfg.hours and cfg.sessHours),
+  // cfg: { start:{y,m}, end:{y,m}, grade, hours, callSess, splitFrom:{y,m}, roster, ia, overrides, years: { fy: { grade, monthsActive (0-12), paidPerMonth } },
+  //        hoursFor(d) optional: the hours roster in force in month d (defaults to cfg.roster converted with cfg.hours, cfg.sessHours and cfg.callSess,
+  //        the Casualty session inside day-off calls applying from cfg.splitFrom),
   //        paidFor(d, grade, H) optional: what was already paid for that month (defaults to years[fy].paidPerMonth) }
+  function splitOn(d, from) { return !from || d.y > from.y || (d.y === from.y && d.m >= from.m); }
   function retro(cfg) {
     var rows = [], byFY = {}, order = [], total = { months: 0, counted: 0, ent: 0, eda: 0, ia: 0, paid: 0, gap: 0, missing: 0 };
     var seenInFY = {};
-    var baseH = cfg.roster ? rosterHours(cfg.roster, cfg.hours || [16, 24, 24], cfg.sessHours) : null;
+    var baseH = function (d) { return cfg.roster ? rosterHours(cfg.roster, cfg.hours || [16, 16, 16], cfg.sessHours, cfg.callSess, splitOn(d, cfg.splitFrom)) : null; };
     monthList(cfg.start, cfg.end).forEach(function (d) {
       var fy = fyOf(d.y, d.m), yr = cfg.years[fy] || {}, grade = yr.grade || cfg.grade;
       var sc = scaleFor(grade, fy, cfg.overrides);
@@ -840,7 +862,7 @@ var CORE = (function () {
       var res = null, paid = 0, missing = false, H = null;
       if (!sc || !sc.points) missing = true;
       else if (isActive) {
-        H = cfg.hoursFor ? cfg.hoursFor(d) : baseH;
+        H = cfg.hoursFor ? cfg.hoursFor(d) : baseH(d);
         res = monthlyHours(grade, sc.points, H, cfg.ia, cfg.hours);
         paid = cfg.paidFor ? num(cfg.paidFor(d, grade, H)) : num(yr.paidPerMonth);
       }
@@ -900,7 +922,7 @@ var CORE = (function () {
 
   return { HOURS_YEAR: HOURS_YEAR, MULT: MULT, WARD: WARD, PREMIUM: PREMIUM, OLD_SESSION_HOURS: OLD_SESSION_HOURS, GRADES: GRADES, SCALES: SCALES, FY_LIST: FY_LIST,
            num: num, fyOf: fyOf, fyLabel: fyLabel, monthList: monthList, scaleFor: scaleFor, midpointOf: midpointOf, hourlyBase: hourlyBase, ownHourly: ownHourly,
-           rateCard: rateCard, rosterHours: rosterHours, monthlyHours: monthlyHours, monthly: monthly, oldPay: oldPay, retro: retro, countMonthsInFY: countMonthsInFY,
+           rateCard: rateCard, rosterHours: rosterHours, monthlyHours: monthlyHours, monthly: monthly, oldPay: oldPay, retro: retro, splitOn: splitOn, countMonthsInFY: countMonthsInFY,
            THRESHOLDS: THRESHOLDS, TAX_DEFAULTS: TAX_DEFAULTS, thresholdFor: thresholdFor, annualTax: annualTax, netPay: netPay, lumpSumDeductions: lumpSumDeductions };
 })();
 if (typeof module !== 'undefined') { module.exports = CORE; }
@@ -910,10 +932,10 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
 <script>
 (function () {
   var G = CORE.GRADES, S = CORE.SCALES;
-  var STORE_KEY = 'jmda-award-calc-v5', OLD_STORE_KEY = 'jmda-award-calc-v4';
+  var STORE_KEY = 'jmda-award-calc-v6', OLD_STORE_KEY = 'jmda-award-calc-v5';
   var EMPTY = 'select grade';
   var ROWS = ['rostered', 'multi', 'ward', 'premium'];
-  var ROW_LABEL = { rostered: 'Rostered emergency duty', multi: 'Covering multiple locations', ward: 'Ward sessions', premium: 'Casualty, Type C, Health Centre, cross-coverage' };
+  var ROW_LABEL = { rostered: 'Rostered emergency duty', multi: 'Covering multiple locations', callSess: 'Casualty session inside a day-off call', ward: 'Ward sessions', premium: 'Casualty, Type C, Health Centre, cross-coverage' };
   var DAY_LABEL = ['weekday', 'first day off', 'second day off or holiday'];
   var DAY_SHORT = ['Weekday', 'First day off', 'Second day off · holiday'];
   var UNIT_DEFAULT = { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' };
@@ -950,7 +972,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   var PRESETS = {
     oncall:   { rostered: [5, 1, 1], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } },
     // The Association's own "Duty Estimation" workbook (November 2024): five weekday calls of 16 hours, two calls on each day off, each day-off call = 16 hours rostered (4 p.m. to 8 a.m.) + an 8-hour Casualty session (8 a.m. to 4 p.m.)
-    sevenday: { rostered: [5, 2, 2], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 4, 4], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' }, hours: [16, 16, 16], sessHours: 4 },
+    sevenday: { rostered: [5, 2, 2], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' }, hours: [16, 16, 16], callSess: [0, 8, 8], sessHours: 4 },
     casualty: { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [10, 2, 2], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } },
     typec:    { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [80, 16, 16], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'hours' } },
     clear:    { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } }
@@ -961,7 +983,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     return {
       grade: '', fy: 2026, ownPoint: 1,
       useOverride: false, overrides: {},
-      hours: [16, 24, 24], sessHours: 4,
+      hours: [16, 16, 16], callSess: [0, 8, 8], splitFrom: { y: 2023, m: 11 }, sessHours: 4,
       roster: copyRoster(PRESETS.oncall),
       changes: [],          // earlier patterns: { until: {y, m}, roster: {...} }, each applying up to and including its month
       oldRates: {},         // old 2017-2021 rates the user typed over, by grade
@@ -978,12 +1000,13 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     var saved = localStorage.getItem(STORE_KEY);
     if (saved) { var s = JSON.parse(saved); if (s && s.years && s.roster && s.tax && typeof s.grade === 'string') state = s; }
     else {
-      // Carry over a saved earlier version: its ward and premium cells were hours, so they become hours here.
+      // Carry over a saved earlier version: a 24-hour day-off call there becomes 16 hours at the rostered rate plus an 8-hour Casualty session here.
       var older = localStorage.getItem(OLD_STORE_KEY);
-      if (older) { var so = JSON.parse(older); if (so && so.years && so.roster && so.tax && typeof so.grade === 'string') { so.roster = copyRoster(so.roster); so.roster.unit.ward = 'hours'; so.roster.unit.premium = 'hours'; so.changes = []; so.oldRates = {}; state = so; } }
+      if (older) { var so = JSON.parse(older); if (so && so.years && so.roster && so.tax && typeof so.grade === 'string') { so.roster = copyRoster(so.roster); var hv = so.hours || [16, 24, 24]; so.callSess = [0, Math.max(0, CORE.num(hv[1]) - 16), Math.max(0, CORE.num(hv[2]) - 16)]; so.hours = [CORE.num(hv[0]) || 16, Math.min(CORE.num(hv[1]) || 16, 16), Math.min(CORE.num(hv[2]) || 16, 16)]; so.splitFrom = { y: 2023, m: 11 }; state = so; } }
     }
   } catch (e) {}
   if (!state.changes) state.changes = []; if (!state.oldRates) state.oldRates = {}; state.roster = copyRoster(state.roster);
+  if (!state.callSess) state.callSess = [0, 8, 8]; if (!state.splitFrom) state.splitFrom = { y: 2023, m: 11 };
   state.changes.forEach(function (c) { c.roster = copyRoster(c.roster); });
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
 
@@ -994,7 +1017,10 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     for (var i = 0; i < cs.length; i++) { var u = cs[i].until; if (d.y < u.y || (d.y === u.y && d.m <= u.m)) return { roster: cs[i].roster, label: 'to ' + monthLabel(u), index: i + 1 }; }
     return { roster: state.roster, label: 'Step 3', index: 0 };
   }
-  function hoursOf(roster) { return CORE.rosterHours(roster, state.hours, state.sessHours); }
+  // Hours for a roster in a given month (d); without a month, the Casualty session inside day-off calls applies if it has begun by the end of the fiscal year shown in Step 1.
+  function viewMonth() { return { y: state.fy + 1, m: 3 }; }
+  function splitAt(d) { return CORE.splitOn(d || viewMonth(), state.splitFrom); }
+  function hoursOf(roster, d) { return CORE.rosterHours(roster, state.hours, state.sessHours, state.callSess, splitAt(d)); }
 
   // ---------- formatting ----------
   function fmt(n, d) { if (n == null || !isFinite(n)) return ''; d = d || 0; return 'J$' + n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
@@ -1039,6 +1065,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('grade').value = state.grade; $('fy').value = String(state.fy); $('ownPoint').value = state.ownPoint || 1;
     $('useOverride').checked = !!state.useOverride;
     ['hWd', 'hD1', 'hD2'].forEach(function (id, i) { $(id).value = state.hours[i] == null ? '' : fmtPlain(state.hours[i]); });
+    ['cD1', 'cD2'].forEach(function (id, i) { $(id).value = fmtPlain(CORE.num(state.callSess[i + 1])); });
+    $('splitFrom').value = state.splitFrom.y + '-' + state.splitFrom.m;
     $('hSess').value = fmtPlain(state.sessHours || 4);
     ROWS.forEach(function (k) { $('u_' + k).value = state.roster.unit[k] || UNIT_DEFAULT[k]; for (var i = 0; i < 3; i++) { var v = state.roster[k][i]; $('r_' + k + '_' + i).value = v ? fmtPlain(v, 2).replace(/\.?0+$/, '') : ''; } });
     renderChanges(true); renderOldTable(true);
@@ -1075,13 +1103,16 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     bindNum('op5', function () { var o = overrideFor(state.grade, state.fy); return o ? o[4] || null : null; }, function (v) { setOverridePoint('p5', v); });
     bindNum('osal', function () { var o = overrideFor(state.grade, state.fy); return o ? o[0] || null : null; }, function (v) { setOverridePoint('sal', v); });
     ['hWd', 'hD1', 'hD2'].forEach(function (id, i) { bindNum(id, function () { return state.hours[i]; }, function (v) { state.hours[i] = v; }); });
+    ['cD1', 'cD2'].forEach(function (id, i) { bindNum(id, function () { return state.callSess[i + 1] || null; }, function (v) { state.callSess[i + 1] = v || 0; }); });
+    $('splitFrom').innerHTML = CORE.monthList(START, { y: 2026, m: 3 }).map(function (d) { return '<option value="' + d.y + '-' + d.m + '">' + monthLabel(d) + '</option>'; }).join('');
+    $('splitFrom').addEventListener('change', function () { var p = $('splitFrom').value.split('-'); state.splitFrom = { y: Number(p[0]), m: Number(p[1]) }; update(); });
     bindNum('hSess', function () { return state.sessHours; }, function (v) { state.sessHours = v || 4; });
     ROWS.forEach(function (k) {
       for (var i = 0; i < 3; i++) { (function (k, i) { bindNum('r_' + k + '_' + i, function () { return state.roster[k][i] || null; }, function (v) { state.roster[k][i] = v || 0; }, { dec: 2, trim: true }); })(k, i); }
       $('u_' + k).addEventListener('change', function () { state.roster.unit[k] = $('u_' + k).value; update(); });
     });
     var pre = document.querySelectorAll('[data-preset]');
-    for (var pi = 0; pi < pre.length; pi++) pre[pi].addEventListener('click', function (e) { var key = e.target.getAttribute('data-preset'), P = PRESETS[key]; state.roster = copyRoster(P); if (P.hours) state.hours = P.hours.slice(); if (P.sessHours) state.sessHours = P.sessHours; refreshInputs(); update(); toast(key === 'clear' ? 'Step 3 cleared' : (P.hours ? 'Example loaded; shift lengths in Step 2 set to 16 hours' : 'Example loaded into Step 3')); });
+    for (var pi = 0; pi < pre.length; pi++) pre[pi].addEventListener('click', function (e) { var key = e.target.getAttribute('data-preset'), P = PRESETS[key]; state.roster = copyRoster(P); if (P.hours) state.hours = P.hours.slice(); if (P.callSess) state.callSess = P.callSess.slice(); if (P.sessHours) state.sessHours = P.sessHours; refreshInputs(); update(); toast(key === 'clear' ? 'Step 3 cleared' : (P.hours ? 'Example loaded; Step 2 set to 16-hour calls with an 8-hour Casualty session inside each day-off call' : 'Example loaded into Step 3')); });
     $('addChange').addEventListener('click', function () {
       var cs = sortedChanges(), until = cs.length ? nextMonth(cs[cs.length - 1].until) : { y: 2023, m: 10 };
       if (until.y > state.end.y || (until.y === state.end.y && until.m >= state.end.m)) until = { y: 2023, m: 10 };
@@ -1164,9 +1195,14 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     var rc = pts ? CORE.rateCard(grade, pts, state.hours) : null, body = $('rateBody');
     if (!rc) body.innerHTML = '<tr><td colspan="4" class="muted">Enter the scale in Step 1.</td></tr>';
     else {
-      var sh = state.sessHours || 4, rows = [];
-      rows.push('<tr><td>Rostered emergency duty<span class="per">1.5× · 1.75× · 2.0×</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.rostered[i], rc.shiftRostered[i], 'per ' + fmtPlain(state.hours[i]) + '-hour shift', i); }).join('') + '</tr>');
-      if (rc.multi) rows.push('<tr><td>Covering multiple locations<span class="per">1.75× · 2.0× · 2.25×</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.multi[i], rc.shiftMulti[i], 'per ' + fmtPlain(state.hours[i]) + '-hour shift', i); }).join('') + '</tr>');
+      var sh = state.sessHours || 4, rows = [], sp = splitAt();
+      var callLen = [0, 1, 2].map(function (i) { return CORE.num(state.hours[i]) + CORE.num(state.callSess[i]); });
+      var callPay = function (rates) { return [0, 1, 2].map(function (i) { return sp ? rates[i] * CORE.num(state.hours[i]) + rc.premium[i] * CORE.num(state.callSess[i]) : rates[i] * callLen[i]; }); };
+      var callLabel = function (i) { return 'per ' + fmtPlain(callLen[i]) + '-hour call'; };
+      var splitNote = (sp && (CORE.num(state.callSess[1]) || CORE.num(state.callSess[2]))) ? '<span class="per">a day-off call = ' + fmtPlain(state.hours[1]) + ' rostered + ' + fmtPlain(CORE.num(state.callSess[1])) + ' Casualty session hours (' + fmtPlain(state.hours[2]) + ' + ' + fmtPlain(CORE.num(state.callSess[2])) + ' on the second day off)</span>' : '';
+      var payR = callPay(rc.rostered), payM = rc.multi ? callPay(rc.multi) : null;
+      rows.push('<tr><td>Rostered emergency duty<span class="per">1.5× · 1.75× · 2.0×</span>' + splitNote + '</td>' + [0, 1, 2].map(function (i) { return tdRate(rc.rostered[i], payR[i], callLabel(i), i); }).join('') + '</tr>');
+      if (rc.multi) rows.push('<tr><td>Covering multiple locations<span class="per">1.75× · 2.0× · 2.25×</span>' + splitNote + '</td>' + [0, 1, 2].map(function (i) { return tdRate(rc.multi[i], payM[i], callLabel(i), i); }).join('') + '</tr>');
       rows.push('<tr><td>Ward session<span class="per">rostered rate + 25%</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.ward[i], rc.ward[i] * sh, 'per ' + fmtPlain(sh) + '-hour session', i); }).join('') + '</tr>');
       rows.push('<tr><td>Casualty session · Type C · Health Centre · cross-coverage<span class="per">rostered rate + 50% · weekday 2.25× · first day off 2.625× · second day off 3.0× the base</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.premium[i], rc.premium[i] * sh, 'per ' + fmtPlain(sh) + '-hour session', i); }).join('') + '</tr>');
       body.innerHTML = rows.join('');
@@ -1192,6 +1228,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       var b = [];
       b.push('<div><span class="k">Rostered emergency duty</span><span>' + fmt(mo.parts.rostered) + '</span></div>');
       if (rc.multi) b.push('<div><span class="k">Covering multiple locations</span><span>' + fmt(mo.parts.multi) + '</span></div>');
+      if (mo.parts.callSess) b.push('<div><span class="k">Casualty sessions inside day-off calls</span><span>' + fmt(mo.parts.callSess) + '</span></div>');
       b.push('<div><span class="k">Ward sessions</span><span>' + fmt(mo.parts.ward) + '</span></div>');
       b.push('<div><span class="k">Casualty, Type C, Health Centre, cross-coverage</span><span>' + fmt(mo.parts.premium) + '</span></div>');
       b.push('<div><span class="k"><b>Emergency Duty Allowance</b></span><span><b>' + fmt(mo.eda) + '</b></span></div>');
@@ -1221,8 +1258,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     var years = {};
     CORE.FY_LIST.forEach(function (f) { var y = state.years[f] || { grade: grade, monthsActive: 12, paidPerMonth: null }; years[f] = { grade: y.grade || grade, monthsActive: y.monthsActive == null ? 12 : y.monthsActive, paidPerMonth: y.paidPerMonth }; });
     var patLabels = {};
-    var R = CORE.retro({ start: START, end: state.end, grade: grade, hours: state.hours, sessHours: state.sessHours, roster: state.roster, ia: iaCfg, overrides: activeOverrides(), years: years,
-      hoursFor: function (d) { var p = patternAt(d); patLabels[d.y + '-' + d.m] = p.label; return hoursOf(p.roster); },
+    var R = CORE.retro({ start: START, end: state.end, grade: grade, hours: state.hours, sessHours: state.sessHours, callSess: state.callSess, splitFrom: state.splitFrom, roster: state.roster, ia: iaCfg, overrides: activeOverrides(), years: years,
+      hoursFor: function (d) { var p = patternAt(d); patLabels[d.y + '-' + d.m] = p.label; return hoursOf(p.roster, d); },
       paidFor: function (d, g, Hm) { if (state.paidMode === 'none') return 0; if (state.paidMode === 'enter') { var yy = years[CORE.fyOf(d.y, d.m)]; return yy ? yy.paidPerMonth : 0; } return oldPaid(g, Hm); } });
     var fyRows = [];
     R.order.forEach(function (f) {
@@ -1262,10 +1299,11 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     ROWS.forEach(function (k) {
       var el = $(prefix + 's_' + k), box = el ? el.parentNode : null; if (!el) return;
       var hrs = H[k][0] + H[k][1] + H[k][2], unit = roster.unit[k] || UNIT_DEFAULT[k];
-      var amt = rc && rc[k] ? H[k][0] * rc[k][0] + H[k][1] * rc[k][1] + H[k][2] * rc[k][2] : null;
+      var cs = H.callSessBy && H.callSessBy[k] ? H.callSessBy[k] : [0, 0, 0], csh = cs[0] + cs[1] + cs[2];
+      var amt = rc && rc[k] ? H[k][0] * rc[k][0] + H[k][1] * rc[k][1] + H[k][2] * rc[k][2] + cs[0] * rc.premium[0] + cs[1] * rc.premium[1] + cs[2] * rc.premium[2] : null;
       if (box) box.classList.toggle('on', hrs > 0);
-      if (!hrs) { el.innerHTML = unit === 'hours' ? 'Hours in the month, by day type.' : (unit === 'shifts' ? 'Shifts in the month, by day type; one shift = ' + fmtPlain(state.hours[0]) + ' / ' + fmtPlain(state.hours[1]) + ' / ' + fmtPlain(state.hours[2]) + ' hours (Step 2).' : 'Sessions in the month, by day type; one session = ' + fmtPlain(state.sessHours || 4) + ' hours (Step 2).'); return; }
-      el.innerHTML = '= <b>' + fmtPlain(hrs, 1).replace(/\.0$/, '') + ' hours</b> (' + [0, 1, 2].map(function (i) { return fmtPlain(H[k][i], 1).replace(/\.0$/, '') + ' ' + DAY_LABEL[i]; }).join(', ') + ')' + (amt != null ? ' · worth <b>' + fmt(amt) + '</b> at the Award\'s rates' : '');
+      if (!hrs) { el.innerHTML = unit === 'hours' ? 'Hours in the month, by day type.' : (unit === 'shifts' ? 'Calls in the month, by day type; one call = ' + fmtPlain(state.hours[0]) + ' hours on a weekday and ' + fmtPlain(state.hours[1]) + ' + ' + fmtPlain(CORE.num(state.callSess[1])) + ' / ' + fmtPlain(state.hours[2]) + ' + ' + fmtPlain(CORE.num(state.callSess[2])) + ' hours on a day off (rostered + Casualty session, Step 2).' : 'Sessions in the month, by day type; one session = ' + fmtPlain(state.sessHours || 4) + ' hours (Step 2).'); return; }
+      el.innerHTML = '= <b>' + fmtPlain(hrs, 1).replace(/\.0$/, '') + ' hours</b> (' + [0, 1, 2].map(function (i) { return fmtPlain(H[k][i], 1).replace(/\.0$/, '') + ' ' + DAY_LABEL[i]; }).join(', ') + ')' + (csh ? ' plus <b>' + fmtPlain(csh, 1).replace(/\.0$/, '') + ' hours</b> of Casualty session inside the day-off calls (' + fmtPlain(cs[1], 1).replace(/\.0$/, '') + ' first day off, ' + fmtPlain(cs[2], 1).replace(/\.0$/, '') + ' second day off)' : '') + (amt != null ? ' · worth <b>' + fmt(amt) + '</b> at the Award\'s rates' : '');
     });
   }
 
@@ -1298,7 +1336,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       var from = START; for (var q = 0; q < cs.length; q++) { if (cs[q] === c) break; from = nextMonth(cs[q].until); }
       var ok = from.y < c.until.y || (from.y === c.until.y && from.m <= c.until.m);
       var sp = $('c' + idx + 'span'); if (sp) sp.textContent = ok ? 'Covers ' + monthLabel(from) + ' to ' + monthLabel(c.until) + '.' : 'Ends before it starts: set a later month than the pattern before it.';
-      renderRowSums(c.roster, hoursOf(c.roster), rc, 'c' + idx);
+      renderRowSums(c.roster, hoursOf(c.roster, c.until), rc, 'c' + idx);
     });
     $('changesBox').classList.toggle('on', state.changes.length > 0);
   }
@@ -1397,7 +1435,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
 
   function hoursLine(H, gi) {
     var f = function (a) { return fmtPlain(a[0], 1).replace(/\.0$/, '') + '/' + fmtPlain(a[1], 1).replace(/\.0$/, '') + '/' + fmtPlain(a[2], 1).replace(/\.0$/, ''); };
-    return 'rostered ' + f(H.rostered) + (gi.multi ? ', multiple locations ' + f(H.multi) : '') + ', ward ' + f(H.ward) + ', Casualty and other 50% categories ' + f(H.premium);
+    var cs = H.callSess && (H.callSess[0] + H.callSess[1] + H.callSess[2]) ? ', Casualty session inside day-off calls ' + f(H.callSess) : '';
+    return 'rostered ' + f(H.rostered) + (gi.multi ? ', multiple locations ' + f(H.multi) : '') + cs + ', ward ' + f(H.ward) + ', Casualty and other 50% categories ' + f(H.premium);
   }
   function summaryText(mo, R, old, net, netBase, keep) {
     var gi = G[state.grade]; if (!gi) return 'Select your grade in Step 1 to produce a summary.';
@@ -1409,7 +1448,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       lines.push('Rostered duty per hour: ' + fmt(mo.rc.rostered[0], 2) + ' weekday · ' + fmt(mo.rc.rostered[1], 2) + ' first day off · ' + fmt(mo.rc.rostered[2], 2) + ' second day off or holiday');
       lines.push('Hours in the month (weekday / first day off / second day off): ' + hoursLine(mo.H, gi));
       lines.push('Duty for the month: ' + fmt(mo.total) + ' gross (Emergency Duty Allowance ' + fmt(mo.eda) + (state.ia.eligible ? ', Incentive Allowance ' + fmt(mo.ia) : '') + ') · about ' + fmt(old) + ' at the old 2017-2021 rates');
-      if (state.changes.length) { var cs = sortedChanges(), from = START; cs.forEach(function (c) { lines.push('Earlier pattern ' + monthLabel(from) + ' to ' + monthLabel(c.until) + ': ' + hoursLine(hoursOf(c.roster), gi)); from = nextMonth(c.until); }); }
+      if (state.changes.length) { var cs = sortedChanges(), from = START; cs.forEach(function (c) { lines.push('Earlier pattern ' + monthLabel(from) + ' to ' + monthLabel(c.until) + ': ' + hoursLine(hoursOf(c.roster, c.until), gi)); from = nextMonth(c.until); }); }
     }
     if (net) lines.push('Net pay for the month: ' + fmt(net.net) + ' (basic ' + fmt(net.basic) + ' + duty and allowance ' + fmt(net.eda + net.ia) + ' = ' + fmt(net.gross) + ' gross, less ' + fmt(net.deductions) + ' statutory deductions) · basic alone would net ' + fmt(netBase.net));
     if (R && R.total.counted) lines.push('Back-pay April 2023 to ' + monthLabel(state.end) + ' (' + R.total.counted + ' months counted): entitlement ' + fmt(R.total.ent) + ', already paid ' + fmt(R.total.paid) + ', due ' + fmt(R.total.gap) + ' gross' + (keep < 1 ? ', about ' + fmt(R.total.gap * keep) + ' after ' + pct((1 - keep) * 100) + '% deductions' : ''));
@@ -1487,6 +1526,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
      'A lump sum is taxed in the month it is paid, so most of it falls in the 30% income tax band once your year\'s salary and duty have passed J$6,000,000 of statutory income, plus Education Tax at 2.25% and National Housing Trust at 2%; National Insurance applies only if the year\'s earnings have not already reached the J$5,000,000 ceiling and no pension is deducted from allowances. For most doctors that is about a third. Step 6 models it and Step 5 can apply the resulting rate with one click.'],
     ['I was converted to point 1 of the Medical Officer 1 scale. Does that change my duty pay?',
      'Not the duty pay, which is priced at the midpoint for every Medical Officer 1 whatever their point. It changes your basic salary: point 1 of the MO1 scale is the Senior House Officer salary, Medical Officers 1 are meant to start at point 2, and the Ministry of Health told the Regions on 7 November 2024 to move anyone converted to point 1 up to point 2 and pay the difference retroactively. Set your own point in Step 1 to what your payslip shows after that correction and after the April 2025 band advancement (Circular No. 3 of 2025).'],
+    ['I work 24 hours when I am on call on my day off. Is all of it rostered duty?',
+     'Not since the seven-day week. From 1 November 2023 at the Ministry\'s hospitals (1 December 2024 at the University Hospital of the West Indies) a day-off call of 8 a.m. to 8 a.m. is 16 hours of rostered duty, or of covering multiple locations, from 4 p.m. to 8 a.m. plus an 8-hour Casualty session from 8 a.m. to 4 p.m., and the Casualty session is priced at the Casualty session rate for that day type, 50% above the Rostered Duty Rate (section 2(d)(iv)). That is also how the Association costed its own November 2024 example. The Award keeps covering multiple locations as a separate rate (section 2(d)(ii)), so the Casualty block is priced the same whether or not you cover several hospitals. For April to October 2023, before the seven-day week, the whole 24 hours is priced at the rostered or multiple-location rate for that day. Step 2 holds both the split and the month it starts, so every month of back-pay is priced the right way without you adding an earlier pattern for it.'],
     ['My hospital paid weekend calls differently from the next hospital. Which is right for the calculator?',
      'Enter the hours as your claim forms and rosters show them. Pay stations have not been uniform: some paid a Saturday call of 8 a.m. to 8 a.m. as 24 hours at the first-day-off rostered rate, others paid 8 a.m. to 4 p.m. as a day-off session and the night at the weekday rostered rate, and the University Hospital treated duties up to one in three as unpaid ordinary work. The Award prices every hour by its category and day type, so the entitlement side is the same everywhere; only the "already paid" side differs, and that is why the old rates in Step 5 are editable and why "I will enter my average per month" exists.'],
     ['Is the 5% salary increase from April 2026 part of this?',
