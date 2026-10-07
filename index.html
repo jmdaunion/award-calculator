@@ -123,12 +123,46 @@ table.slip { min-width: 0; }
 table.slip td:first-child { min-width: 0; }
 table.slip tr.sub td { color: var(--muted); font-size: 13px; }
 table.slip tr.net td { font-weight: 700; font-size: 16px; background: var(--tint); color: var(--jmda-navy); }
-.grid3 { display: grid; grid-template-columns: minmax(130px, 1.5fr) repeat(3, minmax(66px, 1fr)); gap: 8px 10px; align-items: center; }
-.grid3 .h { font-size: 12px; font-weight: 700; color: var(--muted); text-align: center; line-height: 1.2; }
-.grid3 .h:first-child { text-align: left; }
-.grid3 .rl { font-size: 14px; font-weight: 500; line-height: 1.25; }
-.grid3 .rl small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
-.grid3 input { text-align: center; padding: 8px 6px; }
+/* Step 3: one block per duty category, three labelled cells (weekday, first day off, second day off) so no column can hide off-screen on a phone */
+.rcats { display: grid; gap: 10px; }
+.rcat { display: grid; gap: 8px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: 4px; }
+.rcat.on { border-left-color: var(--jmda-blue); }
+.rcat-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.rcat-title { font-size: 14.5px; font-weight: 600; line-height: 1.3; }
+.rcat-title small { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+.rcat select.unit { width: auto; padding: 5px 8px; font-size: 12.5px; font-weight: 600; color: var(--jmda-navy); }
+.rcat .cells { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rcat .cells label { display: grid; gap: 3px; font-size: 11.5px; font-weight: 700; color: var(--muted); line-height: 1.2; }
+.rcat .cells input { text-align: center; padding: 8px 6px; }
+.rcat-sum { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rcat-sum b { color: var(--fg); }
+.presets { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
+.working { display: grid; gap: 4px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.working div { display: flex; justify-content: space-between; gap: 12px; }
+.working .k { color: var(--muted); }
+.working .k code { background: transparent; padding: 0; font-size: 12.5px; }
+.working .t { border-top: 1px solid var(--line); padding-top: 4px; font-weight: 700; }
+.change { display: grid; gap: 10px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+.change .change-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.change .change-head h3 { font-size: 15px; }
+.change .rcats { gap: 8px; }
+.change .rcat { padding: 8px 10px; }
+table.old { min-width: 0; }
+table.old input { width: 100%; min-width: 96px; text-align: right; padding: 6px 8px; font-size: 13.5px; }
+@media (max-width: 640px) {
+  table.stack { min-width: 0; }
+  table.stack thead { display: none; }
+  table.stack tr { display: block; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  table.stack tr:last-child { border-bottom: 0; }
+  table.stack td { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; border: 0; padding: 3px 0; white-space: normal; text-align: right; }
+  table.stack td::before { content: attr(data-l); color: var(--muted); font-weight: 600; font-size: 12.5px; text-align: left; flex: 1 1 auto; }
+  table.stack td:first-child { display: block; min-width: 0; text-align: left; font-weight: 600; padding-bottom: 6px; }
+  table.stack td:first-child::before { content: none; }
+  table.stack td .v { text-align: right; }
+  table.stack.old td input { width: 150px; min-width: 0; flex: none; }
+  table.stack.old td::before { white-space: nowrap; }
+  table.stack td .per { font-size: 11.5px; }
+}
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
 .tile { padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; display: grid; gap: 4px; min-width: 0; }
 .tile.hero { border-color: var(--jmda-blue); border-left-width: 4px; background: var(--tint); }
@@ -176,7 +210,7 @@ details .tablewrap { border-radius: 3px; }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .copybox { width: 100%; min-height: 150px; font: 13px/1.45 var(--font-mono); resize: vertical; }
 .letterbox { min-height: 420px; font: 14px/1.5 var(--font-body); }
-.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.compare { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .compare .box { padding: 12px 14px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); display: grid; gap: 4px; min-width: 0; }
 .compare .box.award { border-color: var(--jmda-blue); border-left-width: 4px; background: var(--tint); }
 .compare .lab { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
@@ -190,8 +224,8 @@ details .tablewrap { border-radius: 3px; }
   .sheet { margin-top: 0; border-width: 2px; border-left: 0; border-right: 0; }
   .masthead .addr { text-align: left; }
   .memo { grid-template-columns: 64px 1fr; font-size: 13.5px; }
-  .grid3 { grid-template-columns: minmax(100px, 1.3fr) repeat(3, minmax(54px, 1fr)); gap: 8px 6px; }
-  .grid3 input { padding: 8px 4px; }
+  .rcat .cells { gap: 6px; }
+  .rcat .cells input { padding: 8px 4px; }
   .bar .fig .val { font-size: 18px; }
   .timeline .ev { grid-template-columns: 1fr; gap: 2px; }
   .compare { grid-template-columns: 1fr; }
@@ -218,7 +252,7 @@ details .tablewrap { border-radius: 3px; }
     <span class="eyebrow">Industrial Disputes Tribunal · Dispute 1/2025 · Award of 5 October 2026</span>
     <h1>JMDA Award Calculator</h1>
     <p class="lede">What the Award's formulas produce for your grade and your roster: per hour, per shift, per month, the back-pay to 1 April 2023 and your net pay once salary, duty and the statutory deductions are put together. Built on the Ministry of Finance's published salary scales for every year from 2023 to 2028. Estimates for discussion, not a payslip.</p>
-    <div class="stamp"><b>Ministry of Health and Wellness v. Jamaica Medical Doctors' Association</b> · Chairman Dr. Noel M. Cowell · figures in Jamaican dollars</div>
+    <div class="stamp"><b>Ministry of Health and Wellness v. Jamaica Medical Doctors' Association</b> · Industrial Disputes Tribunal, Dispute 1/2025 · figures in Jamaican dollars</div>
   </header>
 
   <nav class="jump" aria-label="Sections"><div class="in">
@@ -286,16 +320,17 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Step 2 · Rate card</span>
       <h2>Your rates per hour and per shift</h2>
-      <p class="help">Multipliers from Award section 2(d). "First day off" and "second day off" are your two rostered rest days in the seven-day week (Saturday and Sunday on a traditional roster). Public holidays are priced at the second-day-off rate, which is how the Ministry of Finance's own comparison tables and the February 2026 holiday-rate settlement treat them.</p>
+      <p class="help">Multipliers from Award section 2(d). Every category, including Casualty and the other 50% categories, has its own rate for each of the three day types: a normal weekday, your <b>first day off</b> and your <b>second day off</b> (the two rest days of the seven-day week, which can fall on any day; public holidays are priced at the second-day-off rate, as the Ministry of Finance's comparison tables and the February 2026 holiday-rate settlement treat them). For April to October 2023, before the seven-day week, read "first day off" as Saturday and "second day off" as Sunday or a public holiday.</p>
     </div>
+    <p class="help">The four boxes below only describe the length of <b>one</b> shift or session, used for the per-shift figures in the table. Your month's duty is entered in Step 3.</p>
     <div class="row">
-      <div class="field" style="flex:1 1 120px"><label for="hWd">Weekday duty hours <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hWd"></div>
-      <div class="field" style="flex:1 1 120px"><label for="hD1">First day off hours <span class="sub">8 a.m. to 8 a.m. = 24</span></label><input type="text" inputmode="numeric" id="hD1"></div>
-      <div class="field" style="flex:1 1 120px"><label for="hD2">Second day off or holiday hours</label><input type="text" inputmode="numeric" id="hD2"></div>
+      <div class="field" style="flex:1 1 120px"><label for="hWd">Hours in one weekday shift <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hWd"></div>
+      <div class="field" style="flex:1 1 120px"><label for="hD1">Hours in one first-day-off shift <span class="sub">8 a.m. to 8 a.m. = 24</span></label><input type="text" inputmode="numeric" id="hD1"></div>
+      <div class="field" style="flex:1 1 120px"><label for="hD2">Hours in one second-day-off or holiday shift <span class="sub">8 a.m. to 8 a.m. = 24</span></label><input type="text" inputmode="numeric" id="hD2"></div>
       <div class="field" style="flex:1 1 120px"><label for="hSess">Hours in one session <span class="sub">claim forms use 4</span></label><input type="text" inputmode="numeric" id="hSess"></div>
     </div>
     <div class="tablewrap">
-      <table id="rateTable">
+      <table id="rateTable" class="stack">
         <thead><tr><th>Duty category</th><th>Normal weekday</th><th>First day off</th><th>Second day off · public holiday</th></tr></thead>
         <tbody id="rateBody"></tbody>
       </table>
@@ -307,20 +342,38 @@ details .tablewrap { border-radius: 3px; }
   <section class="step" id="step3">
     <div class="step-head">
       <span class="num">Step 3 · Your month</span>
-      <h2>Roster in a typical month</h2>
-      <p class="help">Enter shifts for rostered and multi-location duty and hours for ward sessions and the premium categories (one session = the hours set in Step 2). The example loaded is roughly a one-in-four roster. Change it to match your rota.</p>
+      <h2>Duty in a typical month</h2>
+      <p class="help">Enter what you do in a month under each category, split by day type. Each row can be counted in <b>shifts or sessions</b> (a shift is the hours set in Step 2, a session is 4 hours unless you changed it) or entered straight in <b>hours</b>, whichever matches your claim forms; the hours the row adds up to are shown under it. Every row has its own first-day-off and second-day-off cells, including Casualty sessions. The example loaded is roughly a one-in-four on-call roster.</p>
     </div>
-    <div class="grid3" id="rosterGrid">
-      <div class="h">Category</div><div class="h">Weekday</div><div class="h">First day off</div><div class="h">Second day off · holiday</div>
-      <div class="rl">Rostered emergency duty <small>shifts · section 2(d)(i)</small></div>
-      <input type="text" inputmode="numeric" id="r_rostered_0" aria-label="Rostered duty weekday shifts"><input type="text" inputmode="numeric" id="r_rostered_1" aria-label="Rostered duty first day off shifts"><input type="text" inputmode="numeric" id="r_rostered_2" aria-label="Rostered duty second day off shifts">
-      <div class="rl multi-only">Covering multiple locations <small>shifts · Senior House Officers and Medical Officers · section 2(d)(ii)</small></div>
-      <input class="multi-only" type="text" inputmode="numeric" id="r_multi_0" aria-label="Multiple locations weekday shifts"><input class="multi-only" type="text" inputmode="numeric" id="r_multi_1" aria-label="Multiple locations first day off shifts"><input class="multi-only" type="text" inputmode="numeric" id="r_multi_2" aria-label="Multiple locations second day off shifts">
-      <div class="rl">Ward sessions <small>hours · 25% above rostered · section 2(d)(iii)</small></div>
-      <input type="text" inputmode="numeric" id="r_ward_0" aria-label="Ward session weekday hours"><input type="text" inputmode="numeric" id="r_ward_1" aria-label="Ward session first day off hours"><input type="text" inputmode="numeric" id="r_ward_2" aria-label="Ward session second day off hours">
-      <div class="rl">Casualty · Type C · Health Centre · cross-coverage <small>hours · 50% above rostered · section 2(d)(iv)</small></div>
-      <input type="text" inputmode="numeric" id="r_premium_0" aria-label="Premium weekday hours"><input type="text" inputmode="numeric" id="r_premium_1" aria-label="Premium first day off hours"><input type="text" inputmode="numeric" id="r_premium_2" aria-label="Premium second day off hours">
+    <div class="presets"><span>Start from an example:</span>
+      <button class="small" type="button" data-preset="oncall">On-call team, one in four</button>
+      <button class="small" type="button" data-preset="casualty">Casualty sessions only</button>
+      <button class="small" type="button" data-preset="typec">Type C, paid at the Casualty session rate only</button>
+      <button class="small" type="button" data-preset="clear">Clear all</button>
     </div>
+    <div class="rcats" id="rosterGrid">
+      <div class="rcat" data-k="rostered">
+        <div class="rcat-head"><div class="rcat-title">Rostered emergency duty <small>section 2(d)(i) · 1.5× weekday · 1.75× first day off · 2.0× second day off or holiday</small></div><select class="unit" id="u_rostered" aria-label="How to count rostered duty"><option value="shifts">count shifts</option><option value="hours">enter hours</option></select></div>
+        <div class="cells"><label><span>Weekday</span><input type="text" inputmode="decimal" id="r_rostered_0"></label><label><span>First day off</span><input type="text" inputmode="decimal" id="r_rostered_1"></label><label><span>Second day off · holiday</span><input type="text" inputmode="decimal" id="r_rostered_2"></label></div>
+        <div class="rcat-sum" id="s_rostered"></div>
+      </div>
+      <div class="rcat multi-only" data-k="multi">
+        <div class="rcat-head"><div class="rcat-title">Covering multiple locations <small>section 2(d)(ii) · 1.75× · 2.0× · 2.25× · Senior House Officers and Medical Officers</small></div><select class="unit" id="u_multi" aria-label="How to count multiple-location duty"><option value="shifts">count shifts</option><option value="hours">enter hours</option></select></div>
+        <div class="cells"><label><span>Weekday</span><input type="text" inputmode="decimal" id="r_multi_0"></label><label><span>First day off</span><input type="text" inputmode="decimal" id="r_multi_1"></label><label><span>Second day off · holiday</span><input type="text" inputmode="decimal" id="r_multi_2"></label></div>
+        <div class="rcat-sum" id="s_multi"></div>
+      </div>
+      <div class="rcat" data-k="ward">
+        <div class="rcat-head"><div class="rcat-title">Ward sessions <small>section 2(d)(iii) · the rostered rate for that day plus 25%</small></div><select class="unit" id="u_ward" aria-label="How to count ward sessions"><option value="sessions">count sessions</option><option value="hours">enter hours</option></select></div>
+        <div class="cells"><label><span>Weekday</span><input type="text" inputmode="decimal" id="r_ward_0"></label><label><span>First day off</span><input type="text" inputmode="decimal" id="r_ward_1"></label><label><span>Second day off · holiday</span><input type="text" inputmode="decimal" id="r_ward_2"></label></div>
+        <div class="rcat-sum" id="s_ward"></div>
+      </div>
+      <div class="rcat" data-k="premium">
+        <div class="rcat-head"><div class="rcat-title">Casualty sessions · Type C · Health Centre · cross-coverage <small>section 2(d)(iv) · the rostered rate for that day plus 50%, on weekdays and on both days off</small></div><select class="unit" id="u_premium" aria-label="How to count Casualty and other 50% sessions"><option value="sessions">count sessions</option><option value="hours">enter hours</option></select></div>
+        <div class="cells"><label><span>Weekday</span><input type="text" inputmode="decimal" id="r_premium_0"></label><label><span>First day off</span><input type="text" inputmode="decimal" id="r_premium_1"></label><label><span>Second day off · holiday</span><input type="text" inputmode="decimal" id="r_premium_2"></label></div>
+        <div class="rcat-sum" id="s_premium"></div>
+      </div>
+    </div>
+    <div class="note"><b>Type C hospitals, Health Centres and cross-coverage.</b> If everything you do is paid at the Casualty session rate, leave the rostered rows at zero and put all your sessions or hours in the last row, by day type. The Award prices them at 50% above the rostered rate for that day type (section 2(d)(iv)), so a Casualty session on your first day off is worth more than one on a weekday and one on your second day off or a public holiday more still. If your pattern changed part-way through the back-pay period (for many hospitals, from 1 November 2023 when the seven-day week began), enter today's pattern here and add the earlier one as a roster change in Step 5.</div>
   </section>
 
   <!-- STEP 4 -->
@@ -350,10 +403,13 @@ details .tablewrap { border-radius: 3px; }
       <div class="tile"><span class="lab">Duty hours in the month</span><span class="val" id="mHours">select grade</span><span class="sub">rostered, multi-location, ward and premium</span></div>
     </div>
     <div class="breakdown" id="mBreak"></div>
+    <details id="workingDetails">
+      <summary>Show the working, line by line</summary>
+      <div class="inner"><div class="working" id="mWorking"></div><p class="help">Each line is hours × the rate for that category and day type from Step 2. Check any line by hand: the rate is the hourly base × the multiplier (× 1.25 for ward sessions, × 1.5 for Casualty and the other 50% categories).</p></div>
+    </details>
     <div class="compare">
       <div class="box award"><span class="lab">Under the Award</span><span class="val" id="cAward">select grade</span><span class="sub">midpoint base · 1.5 / 1.75 / 2.0 · sessional premiums</span></div>
-      <div class="box"><span class="lab">Under the rejected flat policy</span><span class="val" id="cEhw">select grade</span><span class="sub" id="cEhwSub">your own point · 1.5 / 1.5 / 2.0 · no premiums · 15-hour weekly cap ignored</span></div>
-      <div class="box"><span class="lab">At the old 2017-2021 rates</span><span class="val" id="cOld">select grade</span><span class="sub">what pay stations have been paying since the contract expired</span></div>
+      <div class="box"><span class="lab">At the old 2017-2021 rates</span><span class="val" id="cOld">select grade</span><span class="sub">what pay stations have been paying since the contract expired (rates editable in Step 5)</span></div>
       <div class="box"><span class="lab">Monthly difference, Award less old rates</span><span class="val" id="cDiff">select grade</span><span class="sub">the back-pay a month like this generates</span></div>
     </div>
   </section>
@@ -363,13 +419,26 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Step 5 · Back-pay</span>
       <h2>Retroactive to 1 April 2023</h2>
-      <p class="help">Both the Emergency Duty Allowance formulas and the reinstated Incentive Allowance take effect from 1 April 2023 (Award section 2(e) and 3(a); paragraph 83). Each month is priced on that fiscal year's published scale with your Step 3 roster. What was already paid is estimated from the old rates unless you enter your own monthly average.</p>
+      <p class="help">Both the Emergency Duty Allowance formulas and the reinstated Incentive Allowance take effect from 1 April 2023 (Award section 2(e) and 3(a); paragraph 83). Each month is priced on that fiscal year's published scale with your Step 3 pattern, or with the earlier pattern you add below for the months before it changed. What was already paid is estimated from the old 2017 to 2021 rates (shown and editable further down) unless you enter your own monthly average.</p>
+    </div>
+    <div class="change" id="changesBox">
+      <div class="change-head"><h3>Did your pattern of duty change during the period?</h3><button class="small" type="button" id="addChange">Add an earlier pattern</button></div>
+      <p class="help" style="max-width:none">Your Step 3 pattern applies to every month unless you say otherwise here. Add a pattern for the months <b>before</b> a change and set the last month it applies to. The usual case: a pattern ending in October 2023 for April to October 2023, before the seven-day week began on 1 November 2023 at many hospitals and Casualty sessions on days off started to be claimed as first-day-off and second-day-off sessions. Each earlier pattern runs from the month after the previous one ends; your Step 3 pattern takes over after the last of them and runs to today.</p>
+      <div id="changeList" style="display:grid; gap:10px"></div>
     </div>
     <div class="row">
       <div class="field" style="flex:0 1 240px"><label for="endMonth">Count months up to</label><select id="endMonth"><option value="2023-4">Apr 2023</option><option value="2023-5">May 2023</option><option value="2023-6">Jun 2023</option><option value="2023-7">Jul 2023</option><option value="2023-8">Aug 2023</option><option value="2023-9">Sep 2023</option><option value="2023-10">Oct 2023</option><option value="2023-11">Nov 2023</option><option value="2023-12">Dec 2023</option><option value="2024-1">Jan 2024</option><option value="2024-2">Feb 2024</option><option value="2024-3">Mar 2024</option><option value="2024-4">Apr 2024</option><option value="2024-5">May 2024</option><option value="2024-6">Jun 2024</option><option value="2024-7">Jul 2024</option><option value="2024-8">Aug 2024</option><option value="2024-9">Sep 2024</option><option value="2024-10">Oct 2024</option><option value="2024-11">Nov 2024</option><option value="2024-12">Dec 2024</option><option value="2025-1">Jan 2025</option><option value="2025-2">Feb 2025</option><option value="2025-3">Mar 2025</option><option value="2025-4">Apr 2025</option><option value="2025-5">May 2025</option><option value="2025-6">Jun 2025</option><option value="2025-7">Jul 2025</option><option value="2025-8">Aug 2025</option><option value="2025-9">Sep 2025</option><option value="2025-10">Oct 2025</option><option value="2025-11">Nov 2025</option><option value="2025-12">Dec 2025</option><option value="2026-1">Jan 2026</option><option value="2026-2">Feb 2026</option><option value="2026-3">Mar 2026</option><option value="2026-4">Apr 2026</option><option value="2026-5">May 2026</option><option value="2026-6">Jun 2026</option><option value="2026-7">Jul 2026</option><option value="2026-8">Aug 2026</option><option value="2026-9" selected>Sep 2026</option><option value="2026-10">Oct 2026</option><option value="2026-11">Nov 2026</option><option value="2026-12">Dec 2026</option><option value="2027-1">Jan 2027</option><option value="2027-2">Feb 2027</option><option value="2027-3">Mar 2027</option><option value="2027-4">Apr 2027</option><option value="2027-5">May 2027</option><option value="2027-6">Jun 2027</option><option value="2027-7">Jul 2027</option><option value="2027-8">Aug 2027</option><option value="2027-9">Sep 2027</option><option value="2027-10">Oct 2027</option><option value="2027-11">Nov 2027</option><option value="2027-12">Dec 2027</option><option value="2028-1">Jan 2028</option><option value="2028-2">Feb 2028</option><option value="2028-3">Mar 2028</option></select></div>
       <div class="field" style="flex:1 1 240px"><label for="paidMode">Already paid</label>
         <select id="paidMode"><option value="old">Estimate from the old 2017-2021 rates</option><option value="enter">I will enter my average per month</option><option value="none">Ignore (show gross entitlement only)</option></select></div>
     </div>
+    <details id="oldDetails">
+      <summary>The old 2017-2021 rates used for "already paid" (editable)</summary>
+      <div class="inner">
+        <p class="help" style="max-width:none">These are the Heads of Agreement rates the pay stations kept using after the contract expired, as the Ministry of Finance listed them under "current rates" in its comparison table of 29 August 2024: per hour for rostered and multiple-location duty, per four-hour session for ward and Casualty sessions, each by day type. They are shown for the grade chosen in Step 1 and for the grade set for each year below. If your pay station paid different figures, type yours over them; the back-pay changes at once.</p>
+        <div class="tablewrap"><table class="old stack" id="oldTable"><thead><tr><th>Category · <span id="oldGradeLabel"></span></th><th>Normal weekday</th><th>First day off</th><th>Second day off · public holiday</th></tr></thead><tbody id="oldBody"></tbody></table></div>
+        <div class="actions"><button class="small" type="button" id="oldRestore">Restore the published rates for this grade</button><span class="help" id="oldNote"></span></div>
+      </div>
+    </details>
     <div id="fyList" style="display:grid; gap:10px"></div>
     <div class="tablewrap">
       <table id="fyTable">
@@ -391,7 +460,7 @@ details .tablewrap { border-radius: 3px; }
       <summary>Month-by-month table</summary>
       <div class="inner">
         <div class="actions"><button class="small" type="button" id="copyMonths">Copy table (paste into Excel or Sheets)</button></div>
-        <div class="tablewrap"><table id="monthTable"><thead><tr><th>Month</th><th>Fiscal year</th><th>Grade</th><th>Hourly base</th><th>Emergency Duty Allowance</th><th>Incentive Allowance</th><th>Entitlement</th><th>Already paid</th><th>Back-pay</th></tr></thead><tbody id="monthBody"></tbody></table></div>
+        <div class="tablewrap"><table id="monthTable"><thead><tr><th>Month</th><th>Fiscal year</th><th>Grade</th><th>Pattern</th><th>Duty hours</th><th>Hourly base</th><th>Emergency Duty Allowance</th><th>Incentive Allowance</th><th>Entitlement</th><th>Already paid</th><th>Back-pay</th></tr></thead><tbody id="monthBody"></tbody></table></div>
       </div>
     </details>
   </section>
@@ -532,16 +601,16 @@ details .tablewrap { border-radius: 3px; }
         <li><b>Hourly base.</b> Medical Officers 1 to 3: scale midpoint (Point 4 + Point 5) ÷ 2, then ÷ 2,080 hours (40 hours × 52 weeks). Interns, Locum Interns and Senior House Officers: annual salary ÷ 2,080. Award section 2(b) and 2(c), paragraph 78(a).</li>
         <li><b>Rostered duty.</b> Base × 1.5 (weekday), × 1.75 (first day off), × 2.0 (second day off; public holidays priced the same). Section 2(d)(i).</li>
         <li><b>Covering multiple locations.</b> Base × 1.75 / 2.0 / 2.25. Senior House Officers and Medical Officers 1 to 3. Section 2(d)(ii).</li>
-        <li><b>Ward sessions</b> at 25% above the rostered rate; <b>Casualty, Type C, Health Centre and cross-coverage</b> at 50% above it. Section 2(d)(iii) and (iv).</li>
-        <li><b>Incentive Allowance.</b> 40% or 55% of the scale midpoint per year, shown as the annual amount ÷ 12, removed for any month with a rostered emergency duty shift (paragraph 85). For single-point grades the midpoint is the salary itself.</li>
-        <li><b>Back-pay.</b> Every month from April 2023 to the month you choose is priced on that fiscal year's published scale with the Step 3 roster, then summed. "Already paid" at the old rates uses the 2017-2021 per-hour and per-session rates the Ministry of Finance listed as "current" in its comparison table of 29 August 2024 (for Interns and Locum Interns the Senior House Officer session rates stand in where none was listed). The Incentive Allowance has not been paid since April 2023, so nothing is deducted for it.</li>
-        <li><b>The flat-policy comparison</b> prices the same hours at your own scale point with the Circular 19 multipliers and no sessional premiums, ignoring the fifteen-hour weekly cap that would have cut most of these hours off entirely.</li>
+        <li><b>Ward sessions</b> at 25% above the rostered rate for that day type; <b>Casualty, Type C, Health Centre and cross-coverage</b> at 50% above it, on weekdays and on both days off alike. Section 2(d)(iii) and (iv).</li>
+        <li><b>Units.</b> Every row in Step 3 is turned into hours before it is priced: shifts × the hours in one shift (Step 2), sessions × the hours in one session, or the hours you typed. Hours × the rate for that category and day type gives each line of the working shown under the monthly result.</li>
+        <li><b>Incentive Allowance.</b> 40% or 55% of the scale midpoint per year, shown as the annual amount ÷ 12, removed for any month with rostered emergency duty hours (paragraph 85). For single-point grades the midpoint is the salary itself.</li>
+        <li><b>Back-pay.</b> Every month from April 2023 to the month you choose is priced on that fiscal year's published scale with the pattern in force for that month (your Step 3 pattern, or an earlier pattern you added in Step 5 for the months before it changed), then summed. "Already paid" at the old rates uses the 2017-2021 per-hour and per-four-hour-session rates the Ministry of Finance listed as "current" in its comparison table of 29 August 2024, as shown in the editable table in Step 5 (for Interns and Locum Interns the Senior House Officer session rates stand in where none was listed). The Incentive Allowance has not been paid since April 2023, so nothing is deducted for it.</li>
         <li><b>Net pay.</b> Basic salary at your own point ÷ 12, plus the month's duty pay and allowance. Pension at the set percentage of basic salary; National Insurance on gross up to one twelfth of the annual ceiling; Education Tax on gross less National Insurance and pension; National Housing Trust on gross; income tax on the same statutory income above one twelfth of the annual threshold, with the part above one twelfth of J$6,000,000 at 30%. The back-pay rate the model suggests treats the lump sum as extra income in the year it is paid: no pension on it, National Insurance only where the ceiling has not already been reached and income tax at the marginal rate.</li>
       </ol>
       <h3>Read before quoting a number</h3>
       <ul>
         <li>These are estimates for discussion. Your pay station's recalculation from the actual rosters and claim forms is what will be paid and its payroll system applies the statutory rules to the cent.</li>
-        <li>The same roster is applied to every month counted. If your roster or grade changed, set the grade and the months counted for each year, or run the years separately and add them.</li>
+        <li>One pattern is applied to every month it covers. If your grade changed, set the grade and the months counted for each year; if your pattern of duty changed, add the earlier pattern in Step 5 with the last month it applies to.</li>
         <li>The old-rate estimate assumes you were paid correctly at the 2017-2021 rates. Many were not; the February 2026 settlement of Heads of Agreement breaches (holiday rate, Type C, multiple locations, weekend ward work) is a separate stream of back-pay and is not counted here.</li>
         <li>Allowances the calculator does not model (meal, taxi, uniform, the one-off J$80,000 grant) sit outside these figures; add them to the "other" lines if you want them in your month.</li>
       </ul>
@@ -573,7 +642,7 @@ var CORE = (function () {
   var MULT = { rostered: [1.5, 1.75, 2.0],     // §2(d)(i): weekday · first day off · second day off (public holiday treated as second day off)
                multi:    [1.75, 2.0, 2.25] };  // §2(d)(ii): Senior House Officers and Medical Officers 1 to 3 only
   var WARD = 1.25, PREMIUM = 1.5;              // §2(d)(iii) 25% above rostered; §2(d)(iv) 50% above rostered
-  var EHW = { weekday: 1.5, day1: 1.5, day2: 2.0 }; // Ministry of Finance Circular No. 19 (the policy the Tribunal rejected)
+  var OLD_SESSION_HOURS = 4;                   // the 2017 to 2021 sessional rates are quoted per four-hour session
 
   var GRADES = {
     LI:  { label: 'Locum Intern',          mo: false, multi: false },
@@ -640,7 +709,7 @@ var CORE = (function () {
     return num(points[0]) || null;
   }
   function hourlyBase(grade, points) { var mp = midpointOf(grade, points); return mp == null ? null : mp / HOURS_YEAR; }
-  // Own-point hourly rate (what the rejected Extra Hours Worked policy would have used).
+  // Own-point hourly rate (basic salary at the doctor's own point ÷ 2,080), kept for reference.
   function ownHourly(grade, points, point) {
     if (!points || !points.length) return null;
     var idx = GRADES[grade].mo ? Math.min(Math.max(Math.round(num(point) || 1), 1), 8) - 1 : 0;
@@ -661,42 +730,65 @@ var CORE = (function () {
     };
   }
 
-  // roster: { rostered:[wd,d1,d2] shifts, multi:[...] shifts, ward:[...] hours, premium:[...] hours }
-  // ia: { eligible, pct, strict }  strict = sessions also remove the allowance
-  function monthly(grade, points, hours, roster, ia, ownPoint) {
-    var rc = rateCard(grade, points, hours); if (!rc) return null;
-    var eda = 0, dutyHours = 0, rosteredShifts = 0, sessionHours = 0, i;
-    var parts = { rostered: 0, multi: 0, ward: 0, premium: 0 };
-    for (i = 0; i < 3; i++) {
-      var hrs = num(hours[i]);
-      var r = num(roster.rostered[i]); parts.rostered += r * hrs * rc.rostered[i]; dutyHours += r * hrs; rosteredShifts += r;
-      if (rc.multi) { var mm = num(roster.multi[i]); parts.multi += mm * hrs * rc.multi[i]; dutyHours += mm * hrs; rosteredShifts += mm; }
-      var w = num(roster.ward[i]); parts.ward += w * rc.ward[i]; dutyHours += w; sessionHours += w;
-      var p = num(roster.premium[i]); parts.premium += p * rc.premium[i]; dutyHours += p; sessionHours += p;
-    }
-    eda = parts.rostered + parts.multi + parts.ward + parts.premium;
-    var iaAmt = 0, iaBlocked = false;
-    if (ia && ia.eligible) {
-      var blocked = rosteredShifts > 0 || (ia.strict && sessionHours > 0);
-      if (blocked) iaBlocked = true; else iaAmt = rc.midpoint * num(ia.pct) / 100 / 12;
-    }
-    // What the rejected flat policy would have paid for the same hours (own point, 1.5 / 1.5 / 2.0, no sessional premiums, cap ignored)
-    var oh = ownHourly(grade, points, ownPoint), ehw = null;
-    if (oh != null) {
-      var em = [EHW.weekday, EHW.day1, EHW.day2]; ehw = 0;
-      for (i = 0; i < 3; i++) {
-        var hh = num(hours[i]);
-        ehw += (num(roster.rostered[i]) + (rc.multi ? num(roster.multi[i]) : 0)) * hh * oh * em[i];
-        ehw += (num(roster.ward[i]) + num(roster.premium[i])) * oh * em[i];
-      }
-    }
-    return { rc: rc, eda: eda, parts: parts, ia: iaAmt, total: eda + iaAmt, dutyHours: dutyHours, rosteredShifts: rosteredShifts, sessionHours: sessionHours, iaBlocked: iaBlocked, ehw: ehw, ownHourly: oh };
+  // A roster as the page stores it: counts per day type (weekday, first day off, second day off) for four categories,
+  // each row counted in shifts or sessions (the default) or entered straight in hours (roster.unit[row] === 'hours').
+  // hours = [weekday, first day off, second day off] hours in one shift; sessHours = hours in one session.
+  function rosterHours(roster, hours, sessHours) {
+    var u = (roster && roster.unit) || {}, sh = num(sessHours) || 4, H = {};
+    ['rostered', 'multi'].forEach(function (k) { H[k] = [0, 1, 2].map(function (i) { var v = num(roster && roster[k] ? roster[k][i] : 0); return u[k] === 'hours' ? v : v * num(hours[i]); }); });
+    ['ward', 'premium'].forEach(function (k) { H[k] = [0, 1, 2].map(function (i) { var v = num(roster && roster[k] ? roster[k][i] : 0); return u[k] === 'hours' ? v : v * sh; }); });
+    return H;
   }
 
-  // cfg: { start:{y,m}, end:{y,m}, hours, roster, ia, ownPoint, overrides, years: { fy: { grade, monthsActive (0-12), paidPerMonth } } }
+  // One month priced from hours. H: { rostered:[wd,d1,d2], multi:[...], ward:[...], premium:[...] } all in hours.
+  // ia: { eligible, pct, strict }  strict = session hours also remove the allowance
+  function monthlyHours(grade, points, H, ia, hours) {
+    var rc = rateCard(grade, points, hours); if (!rc) return null;
+    var dutyHours = 0, rosteredHours = 0, sessionHours = 0, i;
+    var parts = { rostered: 0, multi: 0, ward: 0, premium: 0 }, lines = [];
+    for (i = 0; i < 3; i++) {
+      var r = num(H.rostered[i]); parts.rostered += r * rc.rostered[i]; dutyHours += r; rosteredHours += r; if (r) lines.push({ k: 'rostered', i: i, hours: r, rate: rc.rostered[i], amount: r * rc.rostered[i] });
+      if (rc.multi) { var mm = num(H.multi[i]); parts.multi += mm * rc.multi[i]; dutyHours += mm; rosteredHours += mm; if (mm) lines.push({ k: 'multi', i: i, hours: mm, rate: rc.multi[i], amount: mm * rc.multi[i] }); }
+      var w = num(H.ward[i]); parts.ward += w * rc.ward[i]; dutyHours += w; sessionHours += w; if (w) lines.push({ k: 'ward', i: i, hours: w, rate: rc.ward[i], amount: w * rc.ward[i] });
+      var p = num(H.premium[i]); parts.premium += p * rc.premium[i]; dutyHours += p; sessionHours += p; if (p) lines.push({ k: 'premium', i: i, hours: p, rate: rc.premium[i], amount: p * rc.premium[i] });
+    }
+    var eda = parts.rostered + parts.multi + parts.ward + parts.premium;
+    var iaAmt = 0, iaBlocked = false;
+    if (ia && ia.eligible) {
+      var blocked = rosteredHours > 0 || (ia.strict && sessionHours > 0);
+      if (blocked) iaBlocked = true; else iaAmt = rc.midpoint * num(ia.pct) / 100 / 12;
+    }
+    return { rc: rc, eda: eda, parts: parts, lines: lines, ia: iaAmt, total: eda + iaAmt, dutyHours: dutyHours, rosteredHours: rosteredHours, rosteredShifts: rosteredHours, sessionHours: sessionHours, iaBlocked: iaBlocked, H: H };
+  }
+  // Shift-count form kept for the tests and for callers that think in shifts: rostered and multi in shifts of hours[i], ward and premium in hours.
+  function monthly(grade, points, hours, roster, ia) {
+    var H = { rostered: [0, 1, 2].map(function (i) { return num(roster.rostered[i]) * num(hours[i]); }),
+              multi: [0, 1, 2].map(function (i) { return num(roster.multi ? roster.multi[i] : 0) * num(hours[i]); }),
+              ward: [0, 1, 2].map(function (i) { return num(roster.ward[i]); }),
+              premium: [0, 1, 2].map(function (i) { return num(roster.premium[i]); }) };
+    return monthlyHours(grade, points, H, ia, hours);
+  }
+
+  // What the old 2017 to 2021 rates would pay for the same hours. rates: { rostered:[per hour x3], multi:[per hour x3] or null, ward:[per session x3], casualty:[per session x3] }
+  function oldPay(H, rates) {
+    if (!rates) return 0;
+    var t = 0, i;
+    for (i = 0; i < 3; i++) {
+      t += num(H.rostered[i]) * num(rates.rostered[i]);
+      if (rates.multi) t += num(H.multi[i]) * num(rates.multi[i]);
+      t += num(H.ward[i]) / OLD_SESSION_HOURS * num(rates.ward[i]);
+      t += num(H.premium[i]) / OLD_SESSION_HOURS * num(rates.casualty[i]);
+    }
+    return t;
+  }
+
+  // cfg: { start:{y,m}, end:{y,m}, grade, hours, roster, ia, overrides, years: { fy: { grade, monthsActive (0-12), paidPerMonth } },
+  //        hoursFor(d) optional: the hours roster in force in month d (defaults to cfg.roster converted with cfg.hours and cfg.sessHours),
+  //        paidFor(d, grade, H) optional: what was already paid for that month (defaults to years[fy].paidPerMonth) }
   function retro(cfg) {
     var rows = [], byFY = {}, order = [], total = { months: 0, counted: 0, ent: 0, eda: 0, ia: 0, paid: 0, gap: 0, missing: 0 };
     var seenInFY = {};
+    var baseH = cfg.roster ? rosterHours(cfg.roster, cfg.hours || [16, 24, 24], cfg.sessHours) : null;
     monthList(cfg.start, cfg.end).forEach(function (d) {
       var fy = fyOf(d.y, d.m), yr = cfg.years[fy] || {}, grade = yr.grade || cfg.grade;
       var sc = scaleFor(grade, fy, cfg.overrides);
@@ -706,15 +798,19 @@ var CORE = (function () {
       var monthsInWindow = countMonthsInFY(cfg.start, cfg.end, fy);
       var idxInFY = seenInFY[fy]; // 1-based position of this month within the window
       var isActive = idxInFY > (monthsInWindow - active);
-      var res = null, paid = 0, missing = false;
+      var res = null, paid = 0, missing = false, H = null;
       if (!sc || !sc.points) missing = true;
-      else if (isActive) { res = monthly(grade, sc.points, cfg.hours, cfg.roster, cfg.ia, cfg.ownPoint); paid = num(yr.paidPerMonth); }
-      var row = { y: d.y, m: d.m, fy: fy, grade: grade, active: isActive, base: res ? res.rc.base : null, eda: res ? res.eda : 0, ia: res ? res.ia : 0, total: res ? res.total : 0, ehw: res ? res.ehw : 0, paid: paid, gap: res ? res.total - paid : 0, missing: missing, src: sc ? sc.src : null };
+      else if (isActive) {
+        H = cfg.hoursFor ? cfg.hoursFor(d) : baseH;
+        res = monthlyHours(grade, sc.points, H, cfg.ia, cfg.hours);
+        paid = cfg.paidFor ? num(cfg.paidFor(d, grade, H)) : num(yr.paidPerMonth);
+      }
+      var row = { y: d.y, m: d.m, fy: fy, grade: grade, active: isActive, base: res ? res.rc.base : null, eda: res ? res.eda : 0, ia: res ? res.ia : 0, total: res ? res.total : 0, hours: res ? res.dutyHours : 0, paid: paid, gap: res ? res.total - paid : 0, missing: missing, src: sc ? sc.src : null };
       rows.push(row);
-      if (!byFY[fy]) { byFY[fy] = { fy: fy, months: 0, counted: 0, ent: 0, eda: 0, ia: 0, ehw: 0, paid: 0, gap: 0, missing: 0, base: null, grade: grade, src: sc ? sc.src : null }; order.push(fy); }
+      if (!byFY[fy]) { byFY[fy] = { fy: fy, months: 0, counted: 0, ent: 0, eda: 0, ia: 0, paid: 0, gap: 0, missing: 0, base: null, grade: grade, src: sc ? sc.src : null }; order.push(fy); }
       var b = byFY[fy]; b.months++; total.months++;
       if (missing) { b.missing++; total.missing++; }
-      else if (res) { b.counted++; total.counted++; b.base = res.rc.base; b.ent += res.total; b.eda += res.eda; b.ia += res.ia; b.ehw += res.ehw || 0; b.paid += paid; b.gap += res.total - paid; total.ent += res.total; total.eda += res.eda; total.ia += res.ia; total.paid += paid; total.gap += res.total - paid; }
+      else if (res) { b.counted++; total.counted++; b.base = res.rc.base; b.ent += res.total; b.eda += res.eda; b.ia += res.ia; b.paid += paid; b.gap += res.total - paid; total.ent += res.total; total.eda += res.eda; total.ia += res.ia; total.paid += paid; total.gap += res.total - paid; }
     });
     return { rows: rows, byFY: byFY, order: order, total: total };
   }
@@ -762,9 +858,9 @@ var CORE = (function () {
     return { nis: nis, ed: ed, nht: nht, paye: paye, total: total, rate: total / lump };
   }
 
-  return { HOURS_YEAR: HOURS_YEAR, MULT: MULT, WARD: WARD, PREMIUM: PREMIUM, EHW: EHW, GRADES: GRADES, SCALES: SCALES, FY_LIST: FY_LIST,
+  return { HOURS_YEAR: HOURS_YEAR, MULT: MULT, WARD: WARD, PREMIUM: PREMIUM, OLD_SESSION_HOURS: OLD_SESSION_HOURS, GRADES: GRADES, SCALES: SCALES, FY_LIST: FY_LIST,
            num: num, fyOf: fyOf, fyLabel: fyLabel, monthList: monthList, scaleFor: scaleFor, midpointOf: midpointOf, hourlyBase: hourlyBase, ownHourly: ownHourly,
-           rateCard: rateCard, monthly: monthly, retro: retro, countMonthsInFY: countMonthsInFY,
+           rateCard: rateCard, rosterHours: rosterHours, monthlyHours: monthlyHours, monthly: monthly, oldPay: oldPay, retro: retro, countMonthsInFY: countMonthsInFY,
            THRESHOLDS: THRESHOLDS, TAX_DEFAULTS: TAX_DEFAULTS, thresholdFor: thresholdFor, annualTax: annualTax, netPay: netPay, lumpSumDeductions: lumpSumDeductions };
 })();
 if (typeof module !== 'undefined') { module.exports = CORE; }
@@ -774,8 +870,13 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
 <script>
 (function () {
   var G = CORE.GRADES, S = CORE.SCALES;
-  var STORE_KEY = 'jmda-award-calc-v4';
+  var STORE_KEY = 'jmda-award-calc-v5', OLD_STORE_KEY = 'jmda-award-calc-v4';
   var EMPTY = 'select grade';
+  var ROWS = ['rostered', 'multi', 'ward', 'premium'];
+  var ROW_LABEL = { rostered: 'Rostered emergency duty', multi: 'Covering multiple locations', ward: 'Ward sessions', premium: 'Casualty, Type C, Health Centre, cross-coverage' };
+  var DAY_LABEL = ['weekday', 'first day off', 'second day off or holiday'];
+  var DAY_SHORT = ['Weekday', 'First day off', 'Second day off · holiday'];
+  var UNIT_DEFAULT = { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' };
   var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var START = { y: 2023, m: 4 };
@@ -788,18 +889,30 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     wardSession:     { MO: [9034.75, 11745.18, 12196.91], SHO: [7090.30, 9217.38, 9571.90] },
     casualtySession: { MO: [15359.07, 19966.78, 20734.71], SHO: [12053.50, 15669.55, 16272.23] }
   };
-  function oldPaid(grade, hours, roster, sessHours) {
-    var i, total = 0, r = OLD.rostered[grade], m = OLD.multi[grade];
-    var w = G[grade].mo ? OLD.wardSession.MO : OLD.wardSession.SHO, c = G[grade].mo ? OLD.casualtySession.MO : OLD.casualtySession.SHO;
-    var sh = CORE.num(sessHours) || 4;
-    for (i = 0; i < 3; i++) {
-      total += CORE.num(roster.rostered[i]) * CORE.num(hours[i]) * r[i];
-      if (m) total += CORE.num(roster.multi[i]) * CORE.num(hours[i]) * m[i];
-      total += CORE.num(roster.ward[i]) / sh * w[i];
-      total += CORE.num(roster.premium[i]) / sh * c[i];
-    }
-    return total;
+  // The published old rates for a grade, in the shape CORE.oldPay expects (Interns and Locum Interns use the Senior House Officer session rates).
+  function publishedOld(grade) {
+    if (!G[grade]) return null;
+    var sess = G[grade].mo ? 'MO' : 'SHO';
+    return { rostered: OLD.rostered[grade].slice(), multi: OLD.multi[grade] ? OLD.multi[grade].slice() : null, ward: OLD.wardSession[sess].slice(), casualty: OLD.casualtySession[sess].slice() };
   }
+  // The old rates in use for a grade: the published ones unless the user typed over them in Step 5.
+  function oldRatesFor(grade) {
+    var pub = publishedOld(grade); if (!pub) return null;
+    var o = state.oldRates && state.oldRates[grade]; if (!o) return pub;
+    var out = {};
+    ['rostered', 'multi', 'ward', 'casualty'].forEach(function (k) { if (!pub[k]) { out[k] = null; return; } out[k] = pub[k].map(function (v, i) { var e = o[k] && o[k][i]; return e == null ? v : CORE.num(e); }); });
+    return out;
+  }
+  function oldPaid(grade, H) { return CORE.oldPay(H, oldRatesFor(grade)); }
+
+  function blankRoster() { return { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } }; }
+  function copyRoster(r) { var c = blankRoster(); ROWS.forEach(function (k) { for (var i = 0; i < 3; i++) c[k][i] = CORE.num(r && r[k] ? r[k][i] : 0); c.unit[k] = (r && r.unit && r.unit[k]) || UNIT_DEFAULT[k]; }); return c; }
+  var PRESETS = {
+    oncall:   { rostered: [5, 1, 1], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } },
+    casualty: { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [10, 2, 2], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } },
+    typec:    { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [80, 16, 16], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'hours' } },
+    clear:    { rostered: [0, 0, 0], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0], unit: { rostered: 'shifts', multi: 'shifts', ward: 'sessions', premium: 'sessions' } }
+  };
 
   function defaultTax() { var d = CORE.TAX_DEFAULTS; return { thresholdAuto: true, threshold: CORE.thresholdFor(2026), band30: d.band30, nisCeiling: d.nisCeiling, nisRate: d.nisRate * 100, edRate: d.edRate * 100, nhtRate: d.nhtRate * 100, pensionRate: d.pensionRate * 100, other: null }; }
   function defaultState() {
@@ -807,7 +920,9 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       grade: '', fy: 2026, ownPoint: 1,
       useOverride: false, overrides: {},
       hours: [16, 24, 24], sessHours: 4,
-      roster: { rostered: [5, 1, 1], multi: [0, 0, 0], ward: [0, 0, 0], premium: [0, 0, 0] },
+      roster: copyRoster(PRESETS.oncall),
+      changes: [],          // earlier patterns: { until: {y, m}, roster: {...} }, each applying up to and including its month
+      oldRates: {},         // old 2017-2021 rates the user typed over, by grade
       ia: { eligible: false, pct: 40, strict: false },
       ded: null, levy: null,
       end: { y: 2026, m: 9 }, paidMode: 'old',
@@ -817,8 +932,27 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     };
   }
   var state = defaultState();
-  try { var saved = localStorage.getItem(STORE_KEY); if (saved) { var s = JSON.parse(saved); if (s && s.years && s.roster && s.tax && typeof s.grade === 'string') state = s; } } catch (e) {}
+  try {
+    var saved = localStorage.getItem(STORE_KEY);
+    if (saved) { var s = JSON.parse(saved); if (s && s.years && s.roster && s.tax && typeof s.grade === 'string') state = s; }
+    else {
+      // Carry over a saved earlier version: its ward and premium cells were hours, so they become hours here.
+      var older = localStorage.getItem(OLD_STORE_KEY);
+      if (older) { var so = JSON.parse(older); if (so && so.years && so.roster && so.tax && typeof so.grade === 'string') { so.roster = copyRoster(so.roster); so.roster.unit.ward = 'hours'; so.roster.unit.premium = 'hours'; so.changes = []; so.oldRates = {}; state = so; } }
+    }
+  } catch (e) {}
+  if (!state.changes) state.changes = []; if (!state.oldRates) state.oldRates = {}; state.roster = copyRoster(state.roster);
+  state.changes.forEach(function (c) { c.roster = copyRoster(c.roster); });
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+
+  // The pattern in force in a given month: the earliest-ending earlier pattern whose "until" month is on or after it, else the Step 3 pattern.
+  function sortedChanges() { return state.changes.slice().sort(function (a, b) { return (a.until.y - b.until.y) || (a.until.m - b.until.m); }); }
+  function patternAt(d) {
+    var cs = sortedChanges();
+    for (var i = 0; i < cs.length; i++) { var u = cs[i].until; if (d.y < u.y || (d.y === u.y && d.m <= u.m)) return { roster: cs[i].roster, label: 'to ' + monthLabel(u), index: i + 1 }; }
+    return { roster: state.roster, label: 'Step 3', index: 0 };
+  }
+  function hoursOf(roster) { return CORE.rosterHours(roster, state.hours, state.sessHours); }
 
   // ---------- formatting ----------
   function fmt(n, d) { if (n == null || !isFinite(n)) return ''; d = d || 0; return 'J$' + n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
@@ -846,12 +980,14 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   function taxParams() { var t = state.tax; return { threshold: t.thresholdAuto ? CORE.thresholdFor(state.fy) : CORE.num(t.threshold), band30: CORE.num(t.band30), nisCeiling: CORE.num(t.nisCeiling), nisRate: CORE.num(t.nisRate) / 100, edRate: CORE.num(t.edRate) / 100, nhtRate: CORE.num(t.nhtRate) / 100, pensionRate: CORE.num(t.pensionRate) / 100, other: CORE.num(t.other) }; }
 
   // ---------- wiring ----------
+  function fmtIn(v, opts) { var s = fmtPlain(v, opts.dec || 0); return (opts.trim && s.indexOf('.') >= 0) ? s.replace(/\.?0+$/, '') : s; }
   function bindNum(id, get, set, opts) {
     var el = $(id); if (!el) return; opts = opts || {};
-    el.value = get() == null ? '' : fmtPlain(get(), opts.dec || 0);
+    el.value = get() == null ? '' : fmtIn(get(), opts);
     el.addEventListener('input', function () { set(parse(el.value)); update(); });
-    el.addEventListener('blur', function () { var v = get(); el.value = v == null ? '' : fmtPlain(v, opts.dec || 0); });
+    el.addEventListener('blur', function () { var v = get(); el.value = v == null ? '' : fmtIn(v, opts); });
   }
+  function nextMonth(d) { return d.m === 12 ? { y: d.y + 1, m: 1 } : { y: d.y, m: d.m + 1 }; }
   function bindText(id, get, set) {
     var el = $(id); if (!el) return; el.value = get() || '';
     el.addEventListener('input', function () { set(el.value); renderLetter(); save(); });
@@ -861,7 +997,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('useOverride').checked = !!state.useOverride;
     ['hWd', 'hD1', 'hD2'].forEach(function (id, i) { $(id).value = state.hours[i] == null ? '' : fmtPlain(state.hours[i]); });
     $('hSess').value = fmtPlain(state.sessHours || 4);
-    ['rostered', 'multi', 'ward', 'premium'].forEach(function (k) { for (var i = 0; i < 3; i++) { var v = state.roster[k][i]; $('r_' + k + '_' + i).value = v ? fmtPlain(v) : ''; } });
+    ROWS.forEach(function (k) { $('u_' + k).value = state.roster.unit[k] || UNIT_DEFAULT[k]; for (var i = 0; i < 3; i++) { var v = state.roster[k][i]; $('r_' + k + '_' + i).value = v ? fmtPlain(v, 2).replace(/\.?0+$/, '') : ''; } });
+    renderChanges(true); renderOldTable(true);
     $('iaEligible').checked = !!state.ia.eligible; $('iaStrict').checked = !!state.ia.strict;
     var radios = document.querySelectorAll('input[name="iaPct"]'); for (var r = 0; r < radios.length; r++) radios[r].checked = Number(radios[r].value) === Number(state.ia.pct);
     $('ded').value = state.ded == null ? '' : pct(state.ded); $('levy').value = state.levy == null ? '' : pct(state.levy);
@@ -895,7 +1032,29 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     bindNum('osal', function () { var o = overrideFor(state.grade, state.fy); return o ? o[0] || null : null; }, function (v) { setOverridePoint('sal', v); });
     ['hWd', 'hD1', 'hD2'].forEach(function (id, i) { bindNum(id, function () { return state.hours[i]; }, function (v) { state.hours[i] = v; }); });
     bindNum('hSess', function () { return state.sessHours; }, function (v) { state.sessHours = v || 4; });
-    ['rostered', 'multi', 'ward', 'premium'].forEach(function (k) { for (var i = 0; i < 3; i++) { (function (k, i) { bindNum('r_' + k + '_' + i, function () { return state.roster[k][i] || null; }, function (v) { state.roster[k][i] = v || 0; }); })(k, i); } });
+    ROWS.forEach(function (k) {
+      for (var i = 0; i < 3; i++) { (function (k, i) { bindNum('r_' + k + '_' + i, function () { return state.roster[k][i] || null; }, function (v) { state.roster[k][i] = v || 0; }, { dec: 2, trim: true }); })(k, i); }
+      $('u_' + k).addEventListener('change', function () { state.roster.unit[k] = $('u_' + k).value; update(); });
+    });
+    var pre = document.querySelectorAll('[data-preset]');
+    for (var pi = 0; pi < pre.length; pi++) pre[pi].addEventListener('click', function (e) { var key = e.target.getAttribute('data-preset'); state.roster = copyRoster(PRESETS[key]); refreshInputs(); update(); toast(key === 'clear' ? 'Step 3 cleared' : 'Example loaded into Step 3'); });
+    $('addChange').addEventListener('click', function () {
+      var cs = sortedChanges(), until = cs.length ? nextMonth(cs[cs.length - 1].until) : { y: 2023, m: 10 };
+      if (until.y > state.end.y || (until.y === state.end.y && until.m >= state.end.m)) until = { y: 2023, m: 10 };
+      state.changes.push({ until: until, roster: copyRoster(state.roster) }); renderChanges(true); update(); toast('Earlier pattern added: set the month it runs to and its duty');
+    });
+    $('changeList').addEventListener('input', function (e) { onChangeEdit(e); });
+    $('changeList').addEventListener('change', function (e) { onChangeEdit(e); });
+    $('changeList').addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('[data-remove]') : null; if (b) { state.changes.splice(Number(b.getAttribute('data-remove')), 1); renderChanges(true); update(); toast('Pattern removed'); } });
+    $('oldBody').addEventListener('input', function (e) {
+      var t = e.target, k = t.getAttribute('data-row'), i = Number(t.getAttribute('data-i')); if (!k || !G[state.grade]) return;
+      var v = parse(t.value), pub = publishedOld(state.grade);
+      if (!state.oldRates[state.grade]) state.oldRates[state.grade] = {};
+      if (!state.oldRates[state.grade][k]) state.oldRates[state.grade][k] = [null, null, null];
+      state.oldRates[state.grade][k][i] = (v == null || Math.abs(v - pub[k][i]) < 0.005) ? null : v;
+      update();
+    });
+    $('oldRestore').addEventListener('click', function () { if (state.oldRates[state.grade]) delete state.oldRates[state.grade]; renderOldTable(true); update(); toast('Published old rates restored'); });
     $('iaEligible').addEventListener('change', function () { state.ia.eligible = $('iaEligible').checked; update(); });
     $('iaStrict').addEventListener('change', function () { state.ia.strict = $('iaStrict').checked; update(); });
     var radios = document.querySelectorAll('input[name="iaPct"]');
@@ -926,7 +1085,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
 
   // ---------- rendering ----------
   function setVis(selector, show) { var els = document.querySelectorAll(selector); for (var i = 0; i < els.length; i++) els[i].hidden = !show; }
-  function tdRate(rate, shift, shiftLabel) { return '<td>' + fmt(rate, 2) + '<span class="per">per hour</span>' + (shift != null ? '<span class="per">' + fmt(shift) + ' ' + shiftLabel + '</span>' : '') + '</td>'; }
+  function tdRate(rate, shift, shiftLabel, i) { return '<td data-l="' + DAY_SHORT[i] + '"><span class="v">' + fmt(rate, 2) + '<span class="per">per hour</span>' + (shift != null ? '<span class="per">' + fmt(shift) + ' ' + shiftLabel + '</span>' : '') + '</span></td>'; }
   var lastMonthly = null, lastRetro = null, lastNet = null, lastNetBase = null, lastLump = null;
 
   function update() {
@@ -959,28 +1118,30 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     if (!rc) body.innerHTML = '<tr><td colspan="4" class="muted">Enter the scale in Step 1.</td></tr>';
     else {
       var sh = state.sessHours || 4, rows = [];
-      rows.push('<tr><td>Rostered emergency duty<span class="per">1.5× · 1.75× · 2.0×</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.rostered[i], rc.shiftRostered[i], 'per ' + fmtPlain(state.hours[i]) + '-hour shift'); }).join('') + '</tr>');
-      if (rc.multi) rows.push('<tr><td>Covering multiple locations<span class="per">1.75× · 2.0× · 2.25×</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.multi[i], rc.shiftMulti[i], 'per ' + fmtPlain(state.hours[i]) + '-hour shift'); }).join('') + '</tr>');
-      rows.push('<tr><td>Ward session<span class="per">rostered rate + 25%</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.ward[i], rc.ward[i] * sh, 'per ' + fmtPlain(sh) + '-hour session'); }).join('') + '</tr>');
-      rows.push('<tr><td>Casualty · Type C · Health Centre · cross-coverage<span class="per">rostered rate + 50%</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.premium[i], rc.premium[i] * sh, 'per ' + fmtPlain(sh) + '-hour session'); }).join('') + '</tr>');
+      rows.push('<tr><td>Rostered emergency duty<span class="per">1.5× · 1.75× · 2.0×</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.rostered[i], rc.shiftRostered[i], 'per ' + fmtPlain(state.hours[i]) + '-hour shift', i); }).join('') + '</tr>');
+      if (rc.multi) rows.push('<tr><td>Covering multiple locations<span class="per">1.75× · 2.0× · 2.25×</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.multi[i], rc.shiftMulti[i], 'per ' + fmtPlain(state.hours[i]) + '-hour shift', i); }).join('') + '</tr>');
+      rows.push('<tr><td>Ward session<span class="per">rostered rate + 25%</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.ward[i], rc.ward[i] * sh, 'per ' + fmtPlain(sh) + '-hour session', i); }).join('') + '</tr>');
+      rows.push('<tr><td>Casualty session · Type C · Health Centre · cross-coverage<span class="per">rostered rate + 50% · weekday 2.25× · first day off 2.625× · second day off 3.0× the base</span></td>' + [0, 1, 2].map(function (i) { return tdRate(rc.premium[i], rc.premium[i] * sh, 'per ' + fmtPlain(sh) + '-hour session', i); }).join('') + '</tr>');
       body.innerHTML = rows.join('');
-      var oldR = OLD.rostered[grade];
-      $('rateCompare').innerHTML = 'For comparison, the old 2017-2021 rostered duty rate for a ' + esc(gi.label) + ' was <b>' + fmt(oldR[0], 2) + '</b> an hour on a weekday, ' + fmt(oldR[1], 2) + ' on the first day off and ' + fmt(oldR[2], 2) + ' on the second day off. The Award\'s weekday rate is ' + fmtPlain(rc.rostered[0] / oldR[0], 1) + ' times the old one.';
+      var oldR = oldRatesFor(grade).rostered, oldC = oldRatesFor(grade).casualty;
+      $('rateCompare').innerHTML = 'For comparison, the old 2017-2021 rostered duty rate for a ' + esc(gi.label) + ' was <b>' + fmt(oldR[0], 2) + '</b> an hour on a weekday, ' + fmt(oldR[1], 2) + ' on the first day off and ' + fmt(oldR[2], 2) + ' on the second day off, and a four-hour Casualty session paid ' + fmt(oldC[0]) + ' / ' + fmt(oldC[1]) + ' / ' + fmt(oldC[2]) + '. The Award\'s weekday rate is ' + fmtPlain(rc.rostered[0] / oldR[0], 1) + ' times the old one. These old rates are what "already paid" is estimated from in Step 5, where you can change them.';
     }
 
-    // Monthly
+    // Monthly: every Step 3 row becomes hours first, then hours × the rate for that category and day type
     var iaCfg = { eligible: state.ia.eligible, pct: state.ia.pct, strict: state.ia.strict };
-    var mo = pts ? CORE.monthly(grade, pts, state.hours, state.roster, iaCfg, state.ownPoint) : null;
+    var H = hoursOf(state.roster);
+    var mo = pts ? CORE.monthlyHours(grade, pts, H, iaCfg, state.hours) : null;
+    renderRowSums(state.roster, H, rc, '');
     var warn = $('iaWarn');
-    if (mo && state.ia.eligible && mo.iaBlocked) { warn.hidden = false; warn.textContent = 'No Incentive Allowance is counted for this month: ' + (mo.rosteredShifts > 0 ? 'it has ' + fmtPlain(mo.rosteredShifts) + ' rostered duty shift(s) and a rostered emergency duty shift in a calendar month removes the allowance for that month (paragraph 85).' : 'you chose the strict reading and the month has ' + fmtPlain(mo.sessionHours) + ' session hours.') + ' Set those to zero to see the allowance.'; }
+    if (mo && state.ia.eligible && mo.iaBlocked) { warn.hidden = false; warn.textContent = 'No Incentive Allowance is counted for this month: ' + (mo.rosteredHours > 0 ? 'it has ' + fmtPlain(mo.rosteredHours) + ' hours of rostered emergency duty and a rostered emergency duty shift in a calendar month removes the allowance for that month (paragraph 85).' : 'you chose the strict reading and the month has ' + fmtPlain(mo.sessionHours) + ' session hours.') + ' Set those to zero to see the allowance.'; }
     else warn.hidden = true;
 
-    var old = mo ? oldPaid(grade, state.hours, state.roster, state.sessHours) : null;
+    var old = mo ? oldPaid(grade, H) : null;
     if (!mo) {
-      ['mTotal', 'mHours', 'cAward', 'cEhw', 'cOld', 'cDiff'].forEach(function (id) { $(id).textContent = EMPTY; }); $('mBreak').innerHTML = '';
+      ['mTotal', 'mHours', 'cAward', 'cOld', 'cDiff'].forEach(function (id) { $(id).textContent = EMPTY; }); $('mBreak').innerHTML = ''; $('mWorking').innerHTML = '';
     } else {
       $('mTotal').textContent = fmt(mo.total);
-      $('mHours').textContent = fmtPlain(mo.dutyHours) + ' h';
+      $('mHours').textContent = fmtPlain(mo.dutyHours) + ' hours';
       var b = [];
       b.push('<div><span class="k">Rostered emergency duty</span><span>' + fmt(mo.parts.rostered) + '</span></div>');
       if (rc.multi) b.push('<div><span class="k">Covering multiple locations</span><span>' + fmt(mo.parts.multi) + '</span></div>');
@@ -989,9 +1150,13 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       b.push('<div><span class="k"><b>Emergency Duty Allowance</b></span><span><b>' + fmt(mo.eda) + '</b></span></div>');
       b.push('<div><span class="k">Incentive Allowance' + (state.ia.eligible ? ' (' + state.ia.pct + '% of midpoint ÷ 12)' : ' (not claimed)') + '</span><span>' + fmt(mo.ia) + '</span></div>');
       $('mBreak').innerHTML = b.join('');
+      var w = [];
+      mo.lines.forEach(function (L) { var mult = L.rate / rc.base; w.push('<div><span class="k">' + esc(ROW_LABEL[L.k]) + ', ' + DAY_LABEL[L.i] + ': <code>' + fmtPlain(L.hours, 2).replace(/\.?0+$/, '') + ' hours × ' + fmt(L.rate, 2) + '</code> <small>(' + fmt(rc.base, 2) + ' × ' + fmtPlain(mult, 3).replace(/\.?0+$/, '') + ')</small></span><span>' + fmt(L.amount, 2) + '</span></div>'); });
+      if (!mo.lines.length) w.push('<div><span class="k">No duty entered in Step 3.</span><span></span></div>');
+      w.push('<div class="t"><span class="k">Emergency Duty Allowance for the month</span><span>' + fmt(mo.eda, 2) + '</span></div>');
+      if (state.ia.eligible && mo.ia) w.push('<div><span class="k">Incentive Allowance: <code>' + fmtPlain(rc.midpoint, 1) + ' × ' + state.ia.pct + '% ÷ 12</code></span><span>' + fmt(mo.ia, 2) + '</span></div>');
+      $('mWorking').innerHTML = w.join('');
       $('cAward').textContent = fmt(mo.eda);
-      $('cEhw').textContent = fmt(mo.ehw);
-      $('cEhwSub').textContent = (gi.mo ? 'your point ' + (state.ownPoint || 1) + ' salary' : 'your salary') + ' ÷ 2,080 · 1.5 / 1.5 / 2.0 · no premiums · 15-hour weekly cap ignored';
       $('cOld').textContent = fmt(old);
       $('cDiff').textContent = fmt(mo.eda - old);
     }
@@ -1004,11 +1169,14 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     }
     renderSlip(net, netBase, basicAnnual, P);
 
-    // Retro
-    renderFyEditors();
+    // Retro: each month is priced with the pattern in force that month and, in "old rates" mode, netted against the old rates for the same hours
+    renderFyEditors(); renderChanges(false); renderOldTable(false);
     var years = {};
-    CORE.FY_LIST.forEach(function (f) { var y = state.years[f] || { grade: grade, monthsActive: 12, paidPerMonth: null }; years[f] = { grade: y.grade || grade, monthsActive: y.monthsActive == null ? 12 : y.monthsActive, paidPerMonth: paidFor(f, y) }; });
-    var R = CORE.retro({ start: START, end: state.end, grade: grade, hours: state.hours, roster: state.roster, ia: iaCfg, ownPoint: state.ownPoint, overrides: activeOverrides(), years: years });
+    CORE.FY_LIST.forEach(function (f) { var y = state.years[f] || { grade: grade, monthsActive: 12, paidPerMonth: null }; years[f] = { grade: y.grade || grade, monthsActive: y.monthsActive == null ? 12 : y.monthsActive, paidPerMonth: y.paidPerMonth }; });
+    var patLabels = {};
+    var R = CORE.retro({ start: START, end: state.end, grade: grade, hours: state.hours, sessHours: state.sessHours, roster: state.roster, ia: iaCfg, overrides: activeOverrides(), years: years,
+      hoursFor: function (d) { var p = patternAt(d); patLabels[d.y + '-' + d.m] = p.label; return hoursOf(p.roster); },
+      paidFor: function (d, g, Hm) { if (state.paidMode === 'none') return 0; if (state.paidMode === 'enter') { var yy = years[CORE.fyOf(d.y, d.m)]; return yy ? yy.paidPerMonth : 0; } return oldPaid(g, Hm); } });
     var fyRows = [];
     R.order.forEach(function (f) {
       var bb = R.byFY[f];
@@ -1031,7 +1199,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('barRetro').textContent = none ? EMPTY : fmt(R.total.gap * keep);
     var mb = [];
     R.rows.forEach(function (r) {
-      mb.push('<tr' + (r.active ? '' : ' class="muted"') + '><td>' + monthLabel(r) + (r.active ? '' : '<span class="per">not counted</span>') + '</td><td>' + CORE.fyLabel(r.fy) + '</td><td>' + esc(G[r.grade].label) + '</td><td>' + (r.base != null ? fmt(r.base, 2) : 'no scale') + '</td><td>' + fmt(r.eda) + '</td><td>' + fmt(r.ia) + '</td><td>' + fmt(r.total) + '</td><td>' + fmt(r.paid) + '</td><td>' + fmt(r.gap) + '</td></tr>');
+      r.pattern = r.active ? (patLabels[r.y + '-' + r.m] || 'Step 3') : '';
+      mb.push('<tr' + (r.active ? '' : ' class="muted"') + '><td>' + monthLabel(r) + (r.active ? '' : '<span class="per">not counted</span>') + '</td><td>' + CORE.fyLabel(r.fy) + '</td><td>' + esc(G[r.grade].label) + '</td><td>' + esc(r.pattern) + '</td><td>' + (r.active ? fmtPlain(r.hours, 1).replace(/\.0$/, '') : '') + '</td><td>' + (r.base != null ? fmt(r.base, 2) : 'no scale') + '</td><td>' + fmt(r.eda) + '</td><td>' + fmt(r.ia) + '</td><td>' + fmt(r.total) + '</td><td>' + fmt(r.paid) + '</td><td>' + fmt(r.gap) + '</td></tr>');
     });
     $('monthBody').innerHTML = mb.join('');
     lastRetro = R; lastMonthly = mo; lastNet = net; lastNetBase = netBase;
@@ -1040,10 +1209,74 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     renderLetter();
     save();
   }
-  function paidFor(fy, y) {
-    if (state.paidMode === 'none') return null;
-    if (state.paidMode === 'enter') return y.paidPerMonth || null;
-    return oldPaid(y.grade || state.grade, state.hours, state.roster, state.sessHours);
+
+  // Under each Step 3 row (and each earlier pattern): the hours the row adds up to and what they are worth at the Award's rates
+  function renderRowSums(roster, H, rc, prefix) {
+    ROWS.forEach(function (k) {
+      var el = $(prefix + 's_' + k), box = el ? el.parentNode : null; if (!el) return;
+      var hrs = H[k][0] + H[k][1] + H[k][2], unit = roster.unit[k] || UNIT_DEFAULT[k];
+      var amt = rc && rc[k] ? H[k][0] * rc[k][0] + H[k][1] * rc[k][1] + H[k][2] * rc[k][2] : null;
+      if (box) box.classList.toggle('on', hrs > 0);
+      if (!hrs) { el.innerHTML = unit === 'hours' ? 'Hours in the month, by day type.' : (unit === 'shifts' ? 'Shifts in the month, by day type; one shift = ' + fmtPlain(state.hours[0]) + ' / ' + fmtPlain(state.hours[1]) + ' / ' + fmtPlain(state.hours[2]) + ' hours (Step 2).' : 'Sessions in the month, by day type; one session = ' + fmtPlain(state.sessHours || 4) + ' hours (Step 2).'); return; }
+      el.innerHTML = '= <b>' + fmtPlain(hrs, 1).replace(/\.0$/, '') + ' hours</b> (' + [0, 1, 2].map(function (i) { return fmtPlain(H[k][i], 1).replace(/\.0$/, '') + ' ' + DAY_LABEL[i]; }).join(', ') + ')' + (amt != null ? ' · worth <b>' + fmt(amt) + '</b> at the Award\'s rates' : '');
+    });
+  }
+
+  // Step 5: earlier patterns of duty, each applying up to and including the month set on it
+  function changeMarkup(c, idx) {
+    var untilOpts = CORE.monthList(START, state.end).map(function (d) { return '<option value="' + d.y + '-' + d.m + '"' + (d.y === c.until.y && d.m === c.until.m ? ' selected' : '') + '>' + monthLabel(d) + '</option>'; }).join('');
+    var h = '<div class="change" data-ci="' + idx + '"><div class="change-head"><h3>Earlier pattern ' + (idx + 1) + '</h3><button class="small" type="button" data-remove="' + idx + '">Remove</button></div>';
+    h += '<div class="row"><div class="field" style="flex:0 1 260px"><label for="c' + idx + 'until">Applies up to and including</label><select id="c' + idx + 'until" data-ci="' + idx + '" data-until="1">' + untilOpts + '</select></div><div class="field" style="flex:1 1 200px; align-self:end"><span class="sub" id="c' + idx + 'span"></span></div></div>';
+    h += '<div class="rcats">';
+    ROWS.forEach(function (k) {
+      var units = (k === 'ward' || k === 'premium') ? '<option value="sessions">count sessions</option><option value="hours">enter hours</option>' : '<option value="shifts">count shifts</option><option value="hours">enter hours</option>';
+      h += '<div class="rcat' + (k === 'multi' ? ' multi-only' : '') + '" data-k="' + k + '"><div class="rcat-head"><div class="rcat-title">' + esc(ROW_LABEL[k]) + '</div><select class="unit" data-ci="' + idx + '" data-unit="' + k + '" aria-label="How to count ' + esc(ROW_LABEL[k]) + '">' + units + '</select></div><div class="cells">';
+      for (var i = 0; i < 3; i++) h += '<label><span>' + DAY_SHORT[i] + '</span><input type="text" inputmode="decimal" data-ci="' + idx + '" data-k="' + k + '" data-i="' + i + '" value="' + (c.roster[k][i] ? fmtIn(c.roster[k][i], { dec: 2, trim: true }) : '') + '"></label>';
+      h += '</div><div class="rcat-sum" id="c' + idx + 's_' + k + '"></div></div>';
+    });
+    h += '</div></div>';
+    return h;
+  }
+  function renderChanges(force) {
+    var host = $('changeList'); if (!host) return;
+    var html = state.changes.map(changeMarkup).join('');
+    if (force || host.getAttribute('data-n') !== String(state.changes.length)) { host.innerHTML = html; host.setAttribute('data-n', String(state.changes.length)); }
+    if (!force) { var sels = host.querySelectorAll('select.unit'); for (var i = 0; i < sels.length; i++) { var c = state.changes[Number(sels[i].getAttribute('data-ci'))]; if (c) sels[i].value = c.roster.unit[sels[i].getAttribute('data-unit')] || UNIT_DEFAULT[sels[i].getAttribute('data-unit')]; } }
+    else { var us = host.querySelectorAll('select.unit'); for (var j = 0; j < us.length; j++) { var cc = state.changes[Number(us[j].getAttribute('data-ci'))]; if (cc) us[j].value = cc.roster.unit[us[j].getAttribute('data-unit')] || UNIT_DEFAULT[us[j].getAttribute('data-unit')]; } }
+    setVis('#changeList .multi-only', !G[state.grade] || G[state.grade].multi);
+    // the stretch each pattern covers, and its hours
+    var pts = currentPoints(), rc = pts && G[state.grade] ? CORE.rateCard(state.grade, pts, state.hours) : null;
+    var cs = sortedChanges(), prev = START;
+    state.changes.forEach(function (c, idx) {
+      var from = START; for (var q = 0; q < cs.length; q++) { if (cs[q] === c) break; from = nextMonth(cs[q].until); }
+      var ok = from.y < c.until.y || (from.y === c.until.y && from.m <= c.until.m);
+      var sp = $('c' + idx + 'span'); if (sp) sp.textContent = ok ? 'Covers ' + monthLabel(from) + ' to ' + monthLabel(c.until) + '.' : 'Ends before it starts: set a later month than the pattern before it.';
+      renderRowSums(c.roster, hoursOf(c.roster), rc, 'c' + idx);
+    });
+    $('changesBox').classList.toggle('on', state.changes.length > 0);
+  }
+  function onChangeEdit(e) {
+    var t = e.target, ci = Number(t.getAttribute('data-ci')); if (isNaN(ci) || !state.changes[ci]) return;
+    var c = state.changes[ci];
+    if (t.getAttribute('data-until')) { var p = t.value.split('-'); c.until = { y: Number(p[0]), m: Number(p[1]) }; }
+    else if (t.getAttribute('data-unit')) { c.roster.unit[t.getAttribute('data-unit')] = t.value; }
+    else if (t.getAttribute('data-k')) { var v = parse(t.value); c.roster[t.getAttribute('data-k')][Number(t.getAttribute('data-i'))] = v || 0; }
+    else return;
+    update();
+  }
+
+  // Step 5: the old 2017-2021 rates for the current grade, editable
+  function renderOldTable(force) {
+    var body = $('oldBody'), grade = state.grade, pub = publishedOld(grade), cur = oldRatesFor(grade);
+    if (!pub) { if (force || body.getAttribute('data-grade') !== '') { body.innerHTML = '<tr><td colspan="4" class="muted">Select your grade in Step 1.</td></tr>'; body.setAttribute('data-grade', ''); } $('oldGradeLabel').textContent = ''; $('oldNote').textContent = ''; return; }
+    $('oldGradeLabel').textContent = G[grade].label;
+    if (force || body.getAttribute('data-grade') !== grade) {
+      var rows = [], defs = [['rostered', 'Rostered emergency duty', 'per hour'], ['multi', 'Covering multiple locations', 'per hour'], ['ward', 'Ward session', 'per 4-hour session'], ['casualty', 'Casualty session · Type C · Health Centre · cross-coverage', 'per 4-hour session']];
+      defs.forEach(function (d) { if (!pub[d[0]]) return; rows.push('<tr><td>' + d[1] + '<span class="per">' + d[2] + '</span></td>' + [0, 1, 2].map(function (i) { return '<td data-l="' + DAY_SHORT[i] + '"><input type="text" inputmode="decimal" data-row="' + d[0] + '" data-i="' + i + '" value="' + fmtPlain(cur[d[0]][i], 2) + '" aria-label="' + d[1] + ', ' + DAY_LABEL[i] + '"></td>'; }).join('') + '</tr>'); });
+      body.innerHTML = rows.join(''); body.setAttribute('data-grade', grade);
+    }
+    var edited = false, o = state.oldRates[grade]; if (o) Object.keys(o).forEach(function (k) { (o[k] || []).forEach(function (v) { if (v != null) edited = true; }); });
+    $('oldNote').textContent = edited ? 'Using your own figures where you typed them; the rest are the published rates.' : 'Published rates in use.';
   }
 
   function renderNoGrade() {
@@ -1057,8 +1290,9 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     }
     $('scaleTable').querySelector('tbody').innerHTML = st.join(''); $('scaleDetails').open = true;
     $('rateBody').innerHTML = '<tr><td colspan="4" class="muted">Select your grade in Step 1.</td></tr>'; $('rateCompare').textContent = '';
-    ['mTotal', 'mHours', 'cAward', 'cEhw', 'cOld', 'cDiff', 'rGap', 'rTotal', 'rNet', 'nNet', 'nBase', 'nAdd', 'barMonth', 'barRetro'].forEach(function (id) { $(id).textContent = EMPTY; });
-    $('mBreak').innerHTML = ''; $('rGapSub').textContent = ''; $('rSub').textContent = ''; $('rNetSub').textContent = ''; $('nNetSub').textContent = ''; $('nAddSub').textContent = ''; $('lumpHint').textContent = '';
+    ['mTotal', 'mHours', 'cAward', 'cOld', 'cDiff', 'rGap', 'rTotal', 'rNet', 'nNet', 'nBase', 'nAdd', 'barMonth', 'barRetro'].forEach(function (id) { $(id).textContent = EMPTY; });
+    $('mBreak').innerHTML = ''; $('mWorking').innerHTML = ''; $('rGapSub').textContent = ''; $('rSub').textContent = ''; $('rNetSub').textContent = ''; $('nNetSub').textContent = ''; $('nAddSub').textContent = ''; $('lumpHint').textContent = '';
+    renderRowSums(state.roster, hoursOf(state.roster), null, ''); renderChanges(false); renderOldTable(false);
     $('fyList').innerHTML = ''; $('fyBody').innerHTML = '<tr><td colspan="8" class="muted">Select your grade in Step 1.</td></tr>'; $('monthBody').innerHTML = '';
     $('slipBody').innerHTML = '<tr><td colspan="2" class="muted">Select your grade in Step 1.</td></tr>';
     $('barRetroLab').textContent = 'Back-pay due';
@@ -1113,16 +1347,21 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     }
   }
 
+  function hoursLine(H, gi) {
+    var f = function (a) { return fmtPlain(a[0], 1).replace(/\.0$/, '') + '/' + fmtPlain(a[1], 1).replace(/\.0$/, '') + '/' + fmtPlain(a[2], 1).replace(/\.0$/, ''); };
+    return 'rostered ' + f(H.rostered) + (gi.multi ? ', multiple locations ' + f(H.multi) : '') + ', ward ' + f(H.ward) + ', Casualty and other 50% categories ' + f(H.premium);
+  }
   function summaryText(mo, R, old, net, netBase, keep) {
     var gi = G[state.grade]; if (!gi) return 'Select your grade in Step 1 to produce a summary.';
     var lines = [];
     lines.push('JMDA Award Calculator · Industrial Disputes Tribunal Award 1/2025 (5 October 2026)');
     lines.push('Grade: ' + gi.label + (gi.mo ? ', point ' + (state.ownPoint || 1) : '') + ' · priced on the ' + CORE.fyLabel(state.fy) + ' published scale');
     if (mo) {
-      lines.push('Emergency Duty hourly base: ' + fmt(mo.rc.base, 2) + ' (scale midpoint ÷ 2,080 h)');
+      lines.push('Emergency Duty hourly base: ' + fmt(mo.rc.base, 2) + ' (scale midpoint ÷ 2,080 hours)');
       lines.push('Rostered duty per hour: ' + fmt(mo.rc.rostered[0], 2) + ' weekday · ' + fmt(mo.rc.rostered[1], 2) + ' first day off · ' + fmt(mo.rc.rostered[2], 2) + ' second day off or holiday');
-      lines.push('Roster used: ' + fmtPlain(state.roster.rostered[0]) + '/' + fmtPlain(state.roster.rostered[1]) + '/' + fmtPlain(state.roster.rostered[2]) + ' rostered shifts (' + fmtPlain(state.hours[0]) + '/' + fmtPlain(state.hours[1]) + '/' + fmtPlain(state.hours[2]) + ' h)' + (gi.multi ? ', ' + fmtPlain(state.roster.multi[0]) + '/' + fmtPlain(state.roster.multi[1]) + '/' + fmtPlain(state.roster.multi[2]) + ' multi-location shifts' : '') + ', ' + fmtPlain(state.roster.ward[0] + state.roster.ward[1] + state.roster.ward[2]) + ' ward hours, ' + fmtPlain(state.roster.premium[0] + state.roster.premium[1] + state.roster.premium[2]) + ' premium hours');
-      lines.push('Duty for the month: ' + fmt(mo.total) + ' gross (Emergency Duty Allowance ' + fmt(mo.eda) + (state.ia.eligible ? ', Incentive Allowance ' + fmt(mo.ia) : '') + ') · old rates about ' + fmt(old) + ' · rejected flat policy about ' + fmt(mo.ehw));
+      lines.push('Hours in the month (weekday / first day off / second day off): ' + hoursLine(mo.H, gi));
+      lines.push('Duty for the month: ' + fmt(mo.total) + ' gross (Emergency Duty Allowance ' + fmt(mo.eda) + (state.ia.eligible ? ', Incentive Allowance ' + fmt(mo.ia) : '') + ') · about ' + fmt(old) + ' at the old 2017-2021 rates');
+      if (state.changes.length) { var cs = sortedChanges(), from = START; cs.forEach(function (c) { lines.push('Earlier pattern ' + monthLabel(from) + ' to ' + monthLabel(c.until) + ': ' + hoursLine(hoursOf(c.roster), gi)); from = nextMonth(c.until); }); }
     }
     if (net) lines.push('Net pay for the month: ' + fmt(net.net) + ' (basic ' + fmt(net.basic) + ' + duty and allowance ' + fmt(net.eda + net.ia) + ' = ' + fmt(net.gross) + ' gross, less ' + fmt(net.deductions) + ' statutory deductions) · basic alone would net ' + fmt(netBase.net));
     if (R && R.total.counted) lines.push('Back-pay April 2023 to ' + monthLabel(state.end) + ' (' + R.total.counted + ' months counted): entitlement ' + fmt(R.total.ent) + ', already paid ' + fmt(R.total.paid) + ', due ' + fmt(R.total.gap) + ' gross' + (keep < 1 ? ', about ' + fmt(R.total.gap * keep) + ' after ' + pct((1 - keep) * 100) + '% deductions' : ''));
@@ -1130,8 +1369,8 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     return lines.join('\n');
   }
   function monthsTSV() {
-    var out = ['Month\tFiscal year\tGrade\tHourly base\tEmergency Duty Allowance\tIncentive Allowance\tEntitlement\tAlready paid\tBack-pay'];
-    if (lastRetro) lastRetro.rows.forEach(function (r) { out.push([monthLabel(r), CORE.fyLabel(r.fy), G[r.grade].label, r.base != null ? fmtPlain(r.base, 2) : '', fmtPlain(r.eda, 2), fmtPlain(r.ia, 2), fmtPlain(r.total, 2), fmtPlain(r.paid, 2), fmtPlain(r.gap, 2)].join('\t')); });
+    var out = ['Month\tFiscal year\tGrade\tPattern\tDuty hours\tHourly base\tEmergency Duty Allowance\tIncentive Allowance\tEntitlement\tAlready paid\tBack-pay'];
+    if (lastRetro) lastRetro.rows.forEach(function (r) { out.push([monthLabel(r), CORE.fyLabel(r.fy), G[r.grade].label, r.pattern || '', r.active ? fmtPlain(r.hours, 1) : '', r.base != null ? fmtPlain(r.base, 2) : '', fmtPlain(r.eda, 2), fmtPlain(r.ia, 2), fmtPlain(r.total, 2), fmtPlain(r.paid, 2), fmtPlain(r.gap, 2)].join('\t')); });
     return out.join('\n');
   }
 
@@ -1188,8 +1427,10 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
      'Both. Section 3(a) orders "full retroactive reinstatement" from 1 April 2023 and the allowance continues going forward. Nothing has been paid under it since April 2023, so for an eligible doctor the back-pay is the full allowance for every qualifying month.'],
     ['It is paid "in lieu of" duties. If I do a session, do I still get it?',
      'The Award\'s words are precise: a doctor "who performs a rostered emergency duty shift in a given calendar month shall be disqualified from receiving the Incentive Allowance for that month" (paragraph 85). A ward or clinic session is not a rostered emergency duty shift and the calculator does not count it as disqualifying unless you tick the strict reading. Expect employers to argue the stricter reading; keep your rosters and claim forms separate and clear.'],
-    ['I only work Accident and Emergency, or a Health Centre, or a Type C hospital. What does the Award give me?',
-     'The 50% premium. Casualty, Type C, Health Centre and cross-coverage hours are paid at 50% above the rostered duty rate for that day type, off the scale midpoint. Under the seven-day roster, Accident and Emergency doctors work forty ordinary hours over any five days; the extra hours and any work on the two days off, are the hours to enter in the premium row.'],
+    ['I only work Accident and Emergency, or a Health Centre, or a Type C hospital paid at the Casualty session rate. What does the Award give me?',
+     'The 50% premium, by day type. Casualty, Type C, Health Centre and cross-coverage sessions are paid at 50% above the rostered duty rate for the day they fall on, off the scale midpoint: a weekday session at 1.5 × 1.5 = 2.25 times the hourly base, a first-day-off session at 1.75 × 1.5 = 2.625 times and a second-day-off or public-holiday session at 2.0 × 1.5 = 3 times. In Step 3 use the "Type C, paid at the Casualty session rate only" example, leave the rostered rows at zero and enter your sessions or hours in the last row under the right day type. Under the seven-day roster, Accident and Emergency doctors work forty ordinary hours over any five days; the extra hours and any work on the two days off are what goes in.'],
+    ['My pattern changed on 1 November 2023 when the seven-day week started. How do I count April to October 2023?',
+     'Add an earlier pattern in Step 5 and set it to end in October 2023. For those months read "first day off" as Saturday and "second day off" as Sunday or a public holiday, and enter the weekend calls and sessions as you claimed them then. From November 2023 the calculator uses your Step 3 pattern, in which Casualty sessions on your first and second days off have their own cells and rates. The old rates used for "already paid" work the same way for both stretches.'],
     ['I missed a year, or I started after April 2023. What is my back-pay?',
      'Only the months you actually worked count. Set "months worked that year" for each fiscal year in Step 5 and the grade you held. Interns who started in July count nine months in their first fiscal year.'],
     ['I am on point 1. Do I really get the midpoint rate?',
