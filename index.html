@@ -74,6 +74,7 @@ table.dues td:last-child { font-weight: 700; color: var(--jmda-navy); }
 .join-links { display: flex; gap: 10px; flex-wrap: wrap; }
 .join-links a { display: inline-block; text-decoration: none; font-weight: 600; padding: 9px 14px; border-radius: 4px; border: 1px solid var(--jmda-blue); color: var(--jmda-blue); background: var(--panel); }
 .join-links a.primary { background: var(--jmda-blue); color: var(--jmda-blue-ink); }
+.join-links a .n { font-family: var(--font-display); font-weight: 700; margin-right: 2px; }
 .ecg { display: block; width: 100%; height: 26px; color: var(--jmda-blue); margin: 0 0 10px; }
 .closing-art img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); }
 .stamp { font-size: 13px; color: var(--muted); }
@@ -132,7 +133,7 @@ table.slip { min-width: 0; }
 table.slip td:first-child { min-width: 0; }
 table.slip tr.sub td { color: var(--muted); font-size: 13px; }
 table.slip tr.net td { font-weight: 700; font-size: 16px; background: var(--tint); color: var(--jmda-navy); }
-/* Step 3: one block per duty category, three labelled cells (weekday, first day off, second day off) so no column can hide off-screen on a phone */
+/* Step 2: one block per duty category, three labelled cells (weekday, first day off, second day off) so no column can hide off-screen on a phone */
 .rcats { display: grid; gap: 10px; }
 .rcat { display: grid; gap: 8px; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: 4px; }
 .rcat.on { border-left-color: var(--jmda-blue); }
@@ -227,14 +228,7 @@ details .tablewrap { border-radius: 3px; }
 .compare .sub { font-size: 12.5px; color: var(--muted); }
 .noscript-note { border: 2px solid var(--warn); background: var(--warn-soft); color: var(--fg); padding: 12px 14px; border-radius: 4px; font-size: 14.5px; margin-bottom: 12px; }
 .noscript-note b { display: block; margin-bottom: 4px; }
-.letter-print { display: none; }
-@media print {
-  @page { size: letter; margin: 0.75in 0.9in; }
-  body.print-letter > *:not(.letter-print) { display: none !important; }
-  body.print-letter { background: #FFFFFF; }
-  body.print-letter .letter-print { display: block; font: 10.5pt/1.36 "Times New Roman", Georgia, "Source Serif 4", serif; color: #000000; white-space: pre-wrap; max-width: 6.7in; }
-}
-.footer { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 12px; font-size: 13px; color: var(--muted); text-align: center; }
+.footer { margin-top: 22px; font-size: 13px; color: var(--muted); text-align: center; }
 .footer b { color: var(--fg); }
 @media (max-width: 560px) {
   .sheet { margin-top: 0; border-width: 2px; border-left: 0; border-right: 0; }
@@ -263,7 +257,7 @@ details .tablewrap { border-radius: 3px; }
   </header>
 
   <nav class="jump" aria-label="Sections"><div class="in">
-    <a href="#step1">Scale</a><a href="#step2">Rates</a><a href="#step3">Your month</a><a href="#step4">Incentive Allowance</a><a href="#step5">Back-pay</a><a href="#step6">Net pay</a><a href="#summary">Summary</a><a href="#explainer">The Award explained</a><a href="#questions">Questions</a><a href="#letter">Claim letter</a><a href="#method">Method</a><a href="#join">Join</a>
+    <a href="#step1">Scale</a><a href="#step2">Your month</a><a href="#step3">Rates</a><a href="#step4">Incentive Allowance</a><a href="#step5">Back-pay</a><a href="#step6">Net pay</a><a href="#summary">Summary</a><a href="#explainer">The Award explained</a><a href="#questions">Questions</a><a href="#letter">Claim letter</a><a href="#method">Method</a><a href="#join">Join</a>
   </div></nav>
 
   <!-- STEP 1 -->
@@ -326,14 +320,14 @@ details .tablewrap { border-radius: 3px; }
   <!-- STEP 2 -->
   <section class="step" id="step2">
     <div class="step-head">
-      <span class="num">Step 2 · Rate card</span>
-      <h2>Your rates per hour and per call</h2>
-      <p class="help">Multipliers from Award section 2(d). Every category, including Casualty and the other 50% categories, has its own rate for each of the three day types: a normal weekday, your <b>first day off</b> and your <b>second day off</b> (the two rest days of the seven-day week, which can fall on any day; public holidays are priced at the second-day-off rate, as the Ministry of Finance's comparison tables and the February 2026 holiday-rate settlement treat them). For April to October 2023, before the seven-day week, read "first day off" as Saturday and "second day off" as Sunday or a public holiday.</p>
+      <span class="num">Step 2 · Your month</span>
+      <h2>Duty in a typical month</h2>
+      <p class="help">Enter what you do in a month under each category, split by day type. Each row can be counted in <b>shifts or sessions</b> (a call is the hours set in the boxes below, with its Casualty session added automatically for day-off calls from the month set there; a session is 4 hours unless you changed it) or entered straight in <b>hours</b>, whichever matches your claim forms; the hours the row adds up to are shown under it. Every row has its own first-day-off and second-day-off cells, including Casualty sessions. The example loaded is roughly a one-in-four on-call roster; the "seven-day week month" example is the month the Association itself costed in November 2024 (five 16-hour weekday calls, two calls on each day off, every day-off call made up of a 16-hour rostered stretch plus an 8-hour Casualty session), which at the old rates comes to J$406,239.24 for a Medical Officer 1, the figure in the Association's own workbook.</p>
     </div>
-    <p class="help">The boxes below describe <b>one</b> call and <b>one</b> session; they feed the per-call figures in the table and turn the shifts you count in Step 3 into hours. Since the seven-day week, a 24-hour call on a day off (8 a.m. to 8 a.m.) is made up of <b>16 hours of rostered duty</b>, or of covering multiple locations, from 4 p.m. to 8 a.m. <b>plus an 8-hour Casualty session</b> from 8 a.m. to 4 p.m., and the Casualty session is paid at the Casualty session rate for that day type, 50% above the Rostered Duty Rate (section 2(d)(iv)), whether or not you are covering several hospitals, because covering multiple locations is a separate rate under section 2(d)(ii). If your institution pays all 24 hours as rostered duty, put 24 in the first box and 0 in the second.</p>
+    <p class="help">The boxes below describe <b>one</b> call and <b>one</b> session; they turn the calls and sessions you count below into hours and feed the per-call figures in the rate card (Step 3). Since the seven-day week, a 24-hour call on a day off (8 a.m. to 8 a.m.) is made up of <b>16 hours of rostered duty</b>, or of covering multiple locations, from 4 p.m. to 8 a.m. <b>plus an 8-hour Casualty session</b> from 8 a.m. to 4 p.m., and the Casualty session is paid at the Casualty session rate for that day type, 50% above the Rostered Duty Rate (section 2(d)(iv)), whether or not you are covering several hospitals, because covering multiple locations is a separate rate under section 2(d)(ii). If your institution pays all 24 hours as rostered duty, put 24 in the first box and 0 in the second.</p>
     <div class="row">
       <div class="field" style="flex:1 1 300px"><label for="hWd">Weekday call: hours at the rostered rate <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hWd"></div>
-      <div class="field" style="flex:1 1 300px"><label for="hSess">Hours in one session <span class="sub">ward and Casualty sessions in Step 3; claim forms use 4</span></label><input type="text" inputmode="numeric" id="hSess"></div>
+      <div class="field" style="flex:1 1 300px"><label for="hSess">Hours in one session <span class="sub">ward and Casualty sessions below; claim forms use 4</span></label><input type="text" inputmode="numeric" id="hSess"></div>
     </div>
     <div class="row">
       <div class="field" style="flex:1 1 300px"><label for="hD1">First-day-off call: hours at the rostered rate <span class="sub">4 p.m. to 8 a.m. = 16</span></label><input type="text" inputmode="numeric" id="hD1"></div>
@@ -346,22 +340,6 @@ details .tablewrap { border-radius: 3px; }
     <div class="row">
       <div class="field" style="flex:0 1 300px"><label for="splitFrom">Day-off calls include the Casualty session from</label><select id="splitFrom"></select></div>
       <div class="field" style="flex:1 1 320px; align-self:end"><span class="sub">The seven-day week began on 1 November 2023 at the Ministry's hospitals and on 1 December 2024 at the University Hospital of the West Indies. Before the month chosen here the whole call is priced at the rostered or multiple-location rate for that day, so for April to October 2023 the two numbers are simply added together.</span></div>
-    </div>
-    <div class="tablewrap">
-      <table id="rateTable" class="stack">
-        <thead><tr><th>Duty category</th><th>Normal weekday</th><th>First day off</th><th>Second day off · public holiday</th></tr></thead>
-        <tbody id="rateBody"></tbody>
-      </table>
-    </div>
-    <p class="help" id="rateCompare"></p>
-  </section>
-
-  <!-- STEP 3 -->
-  <section class="step" id="step3">
-    <div class="step-head">
-      <span class="num">Step 3 · Your month</span>
-      <h2>Duty in a typical month</h2>
-      <p class="help">Enter what you do in a month under each category, split by day type. Each row can be counted in <b>shifts or sessions</b> (a call is the hours set in Step 2, with its Casualty session added automatically for day-off calls from the month set there; a session is 4 hours unless you changed it) or entered straight in <b>hours</b>, whichever matches your claim forms; the hours the row adds up to are shown under it. Every row has its own first-day-off and second-day-off cells, including Casualty sessions. The example loaded is roughly a one-in-four on-call roster; the "seven-day week month" example is the month the Association itself costed in November 2024 (five 16-hour weekday calls, two calls on each day off, every day-off call made up of a 16-hour rostered stretch plus an 8-hour Casualty session), which at the old rates comes to J$406,239.24 for a Medical Officer 1, the figure in the Association's own workbook.</p>
     </div>
     <div class="presets"><span>Start from an example:</span>
       <button class="small" type="button" data-preset="oncall">On-call team, one in four</button>
@@ -395,6 +373,22 @@ details .tablewrap { border-radius: 3px; }
     <div class="note"><b>Type C hospitals, Health Centres and cross-coverage.</b> If everything you do is paid at the Casualty session rate, leave the rostered rows at zero and put all your sessions or hours in the last row, by day type. The Award prices them at 50% above the rostered rate for that day type (section 2(d)(iv)), so a Casualty session on your first day off is worth more than one on a weekday and one on your second day off or a public holiday more still. If your pattern changed part-way through the back-pay period (for many hospitals, from 1 November 2023 when the seven-day week began), enter today's pattern here and add the earlier one as a roster change in Step 5.</div>
   </section>
 
+  <!-- STEP 3 -->
+  <section class="step" id="step3">
+    <div class="step-head">
+      <span class="num">Step 3 · Rate card</span>
+      <h2>Your rates per hour and per call</h2>
+      <p class="help">Multipliers from Award section 2(d). Every category, including Casualty and the other 50% categories, has its own rate for each of the three day types: a normal weekday, your <b>first day off</b> and your <b>second day off</b> (the two rest days of the seven-day week, which can fall on any day; public holidays are priced at the second-day-off rate, as the Ministry of Finance's comparison tables and the February 2026 holiday-rate settlement treat them). For April to October 2023, before the seven-day week, read "first day off" as Saturday and "second day off" as Sunday or a public holiday.</p>
+    </div>
+    <div class="tablewrap">
+      <table id="rateTable" class="stack">
+        <thead><tr><th>Duty category</th><th>Normal weekday</th><th>First day off</th><th>Second day off · public holiday</th></tr></thead>
+        <tbody id="rateBody"></tbody>
+      </table>
+    </div>
+    <p class="help" id="rateCompare"></p>
+  </section>
+
   <!-- STEP 4 -->
   <section class="step" id="step4">
     <div class="step-head">
@@ -424,7 +418,7 @@ details .tablewrap { border-radius: 3px; }
     <div class="breakdown" id="mBreak"></div>
     <details id="workingDetails">
       <summary>Show the working, line by line</summary>
-      <div class="inner"><div class="working" id="mWorking"></div><p class="help">Each line is hours × the rate for that category and day type from Step 2. Check any line by hand: the rate is the hourly base × the multiplier (× 1.25 for ward sessions, × 1.5 for Casualty and the other 50% categories).</p></div>
+      <div class="inner"><div class="working" id="mWorking"></div><p class="help">Each line is hours × the rate for that category and day type from Step 3. Check any line by hand: the rate is the hourly base × the multiplier (× 1.25 for ward sessions, × 1.5 for Casualty and the other 50% categories).</p></div>
     </details>
     <div class="compare">
       <div class="box award"><span class="lab">Under the Award</span><span class="val" id="cAward">select grade</span><span class="sub">midpoint base · 1.5 / 1.75 / 2.0 · sessional premiums</span></div>
@@ -438,11 +432,11 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Step 5 · Back-pay</span>
       <h2>Retroactive to 1 April 2023</h2>
-      <p class="help">Both the Emergency Duty Allowance formulas and the reinstated Incentive Allowance take effect from 1 April 2023 (Award section 2(e) and 3(a); paragraph 83). Each month is priced on that fiscal year's published scale with your Step 3 pattern, or with the earlier pattern you add below for the months before it changed. What was already paid is estimated from the old 2017 to 2021 rates (shown and editable further down) unless you enter your own monthly average.</p>
+      <p class="help">Both the Emergency Duty Allowance formulas and the reinstated Incentive Allowance take effect from 1 April 2023 (Award section 2(e) and 3(a); paragraph 83). Each month is priced on that fiscal year's published scale with your Step 2 pattern, or with the earlier pattern you add below for the months before it changed. What was already paid is estimated from the old 2017 to 2021 rates (shown and editable further down) unless you enter your own monthly average.</p>
     </div>
     <div class="change" id="changesBox">
       <div class="change-head"><h3>Did your pattern of duty change during the period?</h3><button class="small" type="button" id="addChange">Add an earlier pattern</button></div>
-      <p class="help" style="max-width:none">Your Step 3 pattern applies to every month unless you say otherwise here. Add a pattern for the months <b>before</b> a change and set the last month it applies to. The usual case: a pattern ending in October 2023 for April to October 2023, before the seven-day week began at most Ministry hospitals on 1 November 2023 (the February 2026 settlement with the Ministry fixes that date, or the date your own hospital started, as the point from which holiday rates and Casualty sessions on days off are corrected). The University Hospital only moved to the seven-day week on 1 December 2024, so its doctors would end the earlier pattern in November 2024. Each earlier pattern runs from the month after the previous one ends; your Step 3 pattern takes over after the last of them and runs to today.</p>
+      <p class="help" style="max-width:none">Your Step 2 pattern applies to every month unless you say otherwise here. Add a pattern for the months <b>before</b> a change and set the last month it applies to. The usual case: a pattern ending in October 2023 for April to October 2023, before the seven-day week began at most Ministry hospitals on 1 November 2023 (the February 2026 settlement with the Ministry fixes that date, or the date your own hospital started, as the point from which holiday rates and Casualty sessions on days off are corrected). The University Hospital only moved to the seven-day week on 1 December 2024, so its doctors would end the earlier pattern in November 2024. Each earlier pattern runs from the month after the previous one ends; your Step 2 pattern takes over after the last of them and runs to today.</p>
       <div id="changeList" style="display:grid; gap:10px"></div>
     </div>
     <div class="row">
@@ -599,7 +593,7 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Claim letter</span>
       <h2>Letter to your pay station</h2>
-      <p class="help">A one-page draft to send to the Human Resource Manager of the institution that pays you, copied to the Chief Executive Officer and the Senior Medical Officer. Fill in the fields; the letter updates as you type. "Print letter" lays it out on a single letter-size page (choose "Save as PDF" in the print dialog to keep a copy). Check it against the Association's official template before sending.</p>
+      <p class="help">A short draft to send to the Human Resource Manager of the institution that pays you, copied to the Chief Executive Officer and the Senior Medical Officer. Fill in the fields; the letter updates as you type. Copy it onto your letterhead; at 12 point with normal margins it fits one letter-size page. Check it against the Association's official template before sending.</p>
     </div>
     <div class="row">
       <div class="field"><label for="lName">Your name</label><input type="text" id="lName" placeholder="Dr. First Last"></div>
@@ -616,7 +610,7 @@ details .tablewrap { border-radius: 3px; }
       <div class="field"><label for="lDate">Date of letter</label><input type="text" id="lDate"></div>
     </div>
     <textarea class="copybox letterbox" id="letterBox" readonly aria-label="Draft claim letter"></textarea>
-    <div class="actions"><button class="primary" type="button" id="copyLetter">Copy letter</button><button type="button" id="printLetter">Print letter (one letter-size page)</button></div>
+    <div class="actions"><button class="primary" type="button" id="copyLetter">Copy letter</button></div>
   </section>
 
   <!-- METHOD -->
@@ -631,9 +625,9 @@ details .tablewrap { border-radius: 3px; }
         <li><b>Rostered duty.</b> Base × 1.5 (weekday), × 1.75 (first day off), × 2.0 (second day off; public holidays priced the same). Section 2(d)(i).</li>
         <li><b>Covering multiple locations.</b> Base × 1.75 / 2.0 / 2.25. Senior House Officers and Medical Officers 1 to 3. Section 2(d)(ii).</li>
         <li><b>Ward sessions</b> at 25% above the rostered rate for that day type; <b>Casualty, Type C, Health Centre and cross-coverage</b> at 50% above it, on weekdays and on both days off alike. Section 2(d)(iii) and (iv).</li>
-        <li><b>Units.</b> Every row in Step 3 is turned into hours before it is priced: calls × the hours in one call (Step 2), with each day-off call from the seven-day week onward split into its rostered or multiple-location hours and its Casualty session hours (priced at the Casualty session rate for that day type), sessions × the hours in one session, or the hours you typed. Hours × the rate for that category and day type gives each line of the working shown under the monthly result.</li>
+        <li><b>Units.</b> Every row in Step 2 is turned into hours before it is priced: calls × the hours in one call (the boxes at the top of Step 2), with each day-off call from the seven-day week onward split into its rostered or multiple-location hours and its Casualty session hours (priced at the Casualty session rate for that day type), sessions × the hours in one session, or the hours you typed. Hours × the rate for that category and day type gives each line of the working shown under the monthly result.</li>
         <li><b>Incentive Allowance.</b> 40% or 55% of the scale midpoint per year, shown as the annual amount ÷ 12, removed for any month with rostered emergency duty hours (paragraph 85). For single-point grades the midpoint is the salary itself.</li>
-        <li><b>Back-pay.</b> Every month from April 2023 to the month you choose is priced on that fiscal year's published scale with the pattern in force for that month (your Step 3 pattern, or an earlier pattern you added in Step 5 for the months before it changed), then summed. "Already paid" at the old rates uses the 2017-2021 per-hour and per-four-hour-session rates the Ministry of Finance listed as "current" in its comparison table of 29 August 2024, as shown in the editable table in Step 5 (for Interns and Locum Interns the Senior House Officer session rates stand in where none was listed). The Incentive Allowance has not been paid since April 2023, so nothing is deducted for it.</li>
+        <li><b>Back-pay.</b> Every month from April 2023 to the month you choose is priced on that fiscal year's published scale with the pattern in force for that month (your Step 2 pattern, or an earlier pattern you added in Step 5 for the months before it changed), then summed. "Already paid" at the old rates uses the 2017-2021 per-hour and per-four-hour-session rates the Ministry of Finance listed as "current" in its comparison table of 29 August 2024, as shown in the editable table in Step 5 (for Interns and Locum Interns the Senior House Officer session rates stand in where none was listed). The Incentive Allowance has not been paid since April 2023, so nothing is deducted for it.</li>
         <li><b>Net pay.</b> Basic salary at your own point ÷ 12, plus the month's duty pay and allowance. Pension at the set percentage of basic salary; National Insurance on gross up to one twelfth of the annual ceiling; Education Tax on gross less National Insurance and pension; National Housing Trust on gross; income tax on the same statutory income above one twelfth of the annual threshold, with the part above one twelfth of J$6,000,000 at 30%. The back-pay rate the model suggests treats the lump sum as extra income in the year it is paid: no pension on it, National Insurance only where the ceiling has not already been reached and income tax at the marginal rate.</li>
       </ol>
       <h3>Read before quoting a number</h3>
@@ -662,9 +656,9 @@ details .tablewrap { border-radius: 3px; }
         <tr><td>Medical Officer 3</td><td>$3,800</td></tr>
       </tbody></table></div>
       <div class="join-links">
-        <a class="primary" href="https://form.jotform.com/212635405385859" target="_blank" rel="noopener">📝 Subscribe here</a>
-        <a href="https://www.fygaro.com/en/pb/003a8112-59a8-48ee-bc48-1397686153b4/" target="_blank" rel="noopener">💳 Pay here</a>
-        <a href="https://forms.gle/jCrnT2BGJSNZQYKJA" target="_blank" rel="noopener">📤 Upload receipt here</a>
+        <a class="primary" href="https://form.jotform.com/212635405385859" target="_blank" rel="noopener"><span class="n">1.</span> 📝 Subscribe here</a>
+        <a href="https://www.fygaro.com/en/pb/003a8112-59a8-48ee-bc48-1397686153b4/" target="_blank" rel="noopener"><span class="n">2.</span> 💳 Pay here</a>
+        <a href="https://forms.gle/jCrnT2BGJSNZQYKJA" target="_blank" rel="noopener"><span class="n">3.</span> 📤 Upload receipt here</a>
       </div>
     </section>
     <div class="footer"><b>Jamaica Medical Doctors' Association</b> &nbsp;|&nbsp; jmdakingston7@gmail.com &nbsp;|&nbsp; 876-977-2512 / 876-470-7919</div>
@@ -682,7 +676,6 @@ details .tablewrap { border-radius: 3px; }
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<div class="letter-print" id="letterPrint" aria-hidden="true"></div>
 
 <script id="core">
 // Calculation core for the Award calculator. No DOM access, so it can be tested on its own with node.
@@ -1031,12 +1024,12 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   if (!state.callSplitAdopted) adoptCallSplit(state);
   function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
 
-  // The pattern in force in a given month: the earliest-ending earlier pattern whose "until" month is on or after it, else the Step 3 pattern.
+  // The pattern in force in a given month: the earliest-ending earlier pattern whose "until" month is on or after it, else the Step 2 pattern.
   function sortedChanges() { return state.changes.slice().sort(function (a, b) { return (a.until.y - b.until.y) || (a.until.m - b.until.m); }); }
   function patternAt(d) {
     var cs = sortedChanges();
     for (var i = 0; i < cs.length; i++) { var u = cs[i].until; if (d.y < u.y || (d.y === u.y && d.m <= u.m)) return { roster: cs[i].roster, label: 'to ' + monthLabel(u), index: i + 1 }; }
-    return { roster: state.roster, label: 'Step 3', index: 0 };
+    return { roster: state.roster, label: 'Step 2', index: 0 };
   }
   // Hours for a roster in a given month (d); without a month, the Casualty session inside day-off calls applies if it has begun by the end of the fiscal year shown in Step 1.
   function viewMonth() { return { y: state.fy + 1, m: 3 }; }
@@ -1133,7 +1126,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       $('u_' + k).addEventListener('change', function () { state.roster.unit[k] = $('u_' + k).value; update(); });
     });
     var pre = document.querySelectorAll('[data-preset]');
-    for (var pi = 0; pi < pre.length; pi++) pre[pi].addEventListener('click', function (e) { var key = e.target.getAttribute('data-preset'), P = PRESETS[key]; state.roster = copyRoster(P); if (P.hours) state.hours = P.hours.slice(); if (P.callSess) state.callSess = P.callSess.slice(); if (P.sessHours) state.sessHours = P.sessHours; refreshInputs(); update(); toast(key === 'clear' ? 'Step 3 cleared' : (P.hours ? 'Example loaded; Step 2 set to 16-hour calls with an 8-hour Casualty session inside each day-off call' : 'Example loaded into Step 3')); });
+    for (var pi = 0; pi < pre.length; pi++) pre[pi].addEventListener('click', function (e) { var key = e.target.getAttribute('data-preset'), P = PRESETS[key]; state.roster = copyRoster(P); if (P.hours) state.hours = P.hours.slice(); if (P.callSess) state.callSess = P.callSess.slice(); if (P.sessHours) state.sessHours = P.sessHours; refreshInputs(); update(); toast(key === 'clear' ? 'Step 2 cleared' : (P.hours ? 'Example loaded; calls set to 16 hours with an 8-hour Casualty session inside each day-off call' : 'Example loaded into Step 2')); });
     $('addChange').addEventListener('click', function () {
       var cs = sortedChanges(), until = cs.length ? nextMonth(cs[cs.length - 1].until) : { y: 2023, m: 10 };
       if (until.y > state.end.y || (until.y === state.end.y && until.m >= state.end.m)) until = { y: 2023, m: 10 };
@@ -1173,8 +1166,6 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('barCopy').addEventListener('click', function () { copyText($('summaryBox'), 'Summary copied'); });
     $('copyMonths').addEventListener('click', function () { copyRaw(monthsTSV(), 'Table copied'); });
     $('copyLetter').addEventListener('click', function () { copyText($('letterBox'), 'Letter copied'); });
-    $('printLetter').addEventListener('click', function () { $('letterPrint').textContent = $('letterBox').value; document.body.classList.add('print-letter'); setTimeout(function () { try { window.print(); } catch (e) { toast('Printing is not available in this viewer; use Copy letter instead'); } }, 60); });
-    window.addEventListener('afterprint', function () { document.body.classList.remove('print-letter'); });
     ['lName:name', 'lReg:reg', 'lDept:dept', 'lInst:inst', 'lRegion:region', 'lStart:start', 'lContact:contact', 'lDate:date'].forEach(function (p) { var a = p.split(':'); bindText(a[0], function () { return state.letter[a[1]]; }, function (v) { state.letter[a[1]] = v; }); });
     if (!state.letter.date) { var t = new Date(); state.letter.date = t.getDate() + ' ' + MONTHS_LONG[t.getMonth()] + ' ' + t.getFullYear(); }
     renderQA();
@@ -1212,7 +1203,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     }
     $('scaleTable').querySelector('tbody').innerHTML = st.join('');
 
-    // Step 2
+    // Step 3: rate card
     var rc = pts ? CORE.rateCard(grade, pts, state.hours) : null, body = $('rateBody');
     if (!rc) body.innerHTML = '<tr><td colspan="4" class="muted">Enter the scale in Step 1.</td></tr>';
     else {
@@ -1231,7 +1222,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       $('rateCompare').innerHTML = 'For comparison, the old 2017-2021 rostered duty rate for a ' + esc(gi.label) + ' was <b>' + fmt(oldR[0], 2) + '</b> an hour on a weekday, ' + fmt(oldR[1], 2) + ' on the first day off and ' + fmt(oldR[2], 2) + ' on the second day off, and a four-hour Casualty session paid ' + fmt(oldC[0]) + ' / ' + fmt(oldC[1]) + ' / ' + fmt(oldC[2]) + '. The Award\'s weekday rate is ' + fmtPlain(rc.rostered[0] / oldR[0], 1) + ' times the old one. These old rates are what "already paid" is estimated from in Step 5, where you can change them.';
     }
 
-    // Monthly: every Step 3 row becomes hours first, then hours × the rate for that category and day type
+    // Monthly: every Step 2 row becomes hours first, then hours × the rate for that category and day type
     var iaCfg = { eligible: state.ia.eligible, pct: state.ia.pct, strict: state.ia.strict };
     var H = hoursOf(state.roster);
     var mo = pts ? CORE.monthlyHours(grade, pts, H, iaCfg, state.hours) : null;
@@ -1257,7 +1248,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
       $('mBreak').innerHTML = b.join('');
       var w = [];
       mo.lines.forEach(function (L) { var mult = L.rate / rc.base; w.push('<div><span class="k">' + esc(ROW_LABEL[L.k]) + ', ' + DAY_LABEL[L.i] + ': <code>' + fmtPlain(L.hours, 2).replace(/\.?0+$/, '') + ' hours × ' + fmt(L.rate, 2) + '</code> <small>(' + fmt(rc.base, 2) + ' × ' + fmtPlain(mult, 3).replace(/\.?0+$/, '') + ')</small></span><span>' + fmt(L.amount, 2) + '</span></div>'); });
-      if (!mo.lines.length) w.push('<div><span class="k">No duty entered in Step 3.</span><span></span></div>');
+      if (!mo.lines.length) w.push('<div><span class="k">No duty entered in Step 2.</span><span></span></div>');
       w.push('<div class="t"><span class="k">Emergency Duty Allowance for the month</span><span>' + fmt(mo.eda, 2) + '</span></div>');
       if (state.ia.eligible && mo.ia) w.push('<div><span class="k">Incentive Allowance: <code>' + fmtPlain(rc.midpoint, 1) + ' × ' + state.ia.pct + '% ÷ 12</code></span><span>' + fmt(mo.ia, 2) + '</span></div>');
       $('mWorking').innerHTML = w.join('');
@@ -1304,7 +1295,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('barRetro').textContent = none ? EMPTY : fmt(R.total.gap * keep);
     var mb = [];
     R.rows.forEach(function (r) {
-      r.pattern = r.active ? (patLabels[r.y + '-' + r.m] || 'Step 3') : '';
+      r.pattern = r.active ? (patLabels[r.y + '-' + r.m] || 'Step 2') : '';
       mb.push('<tr' + (r.active ? '' : ' class="muted"') + '><td>' + monthLabel(r) + (r.active ? '' : '<span class="per">not counted</span>') + '</td><td>' + CORE.fyLabel(r.fy) + '</td><td>' + esc(G[r.grade].label) + '</td><td>' + esc(r.pattern) + '</td><td>' + (r.active ? fmtPlain(r.hours, 1).replace(/\.0$/, '') : '') + '</td><td>' + (r.base != null ? fmt(r.base, 2) : 'no scale') + '</td><td>' + fmt(r.eda) + '</td><td>' + fmt(r.ia) + '</td><td>' + fmt(r.total) + '</td><td>' + fmt(r.paid) + '</td><td>' + fmt(r.gap) + '</td></tr>');
     });
     $('monthBody').innerHTML = mb.join('');
@@ -1315,7 +1306,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     save();
   }
 
-  // Under each Step 3 row (and each earlier pattern): the hours the row adds up to and what they are worth at the Award's rates
+  // Under each Step 2 row (and each earlier pattern): the hours the row adds up to and what they are worth at the Award's rates
   function renderRowSums(roster, H, rc, prefix) {
     ROWS.forEach(function (k) {
       var el = $(prefix + 's_' + k), box = el ? el.parentNode : null; if (!el) return;
@@ -1414,7 +1405,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     var rows = [];
     rows.push('<tr><th>Earnings for the month</th><th>J$</th></tr>');
     rows.push('<tr><td>Basic salary · ' + esc(gi.label) + (gi.mo ? ', point ' + (state.ownPoint || 1) : '') + ' · ' + fmtPlain(basicAnnual) + ' a year ÷ 12</td><td>' + fmtPlain(net.basic, 2) + '</td></tr>');
-    rows.push('<tr><td>Emergency Duty Allowance (Step 3 roster at the Award\'s rates)</td><td>' + fmtPlain(net.eda, 2) + '</td></tr>');
+    rows.push('<tr><td>Emergency Duty Allowance (Step 2 roster at the Award\'s rates)</td><td>' + fmtPlain(net.eda, 2) + '</td></tr>');
     rows.push('<tr><td>Incentive Allowance' + (state.ia.eligible ? '' : ' (not claimed)') + '</td><td>' + fmtPlain(net.ia, 2) + '</td></tr>');
     rows.push('<tr class="total"><td>Gross pay</td><td>' + fmtPlain(net.gross, 2) + '</td></tr>');
     rows.push('<tr><th>Deductions</th><th>J$</th></tr>');
@@ -1496,19 +1487,19 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     t.push('');
     t.push('Dear Sir or Madam,');
     t.push('');
-    t.push('CLAIM FOR RETROACTIVE EMERGENCY DUTY ALLOWANCE' + (ia ? ' AND INCENTIVE ALLOWANCE' : '') + ' UNDER INDUSTRIAL DISPUTES TRIBUNAL AWARD 1/2025 OF 5 OCTOBER 2026');
+    t.push('CLAIM UNDER INDUSTRIAL DISPUTES TRIBUNAL AWARD 1/2025 OF 5 OCTOBER 2026: RETROACTIVE EMERGENCY DUTY ALLOWANCE' + (ia ? ' AND INCENTIVE ALLOWANCE' : ''));
     t.push('');
-    t.push('I, ' + name + (L.reg ? ' (Medical Council of Jamaica registration number ' + L.reg + ')' : '') + ', ' + gi.label + ', ' + dept + ', ' + inst + ', claim the payments due to me under the above Award, which binds every employing authority of doctors in the Association\'s bargaining unit, including the Ministry of Health and Wellness, the Regional Health Authorities and the University Hospital of the West Indies (section 1(a)).');
+    t.push('I, ' + name + (L.reg ? ' (Medical Council of Jamaica registration number ' + L.reg + ')' : '') + ', ' + gi.label + ', ' + dept + ', ' + inst + ', claim the payments due to me under the above Award, which binds every employing authority of doctors in the Association\'s bargaining unit (section 1(a)).');
     t.push('');
-    t.push('1. Emergency Duty Allowance. Section 2 prices emergency duty at ' + (gi.mo ? 'the midpoint of my grade\'s restructured salary scale divided by 2,080 hours' : 'my annual basic salary divided by 2,080 hours') + ', times 1.5 on a weekday, 1.75 on the first day off and 2.0 on the second day off (1.75, 2.0 and 2.25 for covering multiple locations), with ward sessions at 25% above the rostered rate and Casualty, Type C, Health Centre and cross-coverage duties at 50% above it, retroactive to 1 April 2023 (section 2(e)). I ask that every hour of rostered duty, sessional, multiple-location and coverage work I have performed since ' + start + ' be recalculated at these rates and that the difference between what I was paid and what the Award provides be paid to me.');
+    t.push('1. Emergency Duty Allowance. Section 2 prices emergency duty at ' + (gi.mo ? 'the midpoint of my grade\'s restructured scale' : 'my annual basic salary') + ' divided by 2,080 hours, times 1.5 on a weekday, 1.75 on the first day off and 2.0 on the second day off (1.75, 2.0 and 2.25 for multiple locations), with ward sessions 25% and Casualty, Type C, Health Centre and cross-coverage duties 50% above the rostered rate, retroactive to 1 April 2023 (section 2(e)). Please recalculate every hour I have worked since ' + start + ' at these rates and pay me the difference.');
     t.push('');
     if (ia) {
-      t.push('2. Incentive Allowance. Section 3 reinstates the allowance from 1 April 2023 at ' + state.ia.pct + '% of the scale midpoint for eligible non-rostered medical officers. I am eligible under the categories in the 2017-2021 Heads of Agreement and claim it from ' + start + ' for every month in which I performed no rostered emergency duty shift (paragraph 85), and going forward.');
+      t.push('2. Incentive Allowance. Section 3 reinstates it from 1 April 2023 at ' + state.ia.pct + '% of the scale midpoint for eligible non-rostered medical officers. I claim it from ' + start + ' for every month without a rostered emergency duty shift (paragraph 85), and going forward.');
       t.push('');
     }
-    t.push((ia ? '3' : '2') + '. Statement of account. Please provide a monthly statement showing the hours and sessions recognised by category and day type, the rate applied, the amount previously paid, the amount now due and the payment date. My rosters and claim forms are available on request.');
+    t.push((ia ? '3' : '2') + '. Statement of account. Please provide a monthly statement of the hours recognised by category and day type, the rate applied, the amount previously paid and the amount now due. My rosters and claim forms are available on request.');
     t.push('');
-    t.push('Kindly acknowledge this claim in writing within fourteen days and advise the timeline for payment. A copy goes to my Jamaica Medical Doctors\' Association representative.');
+    t.push('Kindly acknowledge this claim in writing within fourteen days and advise when payment will be made. A copy goes to my Association representative.');
     t.push('');
     t.push('Yours faithfully,');
     t.push('');
@@ -1530,9 +1521,9 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     ['It is paid "in lieu of" duties. If I do a session, do I still get it?',
      'The Award\'s words are precise: a doctor "who performs a rostered emergency duty shift in a given calendar month shall be disqualified from receiving the Incentive Allowance for that month" (paragraph 85). A ward or clinic session is not a rostered emergency duty shift and the calculator does not count it as disqualifying unless you tick the strict reading. Expect employers to argue the stricter reading; keep your rosters and claim forms separate and clear.'],
     ['I only work Accident and Emergency, or a Health Centre, or a Type C hospital paid at the Casualty session rate. What does the Award give me?',
-     'The 50% premium, by day type. Casualty, Type C, Health Centre and cross-coverage sessions are paid at 50% above the rostered duty rate for the day they fall on, off the scale midpoint: a weekday session at 1.5 × 1.5 = 2.25 times the hourly base, a first-day-off session at 1.75 × 1.5 = 2.625 times and a second-day-off or public-holiday session at 2.0 × 1.5 = 3 times. In Step 3 use the "Type C, paid at the Casualty session rate only" example, leave the rostered rows at zero and enter your sessions or hours in the last row under the right day type. Under the seven-day roster, Accident and Emergency doctors work forty ordinary hours over any five days; the extra hours and any work on the two days off are what goes in.'],
+     'The 50% premium, by day type. Casualty, Type C, Health Centre and cross-coverage sessions are paid at 50% above the rostered duty rate for the day they fall on, off the scale midpoint: a weekday session at 1.5 × 1.5 = 2.25 times the hourly base, a first-day-off session at 1.75 × 1.5 = 2.625 times and a second-day-off or public-holiday session at 2.0 × 1.5 = 3 times. In Step 2 use the "Type C, paid at the Casualty session rate only" example, leave the rostered rows at zero and enter your sessions or hours in the last row under the right day type. Under the seven-day roster, Accident and Emergency doctors work forty ordinary hours over any five days; the extra hours and any work on the two days off are what goes in.'],
     ['My pattern changed on 1 November 2023 when the seven-day week started. How do I count April to October 2023?',
-     'Add an earlier pattern in Step 5 and set it to end in October 2023. For those months read "first day off" as Saturday and "second day off" as Sunday or a public holiday, and enter the weekend calls and sessions as you claimed them then. From November 2023 the calculator uses your Step 3 pattern, in which Casualty sessions on your first and second days off have their own cells and rates. The old rates used for "already paid" work the same way for both stretches.'],
+     'Add an earlier pattern in Step 5 and set it to end in October 2023. For those months read "first day off" as Saturday and "second day off" as Sunday or a public holiday, and enter the weekend calls and sessions as you claimed them then. From November 2023 the calculator uses your Step 2 pattern, in which Casualty sessions on your first and second days off have their own cells and rates. The old rates used for "already paid" work the same way for both stretches.'],
     ['I missed a year, or I started after April 2023. What is my back-pay?',
      'Only the months you actually worked count. Set "months worked that year" for each fiscal year in Step 5 and the grade you held. Interns who started in July count nine months in their first fiscal year.'],
     ['I am on point 1. Do I really get the midpoint rate?',
