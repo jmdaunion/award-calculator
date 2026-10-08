@@ -54,7 +54,7 @@ p { margin: 0; }
 a { color: var(--jmda-blue); }
 .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jmda-blue); }
 .lede { color: var(--muted); max-width: 66ch; }
-/* Masthead, as on the memoranda: logo left, address block right, on white paper in either theme */
+/* Masthead as on the memoranda: logo left, address block right, on white paper in either theme */
 .masthead { background: var(--paper); color: var(--paper-ink); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; padding: 6px 4px 12px; border-bottom: 1px solid var(--line); margin-bottom: 6px; }
 .masthead img { display: block; width: 190px; max-width: 58vw; height: auto; }
 .masthead .addr { font-size: 12.5px; line-height: 1.45; color: #2B3A48; text-align: right; }
@@ -334,7 +334,7 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Step 2 · Rate card</span>
       <h2>Your rates per hour and per call</h2>
-      <p class="help">Multipliers from Award section 2(d). Every category, including Casualty and the other 50% categories, has its own rate for each of the three day types: a normal weekday, your <b>first day off</b> and your <b>second day off</b> (the two rest days of the seven-day week, which can fall on any day; public holidays are priced at the second-day-off rate, as the Ministry of Finance's comparison tables and the February 2026 holiday-rate settlement treat them). For April to October 2023, before the seven-day week, read "first day off" as Saturday and "second day off" as Sunday or a public holiday.</p>
+      <p class="help">Multipliers from Award section 2(d). Every category, including Casualty and the other 50% categories, has its own rate for each of the three day types: a normal weekday, your <b>first day off</b> and your <b>second day off</b> (the two rest days of the seven-day week, which can fall on any day; public holidays are priced at the second-day-off rate as the Ministry of Finance's comparison tables and the February 2026 holiday-rate settlement treat them). For April to October 2023, before the seven-day week, read "first day off" as Saturday and "second day off" as Sunday or a public holiday.</p>
     </div>
     <div class="tablewrap">
       <table id="rateTable" class="stack">
@@ -423,12 +423,12 @@ details .tablewrap { border-radius: 3px; }
     </details>
     <div class="presets"><span>Or load an example:</span>
       <button class="small" type="button" data-preset="oncall">On-call team, one in four</button>
-      <button class="small" type="button" data-preset="sevenday">Seven-day week month, as the Association costed it</button>
+      <button class="small" type="button" data-preset="sevenday">Seven-day work week as the Association costed it</button>
       <button class="small" type="button" data-preset="casualty">Casualty sessions only</button>
       <button class="small" type="button" data-preset="typec">Type C hospital, one in four</button>
       <button class="small" type="button" data-preset="clear">Clear all</button>
     </div>
-    <p class="help">The "seven-day week month" example is the month the Association itself costed in November 2024: five 16-hour weekday calls and two calls on each day off, each day-off call being 16 rostered hours plus an 8-hour Casualty session, which at the old rates comes to J$406,239.24 for a Medical Officer 1, the figure in the Association's own workbook. If your pattern changed part-way through the back-pay period, enter today's pattern here and add the earlier one in Step 5.</p>
+    <p class="help">The "Seven-day work week" example is the month the Association itself costed in November 2024: five 16-hour weekday calls and two calls on each day off, each day-off call being 16 rostered hours plus an 8-hour Casualty session, which at the old rates comes to J$406,239.24 for a Medical Officer 1, the figure in the Association's own workbook. If your pattern changed part-way through the back-pay period, enter today's pattern here and add the earlier one in Step 5.</p>
   </section>
 
   <!-- STEP 4 -->
@@ -478,7 +478,7 @@ details .tablewrap { border-radius: 3px; }
     </div>
     <div class="change" id="changesBox">
       <div class="change-head"><h3>Did your pattern of duty change during the period?</h3><button class="small" type="button" id="addChange">Add an earlier pattern</button></div>
-      <p class="help" style="max-width:none">Your Step 3 pattern applies to every month unless you say otherwise here. Add a pattern for the months <b>before</b> a change and set the last month it applies to. The usual case: a pattern ending in October 2023 for April to October 2023, before the seven-day week began at most Ministry hospitals on 1 November 2023 (the February 2026 settlement with the Ministry fixes that date or the date your own hospital started, as the point from which holiday rates and Casualty sessions on days off are corrected). The University Hospital only moved to the seven-day week on 1 December 2024, so its doctors would end the earlier pattern in November 2024. Each earlier pattern runs from the month after the previous one ends; your Step 3 pattern takes over after the last of them and runs to today.</p>
+      <p class="help" style="max-width:none">Your Step 3 pattern applies to every month unless you say otherwise here. Add a pattern for the months <b>before</b> a change and set the last month it applies to. The usual case: a pattern ending in October 2023 for April to October 2023, before the seven-day week began at most Ministry hospitals on 1 November 2023 (the February 2026 settlement with the Ministry fixes that date or the date your own hospital started as the point from which holiday rates and Casualty sessions on days off are corrected). The University Hospital only moved to the seven-day week on 1 December 2024, so its doctors would end the earlier pattern in November 2024. Each earlier pattern runs from the month after the previous one ends; your Step 3 pattern takes over after the last of them and runs to today.</p>
       <div id="changeList" style="display:grid; gap:10px"></div>
     </div>
     <div class="row">
@@ -489,7 +489,7 @@ details .tablewrap { border-radius: 3px; }
     <details id="oldDetails">
       <summary>The old 2017-2021 rates used for "already paid"</summary>
       <div class="inner">
-        <p class="help" style="max-width:none">These are the Heads of Agreement rates the pay stations kept using after the contract expired, as scheduled in the Memorandum of Understanding of 16 March 2023 (Compensation Unit schedule of 1 December 2021, which the Memorandum says "continue to apply") and listed again by the Ministry of Finance under "current rates" in its comparison table of 29 August 2024: per hour for rostered and multiple-location duty, per four-hour session for ward and Casualty sessions, each by day type. They are the April 2021 figures (4% above 2020, which is why the Association's December 2021 arrears notice quoted a difference of J$590.73 per weekday Casualty session). They are shown for the grade chosen in Step 1 and for the grade set for each year below. If your pay station paid different figures, type yours over them; the back-pay changes at once.</p>
+        <p class="help" style="max-width:none">These are the Heads of Agreement rates the pay stations kept using after the contract expired as scheduled in the Memorandum of Understanding of 16 March 2023 (Compensation Unit schedule of 1 December 2021, which the Memorandum says "continue to apply") and listed again by the Ministry of Finance under "current rates" in its comparison table of 29 August 2024: per hour for rostered and multiple-location duty, per four-hour session for ward and Casualty sessions, each by day type. They are the April 2021 figures (4% above 2020, which is why the Association's December 2021 arrears notice quoted a difference of J$590.73 per weekday Casualty session). They are shown for the grade chosen in Step 1 and for the grade set for each year below. If your pay station paid different figures, type yours over them; the back-pay changes at once.</p>
         <details>
           <summary>Where the old rates came from, and three cases to watch</summary>
           <div class="inner">
@@ -665,7 +665,7 @@ details .tablewrap { border-radius: 3px; }
         <li><b>Ward sessions</b> at 25% above the rostered rate for that day type; <b>Casualty, Type C, Health Centre and cross-coverage</b> at 50% above it, on weekdays and on both days off alike. Section 2(d)(iii) and (iv).</li>
         <li><b>Units.</b> Every duty box in Step 3 is turned into hours before it is priced: calls × the hours in one call (set under "How long is one call or one session" in Step 3), with each day-off call from the seven-day week onward split into its rostered or multiple-location hours and its Casualty session hours (priced at the Casualty session rate for that day type), sessions × the hours in one session or the hours you typed. Hours × the rate for that category and day type gives each line of the working shown under the monthly result.</li>
         <li><b>Incentive Allowance.</b> 40% or 55% of the scale midpoint per year, shown as the annual amount ÷ 12, removed for any month with rostered emergency duty hours (paragraph 85). For single-point grades the midpoint is the salary itself.</li>
-        <li><b>Back-pay.</b> Every month from April 2023 to the month you choose is priced on that fiscal year's published scale with the pattern in force for that month (your Step 3 pattern or an earlier pattern you added in Step 5 for the months before it changed), then summed. "Already paid" at the old rates uses the 2017-2021 per-hour and per-four-hour-session rates the Ministry of Finance listed as "current" in its comparison table of 29 August 2024, as shown in the table in Step 5, where you can change them (for Interns and Locum Interns the Senior House Officer session rates stand in where none was listed). The Incentive Allowance has not been paid since April 2023, so nothing is deducted for it.</li>
+        <li><b>Back-pay.</b> Every month from April 2023 to the month you choose is priced on that fiscal year's published scale with the pattern in force for that month (your Step 3 pattern or an earlier pattern you added in Step 5 for the months before it changed), then summed. "Already paid" at the old rates uses the 2017-2021 per-hour and per-four-hour-session rates the Ministry of Finance listed as "current" in its comparison table of 29 August 2024 as shown in the table in Step 5, where you can change them (for Interns and Locum Interns the Senior House Officer session rates stand in where none was listed). The Incentive Allowance has not been paid since April 2023, so nothing is deducted for it.</li>
         <li><b>Net pay.</b> Basic salary at your own point ÷ 12, plus the month's duty pay and allowance. Pension at the set percentage of basic salary; National Insurance on gross up to one twelfth of the annual ceiling; Education Tax on gross less National Insurance and pension; National Housing Trust on gross; income tax on the same statutory income above one twelfth of the annual threshold, with the part above one twelfth of J$6,000,000 at 30%. The back-pay rate the model suggests treats the lump sum as extra income in the year it is paid: no pension on it, National Insurance only where the ceiling has not already been reached and income tax at the marginal rate.</li>
       </ol>
       <h3>Read before quoting a number</h3>
@@ -818,7 +818,7 @@ var CORE = (function () {
   // callSess = Casualty session hours inside one call, by day type (from the seven-day week a 24-hour day-off call is 16 hours of rostered or
   // multiple-location duty from 4 p.m. to 8 a.m. plus an 8-hour Casualty session from 8 a.m. to 4 p.m., paid at the Casualty session rate for
   // that day type, section 2(d)(iv)). split = true prices those hours as Casualty sessions (H.callSess); false folds them into the call at the
-  // rostered rate, as every hour of a day-off call was before the seven-day week. Rows entered straight in hours are taken as entered.
+  // rostered rate as every hour of a day-off call was before the seven-day week. Rows entered straight in hours are taken as entered.
   // Premium rows (Casualty, Type C, Health Centre, cross coverage) are counted in sessions (the default), entered in hours or, for a doctor whose
   // whole call is paid at the Casualty session rate, counted in calls ('shifts': every hour of the call, day-off Casualty block included, at the premium rate).
   function rosterHours(roster, hours, sessHours, callSess, split) {
@@ -1575,7 +1575,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   }
 
   // ---------- letter ----------
-  // The kinds of duty ticked in Step 3, as a phrase for the letter ("rostered emergency duty, Casualty sessions and ward sessions")
+  // The kinds of duty ticked in Step 3 as a phrase for the letter ("rostered emergency duty, Casualty sessions and ward sessions")
   var DUTY_PHRASE = { rostered: 'rostered emergency duty', multi: 'duty covering multiple locations', ward: 'ward sessions', casualty: 'Casualty sessions', typec: 'Type C hospital duty', hc: 'Health Centre sessions', cross: 'cross coverage' };
   function dutyPhrase() {
     var gi = G[state.grade], list = ROWS.filter(function (k) { return state.duties[k] && !(k === 'multi' && gi && !gi.multi); }).map(function (k) { return DUTY_PHRASE[k]; });
@@ -1638,7 +1638,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     ['I am on point 1. Do I really get the midpoint rate?',
      'Yes. Section 2(c) prices duty for Medical Officers 1 to 3 at the midpoint of the grade\'s scale, which is why a doctor on point 1 and a doctor on point 8 earn the same duty rate. Interns, Locum Interns and Senior House Officers have single-point scales, so their own salary is the base.'],
     ['What are "first day off" and "second day off" now that Saturday and Sunday are ordinary days?',
-     'Under the forty-hour, seven-day arrangement your week has five scheduled days and two assigned days off, which can fall on any days. The first of those days off you are called in on is paid at 1.75 times, the second at 2.0 times. Public holidays are paid at the second-day-off rate, as the February 2026 holiday-rate settlement already provides.'],
+     'Under the forty-hour, seven-day arrangement your week has five scheduled days and two assigned days off, which can fall on any days. The first of those days off you are called in on is paid at 1.75 times, the second at 2.0 times. Public holidays are paid at the second-day-off rate as the February 2026 holiday-rate settlement already provides.'],
     ['Will the Government challenge it or take it to the Supreme Court?',
      'Section 12(4)(c) of the Labour Relations and Industrial Disputes Act makes the Award "final and conclusive" and "no proceedings shall be brought in any court to impeach the validity thereof, except on a point of law". That rules out an appeal on the merits. A judicial review on a point of law is possible, most plausibly aimed at the Incentive Allowance limb because of the dissent. The Emergency Duty Allowance limb was unanimous and rests on findings of fact that a court will not reopen.'],
     ['Can they stagger the payment or drag it out?',
