@@ -638,20 +638,16 @@ details .tablewrap { border-radius: 3px; }
     <div class="step-head">
       <span class="num">Claim letter</span>
       <h2>Letter to your pay station</h2>
-      <p class="help">A short draft to send to the Human Resource Manager of the institution that pays you, copied to the Chief Executive Officer and the Senior Medical Officer. Fill in the fields; the letter updates as you type. Copy it onto your letterhead; at 12 point with normal margins it fits one letter-size page. Check it against the Association's official template before sending.</p>
+      <p class="help">A short letter to the Human Resource Manager of the institution that pays you, copied to the Chief Executive Officer, the Senior Medical Officer and the Director of Finance and Accounts. Fill in the fields; your grade comes from Step 1 and the kinds of duty from what you ticked in Step 3, and the letter updates as you type. Copy it onto your letterhead; at 12 point with normal margins it fits one letter-size page.</p>
     </div>
     <div class="row">
       <div class="field"><label for="lName">Your name</label><input type="text" id="lName" placeholder="Dr. First Last"></div>
-      <div class="field"><label for="lReg">Medical Council registration number <span class="sub">optional</span></label><input type="text" id="lReg"></div>
-      <div class="field"><label for="lDept">Department or service</label><input type="text" id="lDept" placeholder="e.g. Accident and Emergency"></div>
-    </div>
-    <div class="row">
+      <div class="field"><label for="lDept">Department</label><input type="text" id="lDept" placeholder="e.g. Accident and Emergency"></div>
       <div class="field"><label for="lInst">Institution (pay station)</label><input type="text" id="lInst" placeholder="e.g. Bustamante Hospital for Children"></div>
-      <div class="field"><label for="lRegion">Employing authority</label><input type="text" id="lRegion" placeholder="e.g. South East Regional Health Authority"></div>
-      <div class="field"><label for="lStart">Claim from <span class="sub">1 April 2023, or your start date if later</span></label><input type="text" id="lStart" value="1 April 2023"></div>
     </div>
     <div class="row">
-      <div class="field"><label for="lContact">Contact details <span class="sub">phone and email</span></label><input type="text" id="lContact"></div>
+      <div class="field"><label for="lRegion">Employer <span class="sub">employing authority</span></label><input type="text" id="lRegion" placeholder="e.g. South East Regional Health Authority"></div>
+      <div class="field"><label for="lStart">Claim from <span class="sub">1 April 2023, or your start date if later</span></label><input type="text" id="lStart" value="1 April 2023"></div>
       <div class="field"><label for="lDate">Date of letter</label><input type="text" id="lDate"></div>
     </div>
     <textarea class="copybox letterbox" id="letterBox" readonly aria-label="Draft claim letter"></textarea>
@@ -1164,7 +1160,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('tThreshold').value = fmtPlain(t.thresholdAuto ? CORE.thresholdFor(state.fy) : t.threshold); $('tBand').value = fmtPlain(t.band30); $('tNisCeil').value = fmtPlain(t.nisCeiling);
     $('tNis').value = pct(t.nisRate); $('tEd').value = pct(t.edRate); $('tNht').value = pct(t.nhtRate); $('tPen').value = pct(t.pensionRate); $('tOther').value = t.other ? fmtPlain(t.other) : '';
     $('tHousing').checked = t.internHousing !== false;
-    ['lName:name', 'lReg:reg', 'lDept:dept', 'lInst:inst', 'lRegion:region', 'lStart:start', 'lContact:contact', 'lDate:date'].forEach(function (p) { var a = p.split(':'); $(a[0]).value = state.letter[a[1]] || ''; });
+    ['lName:name', 'lDept:dept', 'lInst:inst', 'lRegion:region', 'lStart:start', 'lDate:date'].forEach(function (p) { var a = p.split(':'); $(a[0]).value = state.letter[a[1]] || ''; });
     refreshOverrideInputs();
   }
   function refreshOverrideInputs() {
@@ -1245,7 +1241,7 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
     $('barCopy').addEventListener('click', function () { copyText($('summaryBox'), 'Summary copied'); });
     $('copyMonths').addEventListener('click', function () { copyRaw(monthsTSV(), 'Table copied'); });
     $('copyLetter').addEventListener('click', function () { copyText($('letterBox'), 'Letter copied'); });
-    ['lName:name', 'lReg:reg', 'lDept:dept', 'lInst:inst', 'lRegion:region', 'lStart:start', 'lContact:contact', 'lDate:date'].forEach(function (p) { var a = p.split(':'); bindText(a[0], function () { return state.letter[a[1]]; }, function (v) { state.letter[a[1]] = v; }); });
+    ['lName:name', 'lDept:dept', 'lInst:inst', 'lRegion:region', 'lStart:start', 'lDate:date'].forEach(function (p) { var a = p.split(':'); bindText(a[0], function () { return state.letter[a[1]]; }, function (v) { state.letter[a[1]] = v; }); });
     if (!state.letter.date) { var t = new Date(); state.letter.date = t.getDate() + ' ' + MONTHS_LONG[t.getMonth()] + ' ' + t.getFullYear(); }
     renderQA();
     refreshInputs();
@@ -1582,39 +1578,47 @@ if (typeof module !== 'undefined') { module.exports = CORE; }
   }
 
   // ---------- letter ----------
+  // The kinds of duty ticked in Step 3, as a phrase for the letter ("rostered emergency duty, Casualty sessions and ward sessions")
+  var DUTY_PHRASE = { rostered: 'rostered emergency duty', multi: 'duty covering multiple locations', ward: 'ward sessions', casualty: 'Casualty sessions', typec: 'Type C hospital duty', hc: 'Health Centre sessions', cross: 'cross coverage' };
+  function dutyPhrase() {
+    var gi = G[state.grade], list = ROWS.filter(function (k) { return state.duties[k] && !(k === 'multi' && gi && !gi.multi); }).map(function (k) { return DUTY_PHRASE[k]; });
+    if (!list.length) return '[type of duty]';
+    return list.length === 1 ? list[0] : list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+  }
   function renderLetter() {
     var L = state.letter, gi = G[state.grade] || { label: '[Grade]', mo: false }, ia = state.ia.eligible;
-    var name = L.name || '[Your name]', inst = L.inst || '[Institution]', region = L.region || '[Employing authority]', dept = L.dept || '[Department]', start = L.start || '1 April 2023';
+    var name = L.name || '[Your name]', inst = L.inst || '[Institution]', employer = L.region || '[Employer]', dept = L.dept || '[Department]', start = L.start || '1 April 2023';
     var t = [];
     t.push(L.date || '[Date]');
     t.push('');
     t.push('The Human Resource Manager');
     t.push(inst);
-    t.push(region);
+    t.push(employer);
+    t.push('');
     t.push('Copies: Chief Executive Officer; Senior Medical Officer; Director of Finance and Accounts');
     t.push('');
-    t.push('Dear Sir or Madam,');
+    t.push('Dear Sirs,');
     t.push('');
-    t.push('CLAIM UNDER INDUSTRIAL DISPUTES TRIBUNAL AWARD 1/2025 OF 5 OCTOBER 2026: RETROACTIVE EMERGENCY DUTY ALLOWANCE' + (ia ? ' AND INCENTIVE ALLOWANCE' : ''));
+    t.push('CLAIM FOR RETROACTIVE EMERGENCY DUTY ALLOWANCE' + (ia ? ' AND INCENTIVE ALLOWANCE' : '') + ' UNDER INDUSTRIAL DISPUTES TRIBUNAL AWARD IDT 1/2025 (5 OCTOBER 2026): MINISTRY OF HEALTH AND WELLNESS v. JAMAICA MEDICAL DOCTORS\' ASSOCIATION');
     t.push('');
-    t.push('I, ' + name + (L.reg ? ' (Medical Council of Jamaica registration number ' + L.reg + ')' : '') + ', ' + gi.label + ', ' + dept + ', ' + inst + ', claim the payments due to me under the above Award, which binds every employing authority of doctors in the Association\'s bargaining unit (section 1(a)).');
+    t.push('I, ' + name + ', ' + gi.label + ', ' + dept + ', ' + inst + ', claim the payments due to me under the above Award, which binds every employing authority of doctors in the Association\'s bargaining unit as per section 1(a).');
     t.push('');
-    t.push('1. Emergency Duty Allowance. Please recalculate all my emergency duty since ' + start + ' at the section 2 rates of the Award (the hourly base of ' + (gi.mo ? 'the scale midpoint' : 'my annual salary') + ' divided by 2,080, the day-type and multiple-location multipliers, and the ward and premium session rates), retroactive to 1 April 2023 under section 2(e), and pay me the difference.');
+    t.push('1. Emergency Duty Allowance: Please recalculate all my ' + dutyPhrase() + ' since ' + start + ' at the section 2 rates of the Award and pay me the difference as per section 2(e).');
     t.push('');
     if (ia) {
-      t.push('2. Incentive Allowance. Section 3 reinstates it from 1 April 2023 at ' + state.ia.pct + '% of the scale midpoint for eligible non-rostered medical officers. I claim it from ' + start + ' for every month without a rostered emergency duty shift (paragraph 85), and going forward.');
+      t.push('2. Incentive Allowance: Please reinstate and pay the allowance at ' + state.ia.pct + '% of the scale midpoint from ' + start + ' for every month without a rostered emergency duty shift, as per section 3 and paragraph 85, and going forward.');
       t.push('');
     }
-    t.push((ia ? '3' : '2') + '. Statement of account. Please provide a monthly statement of the hours recognised by category and day type, the rate applied, the amount previously paid and the amount now due. My rosters and claim forms are available on request.');
+    t.push((ia ? '3' : '2') + '. Statement of account: Please provide a monthly statement of the hours recognised by category as well as day type, the rate applied, the amount previously paid and the amount now due. My rosters and claim forms are available on request.');
     t.push('');
-    t.push('Kindly acknowledge this claim in writing within fourteen days and advise when payment will be made. A copy goes to my Association representative.');
+    t.push('Kindly acknowledge this claim in writing where applicable and advise when payment will be made. A copy will be provided to my Association representative.');
     t.push('');
     t.push('Yours faithfully,');
     t.push('');
     t.push('');
     t.push(name);
-    t.push(gi.label + ', ' + dept);
-    if (L.contact) t.push(L.contact);
+    t.push(gi.label + ',');
+    t.push(dept);
     $('letterBox').value = t.join('\n');
   }
 
